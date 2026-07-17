@@ -1,0 +1,15 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.spinning-image-wrap img {
+    width: 200px;
+    max-width: 100%;
+    animation: spinner 4s infinite linear;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotateZ(360deg);
+    }
+}

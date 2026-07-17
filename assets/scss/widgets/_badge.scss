@@ -1,0 +1,74 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+// /* ── Carvia Badge ── */
+
+// .carvia-badge-wrap {
+// 	display: flex;
+// }
+
+// .carvia-badge-root {
+// 	display: inline-flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	position: relative;
+// }
+
+// .carvia-badge-svg {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	overflow: visible;
+// }
+
+// .carvia-badge-svg text {
+// 	dominant-baseline: auto;
+// }
+
+// .carvia-badge-inner {
+// 	border-radius: 50%;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	position: relative;
+// 	z-index: 2;
+// 	flex-shrink: 0;
+// }
+
+// .carvia-badge-icon {
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	line-height: 1;
+// }
+
+// .carvia-badge-icon svg {
+// 	width: 1em;
+// 	height: 1em;
+// 	fill: currentColor;
+// }
+
+// @keyframes carvia-badge-spin {
+// 	from { transform: rotate( 0deg ); }
+// 	to   { transform: rotate( 360deg ); }
+// }
+
+
+.carvia-badge-root #curve {
+	fill: transparent
+}
+
+.carvia-badge-root .text {
+	color: #fff;
+	transform-origin: 50% 50%;
+	animation: rotate 15s linear infinite
+}
+
+@keyframes rotate {
+	from { transform: rotate( 0deg ); }
+	to   { transform: rotate( 360deg ); }
+}

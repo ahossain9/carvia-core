@@ -1,0 +1,106 @@
+@use 'sass:map';
+@use 'abstracts/variables' as *;
+
+// ─── Breakpoint Up ────────────────────────────────────────────
+@mixin respond-to($breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value !=null {
+        @media (min-width: $value) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Unknown breakpoint: #{$breakpoint}.";
+    }
+}
+
+// ─── Breakpoint Down ──────────────────────────────────────────
+@mixin respond-below($breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value !=null {
+        @media (max-width: ($value - 0.02px)) {
+            @content;
+        }
+    }
+}
+
+// ─── Flexbox Helpers ──────────────────────────────────────────
+@mixin flex($justify: flex-start, $align: stretch, $wrap: nowrap) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// ─── Absolute Center ──────────────────────────────────────────
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// ─── Transition ───────────────────────────────────────────────
+@mixin transition($props: all, $duration: 0.3s, $ease: ease) {
+    transition: $props $duration $ease;
+}
+
+// ─── Clearfix ─────────────────────────────────────────────────
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+// ─── Truncate ─────────────────────────────────────────────────
+@mixin truncate($lines: 1) {
+    @if $lines ==1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+// ─── Heading style ────────────────────────────────────────────
+@mixin heading-style {
+    font-family: $font-heading;
+    font-weight: $heading-weight;
+    line-height: $heading-line-height;
+    color: $color-heading;
+}
+
+// ─── Button base ──────────────────────────────────────────────
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    @include transition;
+}

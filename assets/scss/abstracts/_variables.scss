@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:math';
+
+// ─── Color Palette ────────────────────────────────────────────
+$color-primary: #D1FF6D;
+$color-secondary: #116630;
+$color-deep-green: #052B13;
+$color-orange: #FFBC64;
+$color-heading: #0B311E;
+$color-body: #364745;
+$color-bg: #FBFFF5;
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-border: #E2EDE6;
+$color-light-green: #F9FFEE;
+
+// ─── Breakpoints ──────────────────────────────────────────────
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+// ─── Transition ──────────────────────────────────────────────
+$transition: all 0.4s ease;

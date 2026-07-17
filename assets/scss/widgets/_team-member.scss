@@ -1,0 +1,118 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.carvia-team-card {
+    border-radius: 30px;
+    position: relative;
+    .carvia-team-image {
+        position: relative;
+        width: 100%;
+        display: block;
+        min-height: 300px;
+        border-radius: 30px;
+        img {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+            border-radius: 30px;
+            transition: 0.5s;
+        }
+    }
+    &:hover {
+        .carvia-team-social {
+            transform: translateY(-50%) translateX(0);
+            opacity: 1;
+        }
+        .carvia-team-overlay {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .carvia-team-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        border-radius: inherit;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+    }
+    .carvia-team-social {
+        position: absolute;
+        left: 16px;
+        top: 40%;
+        transform: translateY(-40%);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        transition: 0.4s;
+        .carvia-team-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.18);
+            color: $color-white;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: 0.4s;
+            &:nth-child(1) {
+                transition-delay: 0.1s;
+            }
+            &:nth-child(2) {
+                transition-delay: 0.15s;
+            }
+            &:nth-child(3) {
+                transition-delay: 0.20s;
+            }
+            &:nth-child(4) {
+                transition-delay: 0.25s;
+            }
+            &:nth-child(5) {
+                transition-delay: 0.30s;
+            }
+            &:nth-child(6) {
+                transition-delay: 0.35s;
+            }
+            &:hover {
+                background-color: #7DC242;
+            }
+            svg {
+                width: 1em;
+                height: 1em;
+                fill: currentColor;
+            }
+        }
+    }
+    .carvia-team-info {
+        position: absolute;
+        bottom: -50px;
+        left: 30px;
+        right: 30px;
+        z-index: 2;
+        border-radius: 30px;
+        padding: 30px;
+        background-color: $color-primary;
+        .carvia-team-name {
+            color: $color-heading;
+            margin: 0 0 10px;
+        }
+        .carvia-team-designation {
+            color: $color-heading;
+            margin: 0;
+        }
+    }
+                
+}

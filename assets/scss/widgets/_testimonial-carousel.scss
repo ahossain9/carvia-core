@@ -1,0 +1,202 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.carvia-testimonial-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 50px;
+
+    .swiper {
+        overflow: hidden;
+    }
+
+    .swiper-wrapper {
+        align-items: stretch;
+    }
+
+    .swiper-slide {
+        height: auto;
+        display: flex;
+    }
+}
+
+.carvia-testimonial-card {
+    background-color: $color-white;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    transition: $transition;
+}
+
+.carvia-star-rating {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+
+    .carvia-star-icon {
+        color: #ffb800;
+        font-size: 18px;
+        margin-right: 3px;
+        line-height: 1;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.empty {
+            color: #d0d0d0;
+        }
+    }
+}
+.carvia-star-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.carvia-testimonial-title {
+    color: $color-heading;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.15em;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.carvia-testimonial-content {
+    color: $color-body;
+    margin-top: 0;
+    margin-bottom: 24px;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.carvia-client-info {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.carvia-client-image {
+    flex-shrink: 0;
+    margin-right: 14px;
+
+    img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.carvia-client-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carvia-client-name {
+    color: $color-heading;
+    font-weight: 700;
+    font-size: 0.95em;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.carvia-client-designation {
+    color: #888899;
+    font-size: 0.85em;
+    line-height: 1.3;
+    margin-bottom: 0;
+}
+
+.carvia-swiper-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(calc(-50% - 25px));
+    width: 44px;
+    height: 44px;
+    background: $color-white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    color: $color-heading;
+    font-size: 16px;
+    transition: $transition;
+    user-select: none;
+
+    &:hover {
+        background: $color-primary;
+        color: $color-white;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &.carvia-swiper-prev {
+        left: -22px;
+        svg {
+            height: 14px;
+        }
+        &:hover {
+            svg {
+                fill: $color-heading;
+            }
+        }
+    }
+
+    &.carvia-swiper-next {
+        right: -22px;
+        svg {
+            height: 14px;
+        }
+        &:hover {
+            svg {
+                fill: $color-heading;
+            }
+        }
+    }
+}
+
+.carvia-testimonial-pagination {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    .swiper-pagination-bullet {
+        background: #ccccdd;
+        opacity: 1;
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+        transition: $transition;
+
+        &.swiper-pagination-bullet-active {
+            background: $color-heading;
+            width: 24px;
+            border-radius: 4px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .carvia-swiper-btn {
+        &.carvia-swiper-prev {
+            left: 0;
+        }
+
+        &.carvia-swiper-next {
+            right: 0;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.carvia-service-card {
+    .carvia-service-card__title{
+        font-size: 24px
+    }
+    .carvia-service-card__btn{
+        display: flex;
+        align-items: center;
+    }
+}

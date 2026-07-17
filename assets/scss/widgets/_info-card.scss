@@ -1,0 +1,35 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.carvia-info-card {
+    border-radius: 30px;
+    .carvia-info-card__icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        .carvia-info-card__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            img,
+            svg {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .carvia-info-card__button {
+        display: inline-block;
+        transition: 0.4s;
+    }
+
+}
+
+
+

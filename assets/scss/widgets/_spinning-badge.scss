@@ -1,0 +1,48 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+ .carvia-spinning-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    .carvia-spinning-badge__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: carvia-spin 8s linear infinite;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .carvia-spinning-badge__center {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .carvia-spinning-badge__center-image {
+        display: block;
+        object-fit: contain;
+    }
+
+    @keyframes carvia-spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+        

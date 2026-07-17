@@ -1,0 +1,110 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.carvia-button-wrapper {
+    .btn-fill {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 8px 8px 20px;
+        font-weight: 500;
+        background: $color-primary;
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: 0;
+        transition: color 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        line-height: 1;
+        @include respond-below(lg) {
+            font-size: 15px;
+            padding: 6px 6px 4px 18px;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: $color-deep-green;;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            z-index: -1;
+        }
+
+        &:hover {
+            color: #fff;
+
+            &:before {
+                transform: scaleX(1);
+            }
+
+            .btn-fill__icon {
+                background: $color-primary;
+                color: $color-deep-green;
+                i.arrow-out {
+                    transform: translate(130%, -130%);
+                    opacity: 0;
+                    transform: rotate(-40deg);
+                }
+
+                i.arrow-in {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                    transform: rotate(-40deg);
+                }
+            }
+        }
+
+        &__text {
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        &__icon {
+            position: relative;
+            z-index: 1;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            background: $color-deep-green;;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            pointer-events: none;
+            transition:
+                background 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+
+            @include respond-below(lg) {
+                width: 32px;
+                height: 32px;
+            }
+
+            i {
+                position: absolute;
+                transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                    opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+
+
+                &.arrow-out {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                    color: $color-white;
+                    transition:
+                        transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                        opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+                        stroke 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+                }
+
+                &.arrow-in {
+                    transform: translate(-130%, 130%);
+                    opacity: 0;
+                    color: $color-deep-green;;
+                }
+            }
+        }
+    }
+}

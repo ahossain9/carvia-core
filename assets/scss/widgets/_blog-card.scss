@@ -1,0 +1,65 @@
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.blog-post {
+    transition: 0.5s;
+    box-shadow: 0 0 30px rgba(51, 51, 51, 0.1);
+    background-color: $color-white;
+    @include respond-below(lg) {
+        margin-bottom: 30px;
+    }
+
+    .post-meta {
+        margin-bottom: 10px;
+
+        li {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 14px;
+
+            i {
+                margin-right: 5px;
+                transition: 0.5s;
+            }
+
+            a {
+                color: $color-body;
+                font-size: 14px;
+                &:hover {
+                    color: $color-secondary;
+                }
+            }
+        }
+    }
+    .blog-post-content {
+        padding: 30px 30px 30px;
+
+        h3 {
+            margin: 0 0 20px;
+            font-size: 24px;
+
+            a {
+                display: inline-block;
+                color: #130f40;
+                font-size: 24px;
+
+                &:hover {
+                    color: $color-secondary;
+                }
+            }
+        }
+        .post-read-more-btn{
+            a {
+                font-weight: 500;
+                display: flex;
+                gap: 8px;
+                transition: 0.5s;
+                &:hover {
+                    gap: 12px;
+                    color: $color-secondary;
+                }
+            }
+        }
+    }
+}
