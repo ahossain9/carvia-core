@@ -16,6 +16,8 @@
         z-index: 0;
         transition: color 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         line-height: 1;
+        color: $color-white;
+
         @include respond-below(lg) {
             font-size: 15px;
             padding: 6px 6px 4px 18px;
@@ -25,7 +27,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: $color-deep-green;;
+            background: $color-deep-black;
+            ;
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
@@ -40,18 +43,20 @@
             }
 
             .btn-fill__icon {
-                background: $color-primary;
-                color: $color-deep-green;
+                color: $color-deep-black;
+
+                &::before {
+                    transform: scale(1);
+                }
+
                 i.arrow-out {
-                    transform: translate(130%, -130%);
+                    transform: translate(130%, -130%) rotate(-40deg);
                     opacity: 0;
-                    transform: rotate(-40deg);
                 }
 
                 i.arrow-in {
-                    transform: translate(0, 0);
+                    transform: translate(0, 0) rotate(-40deg);
                     opacity: 1;
-                    transform: rotate(-40deg);
                 }
             }
         }
@@ -68,31 +73,47 @@
             width: 35px;
             height: 35px;
             border-radius: 5px;
-            background: $color-deep-green;;
+            background: $color-deep-black;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             pointer-events: none;
-            transition:
-                background 0.5s cubic-bezier(0.76, 0, 0.24, 1),
-                transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            isolation: isolate;
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 
             @include respond-below(lg) {
                 width: 32px;
                 height: 32px;
             }
 
+            // Hover fill overlay — animated with transform (GPU-composited),
+            // never background-color (paint-triggered = jank with overflow:hidden + radius)
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background: $color-white;
+                transform: scale(0);
+                transform-origin: center;
+                will-change: transform;
+                backface-visibility: hidden;
+                transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            }
+
             i {
                 position: absolute;
+                z-index: 1;
                 transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
                     opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1);
 
 
                 &.arrow-out {
-                    transform: translate(0, 0);
+                    transform: translate(0, 0) rotate(0deg);
                     opacity: 1;
-                    color: $color-white;
+                    will-change: transform;
+                    backface-visibility: hidden;
                     transition:
                         transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
                         opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1),
@@ -100,9 +121,12 @@
                 }
 
                 &.arrow-in {
-                    transform: translate(-130%, 130%);
+                    transform: translate(-130%, 130%) rotate(0deg);
                     opacity: 0;
-                    color: $color-deep-green;;
+                    color: $color-deep-black;
+                    ;
+                    will-change: transform;
+                    backface-visibility: hidden;
                 }
             }
         }

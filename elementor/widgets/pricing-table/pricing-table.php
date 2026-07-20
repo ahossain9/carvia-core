@@ -163,7 +163,7 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#D1FF6D',
+				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-feature-icon i'   => 'color: {{VALUE}};',
 					'{{WRAPPER}} {{CURRENT_ITEM}} .pricing-feature-icon svg' => 'fill: {{VALUE}};',
@@ -583,7 +583,7 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#D1FF6D',
+				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .pricing-btn' => 'background-color: {{VALUE}};',
 				],
@@ -595,7 +595,7 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Arrow Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#D1FF6D',
+				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .pricing-btn-arrow i'   => 'color: {{VALUE}};',
 					'{{WRAPPER}} .pricing-btn-arrow svg' => 'fill: {{VALUE}};',

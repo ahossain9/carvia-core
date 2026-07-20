@@ -4,7 +4,7 @@
  * Plugin Name:       Carvia Core
  * Plugin URI:        https://omexer.com/carvia
  * Description:       Core plugin for Carvia theme.
- * Version:           1.0
+ * Version:           1.0.0
  * Author:            Carvia
  * Author URI:        https://omexer.com
  * Text Domain:       carvia-core

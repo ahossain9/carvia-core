@@ -306,7 +306,7 @@ class Video_Popup extends Widget_Base
             [
                 'label' => __('Background Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#D1FF6D',
+                'default' => '#FF4400',
                 'selectors' => [
                     '{{WRAPPER}} .video-popup-wrap a' => 'background-color: {{VALUE}}',
                 ],

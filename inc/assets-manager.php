@@ -44,12 +44,9 @@ class Assets
 
     public function __construct()
     {
-        // get_style_depends() / get_script_depends() on pages that use the widget.
         add_action('elementor/frontend/after_register_styles',   [$this, 'register_frontend_styles']);
         add_action('elementor/frontend/after_register_scripts',  [$this, 'register_frontend_scripts']);
-        // Always load the editor-only stylesheet inside the Elementor editor.
         add_action('elementor/editor/after_enqueue_styles', [$this, 'carvia_core_editor_styles']);
-        // Load globally ( every page ).
         add_action('elementor/frontend/after_enqueue_styles',   [$this, 'enqueue_global_styles']);
         add_action('elementor/frontend/after_enqueue_scripts',  [$this, 'enqueue_global_scripts']);
     }

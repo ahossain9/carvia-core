@@ -51,6 +51,11 @@
         &.empty {
             color: #d0d0d0;
         }
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+        }
     }
 }
 .carvia-star-icon svg {

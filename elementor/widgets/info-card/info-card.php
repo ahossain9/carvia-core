@@ -326,7 +326,7 @@ class Info_Card extends Widget_Base
 			[
 				'label'     => esc_html__('Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#D1FF6D',
+				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .carvia-info-card__icon'     => 'color: {{VALUE}};',
 					'{{WRAPPER}} .carvia-info-card__icon svg' => 'fill: {{VALUE}};',
@@ -545,7 +545,7 @@ class Info_Card extends Widget_Base
 			[
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#D1FF6D',
+				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .carvia-info-card__button' => 'background-color: {{VALUE}};',
 				],

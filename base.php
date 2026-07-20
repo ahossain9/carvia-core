@@ -109,6 +109,7 @@ class Plugin
             'testimonial-carousel',
             'team-member',
             'testimonial',
+            'timeline',
             'spinning-badge',
             'accordian',
             'step-flow',

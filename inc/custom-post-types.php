@@ -16,6 +16,7 @@ class Carvia_Core_Post_Types
         // Register types and tax
         add_action('init', array($this, 'register_post_types'));
         add_action('init', array($this, 'register_taxonomies'));
+        add_action('init', array($this, 'carvia_flush_rewrite_rules'), 999);
 
         // Essential Elementor Support
         add_action('elementor/init', array($this, 'add_elementor_support'));
@@ -44,7 +45,7 @@ class Carvia_Core_Post_Types
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => array('slug' => 'carvia-header'),
+            'rewrite'            => array('slug' => 'header'),
             'capability_type'    => 'post',
             'has_archive'        => false,
             'menu_position'      => 5,
@@ -52,7 +53,7 @@ class Carvia_Core_Post_Types
             'supports'           => array('title', 'editor', 'elementor'),
             'show_in_rest'       => true, // Essential for modern builders
         );
-        register_post_type('carvia-header', $header_args);
+        register_post_type('header', $header_args);
 
         // ---------------------------------------------
         // Footer Custom Post Type
@@ -70,7 +71,7 @@ class Carvia_Core_Post_Types
             'publicly_queryable' => true,
             'show_ui'            => true,
             'show_in_menu'       => true,
-            'rewrite'            => array('slug' => 'carvia-footer'),
+            'rewrite'            => array('slug' => 'footer'),
             'capability_type'    => 'post',
             'has_archive'        => false,
             'menu_position'      => 6,
@@ -79,7 +80,7 @@ class Carvia_Core_Post_Types
             'show_in_rest'       => true,
         );
 
-        register_post_type('carvia-footer', $footer_args);
+        register_post_type('footer', $footer_args);
 
         // ---------------------------------------------
         // Service Custom Post Type
@@ -118,7 +119,7 @@ class Carvia_Core_Post_Types
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => array('slug' => 'service'),
+            'rewrite'            => array('slug' => 'services'),
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,
@@ -126,49 +127,49 @@ class Carvia_Core_Post_Types
             'menu_icon'          => 'dashicons-admin-page',
             'show_in_rest'       => true,
             'supports'           => array('title', 'editor', 'thumbnail', 'elementor'),
-            'taxonomies'         => array('carvia_service_category'),
+            'taxonomies'         => array('service_category'),
         );
 
-        register_post_type('carvia-service', $service_args);
+        register_post_type('services', $service_args);
 
         // ---------------------------------------------
-        // Project Custom Post Type
+        // Cars Custom Post Type
         // ---------------------------------------------
-        $project_labels = array(
-            'name'                  => __('Projects', 'Post type general name', 'carvia-core'),
-            'singular_name'         => __('Project', 'Post type singular name', 'carvia-core'),
-            'menu_name'             => __('Projects', 'Admin Menu text', 'carvia-core'),
-            'name_admin_bar'        => __('Project', 'Add New on Toolbar', 'carvia-core'),
+        $cars_labels = array(
+            'name'                  => __('Cars', 'Post type general name', 'carvia-core'),
+            'singular_name'         => __('Car', 'Post type singular name', 'carvia-core'),
+            'menu_name'             => __('Cars', 'Admin Menu text', 'carvia-core'),
+            'name_admin_bar'        => __('Cars', 'Add New on Toolbar', 'carvia-core'),
             'add_new'               => __('Add New', 'carvia-core'),
-            'add_new_item'          => __('Add New Project', 'carvia-core'),
-            'new_item'              => __('New Project', 'carvia-core'),
-            'edit_item'             => __('Edit Project', 'carvia-core'),
-            'view_item'             => __('View Project', 'carvia-core'),
-            'all_items'             => __('All Projects', 'carvia-core'),
-            'search_items'          => __('Search Projects', 'carvia-core'),
-            'parent_item_colon'     => __('Parent Projects:', 'carvia-core'),
-            'not_found'             => __('No projects found.', 'carvia-core'),
-            'not_found_in_trash'    => __('No projects found in Trash.', 'carvia-core'),
-            'featured_image'        => __('Project Image', 'carvia-core'),
-            'set_featured_image'    => __('Set project image', 'carvia-core'),
-            'remove_featured_image' => __('Remove project image', 'carvia-core'),
-            'use_featured_image'    => __('Use as project image', 'carvia-core'),
-            'archives'              => __('Project Archives', 'carvia-core'),
-            'insert_into_item'      => __('Insert into project', 'carvia-core'),
-            'uploaded_to_this_item' => __('Uploaded to this project', 'carvia-core'),
-            'filter_items_list'     => __('Filter projects list', 'carvia-core'),
-            'items_list_navigation' => __('Projects list navigation', 'carvia-core'),
-            'items_list'            => __('Projects list', 'carvia-core'),
+            'add_new_item'          => __('Add New Cars', 'carvia-core'),
+            'new_item'              => __('New Cars', 'carvia-core'),
+            'edit_item'             => __('Edit Cars', 'carvia-core'),
+            'view_item'             => __('View Cars', 'carvia-core'),
+            'all_items'             => __('All Cars', 'carvia-core'),
+            'search_items'          => __('Search Cars', 'carvia-core'),
+            'parent_item_colon'     => __('Parent Cars:', 'carvia-core'),
+            'not_found'             => __('No cars found.', 'carvia-core'),
+            'not_found_in_trash'    => __('No cars found in Trash.', 'carvia-core'),
+            'featured_image'        => __('Cars Image', 'carvia-core'),
+            'set_featured_image'    => __('Set cars image', 'carvia-core'),
+            'remove_featured_image' => __('Remove cars image', 'carvia-core'),
+            'use_featured_image'    => __('Use as cars image', 'carvia-core'),
+            'archives'              => __('Cars Archives', 'carvia-core'),
+            'insert_into_item'      => __('Insert into cars', 'carvia-core'),
+            'uploaded_to_this_item' => __('Uploaded to this cars', 'carvia-core'),
+            'filter_items_list'     => __('Filter cars list', 'carvia-core'),
+            'items_list_navigation' => __('Cars list navigation', 'carvia-core'),
+            'items_list'            => __('Cars list', 'carvia-core'),
         );
 
-        $project_args = array(
-            'labels'             => $project_labels,
+        $cars_args = array(
+            'labels'             => $cars_labels,
             'public'             => true,
             'publicly_queryable' => true,
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => array('slug' => 'project'),
+            'rewrite'            => array('slug' => 'cars'),
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,
@@ -176,10 +177,10 @@ class Carvia_Core_Post_Types
             'menu_icon'          => 'dashicons-portfolio',
             'show_in_rest'       => true,
             'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),
-            'taxonomies'         => array('carvia_project_category'),
+            'taxonomies'         => array('cars_category'),
         );
 
-        register_post_type('carvia-project', $project_args);
+        register_post_type('cars', $cars_args);
     }
 
     public function register_taxonomies()
@@ -199,7 +200,7 @@ class Carvia_Core_Post_Types
             'menu_name'         => __('Categories', 'carvia-core'),
         );
 
-        register_taxonomy('carvia_service_category', array('carvia-service'), array(
+        register_taxonomy('service_category', array('services'), array(
             'hierarchical'      => true,
             'labels'            => $service_cat_labels,
             'show_ui'           => true,
@@ -209,42 +210,44 @@ class Carvia_Core_Post_Types
             'show_in_rest'      => true,
         ));
 
-        // Project Category
-        $project_cat_labels = array(
-            'name'              => _x('Project Categories', 'taxonomy general name', 'carvia-core'),
-            'singular_name'     => _x('Project Category', 'taxonomy singular name', 'carvia-core'),
-            'search_items'      => __('Search Project Categories', 'carvia-core'),
-            'all_items'         => __('All Project Categories', 'carvia-core'),
-            'parent_item'       => __('Parent Project Category', 'carvia-core'),
-            'parent_item_colon' => __('Parent Project Category:', 'carvia-core'),
-            'edit_item'         => __('Edit Project Category', 'carvia-core'),
-            'update_item'       => __('Update Project Category', 'carvia-core'),
-            'add_new_item'      => __('Add New Project Category', 'carvia-core'),
-            'new_item_name'     => __('New Project Category Name', 'carvia-core'),
+        // Cars Category
+        $cars_cat_labels = array(
+            'name'              => _x('Cars Categories', 'taxonomy general name', 'carvia-core'),
+            'singular_name'     => _x('Cars Category', 'taxonomy singular name', 'carvia-core'),
+            'search_items'      => __('Search Cars Categories', 'carvia-core'),
+            'all_items'         => __('All Cars Categories', 'carvia-core'),
+            'parent_item'       => __('Parent Cars Category', 'carvia-core'),
+            'parent_item_colon' => __('Parent Cars Category:', 'carvia-core'),
+            'edit_item'         => __('Edit Cars Category', 'carvia-core'),
+            'update_item'       => __('Update Cars Category', 'carvia-core'),
+            'add_new_item'      => __('Add New Cars Category', 'carvia-core'),
+            'new_item_name'     => __('New Cars Category Name', 'carvia-core'),
             'menu_name'         => __('Categories', 'carvia-core'),
         );
 
-        register_taxonomy('carvia_project_category', array('carvia-project'), array(
+        register_taxonomy('cars_category', array('cars'), array(
             'hierarchical'      => true,
-            'labels'            => $project_cat_labels,
+            'labels'            => $cars_cat_labels,
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => array('slug' => 'project-category'),
+            'rewrite'           => array('slug' => 'cars-category'),
             'show_in_rest'      => true,
         ));
     }
 
     public function add_elementor_support()
     {
-        add_post_type_support('carvia-header', 'elementor');
-        add_post_type_support('carvia-footer', 'elementor');
+        add_post_type_support('header', 'elementor');
+        add_post_type_support('footer', 'elementor');
+        add_post_type_support('services', 'elementor');
+        add_post_type_support('cars', 'elementor');
     }
 
     public function set_elementor_settings()
     {
         $cpt_support = get_option('elementor_cpt_support');
-        $carvia_types = array('carvia-service', 'carvia-project', 'carvia-header', 'carvia-footer');
+        $carvia_types = array('services', 'cars', 'header', 'footer');
 
         if (!$cpt_support) {
             update_option('elementor_cpt_support', array_merge(array('post', 'page'), $carvia_types));
@@ -267,7 +270,7 @@ class Carvia_Core_Post_Types
      */
     public function force_elementor_canvas($template)
     {
-        if (is_singular(array('carvia-header', 'carvia-footer'))) {
+        if (is_singular(array('header', 'footer'))) {
             // Check for Elementor's native canvas first (This is the safest way to stop the spinning)
             if (defined('ELEMENTOR_PATH')) {
                 $canvas = ELEMENTOR_PATH . 'modules/page-templates/templates/canvas.php';
@@ -281,9 +284,18 @@ class Carvia_Core_Post_Types
 
     public static function activate()
     {
-        $instance = new self();
-        $instance->register_post_types();
+        self::register_post_types();
+        self::register_taxonomies();
         flush_rewrite_rules();
+    }
+    public function carvia_flush_rewrite_rules()
+    {
+        $rewrite_version = '1.0.0';
+
+        if (get_option('carvia_rewrite_version') !== $rewrite_version) {
+            flush_rewrite_rules(false);
+            update_option('carvia_rewrite_version', $rewrite_version);
+        }
     }
 }
 
