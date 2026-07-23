@@ -181,7 +181,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'    => '30',
@@ -200,7 +200,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .info-card' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -209,7 +209,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'card_border',
 				'label'     => esc_html__('Border', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card',
+				'selector'  => '{{WRAPPER}} .info-card',
 				'separator' => 'before',
 			]
 		);
@@ -221,7 +221,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -231,7 +231,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'card_box_shadow',
 				'label'     => esc_html__('Box Shadow', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card',
+				'selector'  => '{{WRAPPER}} .info-card',
 				'separator' => 'before',
 			]
 		);
@@ -249,7 +249,7 @@ class Info_Card extends Widget_Base
 				'default'   => 'left',
 				'separator' => 'before',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .info-card' => 'text-align: {{VALUE}};',
 				],
 			]
 		);
@@ -280,7 +280,7 @@ class Info_Card extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 70],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__icon-wrapper' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon-wrapper' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -297,7 +297,7 @@ class Info_Card extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 70],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__icon-wrapper' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon-wrapper' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -314,9 +314,9 @@ class Info_Card extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 35],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__icon'          => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-info-card__icon img'      => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-info-card__icon svg'      => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon'          => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon img'      => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon svg'      => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -328,8 +328,8 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FF4400',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__icon'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-info-card__icon svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .info-card__icon'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__icon svg' => 'fill: {{VALUE}};',
 				],
 				'condition' => [
 					'icon_type' => 'library',
@@ -343,7 +343,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#052B13',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__icon-wrapper' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__icon-wrapper' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -355,7 +355,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__icon-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'    => '15',
@@ -376,7 +376,7 @@ class Info_Card extends Widget_Base
 				'range'      => ['px' => ['min' => 0, 'max' => 80]],
 				'default'    => ['unit' => 'px', 'size' => 20],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__icon-wrapper' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__icon-wrapper' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'separator'  => 'before',
 			]
@@ -400,7 +400,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-info-card__title',
+				'selector' => '{{WRAPPER}} .info-card__title',
 			]
 		);
 
@@ -410,7 +410,7 @@ class Info_Card extends Widget_Base
 				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -424,7 +424,7 @@ class Info_Card extends Widget_Base
 				'range'      => ['px' => ['min' => 0, 'max' => 60]],
 				'default'    => ['unit' => 'px', 'size' => 12],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'separator'  => 'before',
 			]
@@ -448,7 +448,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'     => 'description_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-info-card__description',
+				'selector' => '{{WRAPPER}} .info-card__description',
 			]
 		);
 
@@ -458,7 +458,7 @@ class Info_Card extends Widget_Base
 				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__description' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -472,7 +472,7 @@ class Info_Card extends Widget_Base
 				'range'      => ['px' => ['min' => 0, 'max' => 60]],
 				'default'    => ['unit' => 'px', 'size' => 24],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 				'separator'  => 'before',
 			]
@@ -496,7 +496,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'     => 'button_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-info-card__button',
+				'selector' => '{{WRAPPER}} .info-card__button',
 			]
 		);
 
@@ -507,7 +507,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'    => '12',
@@ -535,7 +535,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#0B311E',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__button' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__button' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -547,7 +547,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FF4400',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__button' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -557,7 +557,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'button_border',
 				'label'     => esc_html__('Border', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card__button',
+				'selector'  => '{{WRAPPER}} .info-card__button',
 				'separator' => 'before',
 			]
 		);
@@ -569,7 +569,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'    => '4',
@@ -586,7 +586,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'button_box_shadow',
 				'label'     => esc_html__('Box Shadow', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card__button',
+				'selector'  => '{{WRAPPER}} .info-card__button',
 				'separator' => 'before',
 			]
 		);
@@ -606,7 +606,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__button:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -618,7 +618,7 @@ class Info_Card extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#052B13',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-info-card__button:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .info-card__button:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -628,7 +628,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'button_border_hover',
 				'label'     => esc_html__('Border', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card__button:hover',
+				'selector'  => '{{WRAPPER}} .info-card__button:hover',
 				'separator' => 'before',
 			]
 		);
@@ -640,7 +640,7 @@ class Info_Card extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-info-card__button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .info-card__button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -650,7 +650,7 @@ class Info_Card extends Widget_Base
 			[
 				'name'      => 'button_box_shadow_hover',
 				'label'     => esc_html__('Box Shadow', 'carvia-core'),
-				'selector'  => '{{WRAPPER}} .carvia-info-card__button:hover',
+				'selector'  => '{{WRAPPER}} .info-card__button:hover',
 				'separator' => 'before',
 			]
 		);
@@ -672,15 +672,15 @@ class Info_Card extends Widget_Base
 			$this->add_link_attributes('button', $settings['button_link']);
 		}
 
-		$this->add_render_attribute('button', 'class', 'carvia-info-card__button');
+		$this->add_render_attribute('button', 'class', 'info-card__button');
 
 ?>
-		<div class="carvia-info-card">
+		<div class="info-card">
 
 			<?php // Icon 
 			?>
-			<div class="carvia-info-card__icon-wrapper">
-				<div class="carvia-info-card__icon">
+			<div class="info-card__icon-wrapper">
+				<div class="info-card__icon">
 					<?php if ('library' === $settings['icon_type'] && ! empty($settings['selected_icon']['value'])) : ?>
 						<?php Icons_Manager::render_icon($settings['selected_icon'], ['aria-hidden' => 'true']); ?>
 					<?php elseif ('custom' === $settings['icon_type'] && ! empty($settings['custom_icon']['url'])) : ?>
@@ -699,7 +699,7 @@ class Info_Card extends Widget_Base
 			<?php // Title 
 			?>
 			<?php if (! empty($settings['title'])) : ?>
-				<<?php echo esc_html($settings['title_tag']); ?> class="carvia-info-card__title">
+				<<?php echo esc_html($settings['title_tag']); ?> class="info-card__title">
 					<?php echo esc_html($settings['title']); ?>
 				</<?php echo esc_html($settings['title_tag']); ?>>
 			<?php endif; ?>
@@ -707,7 +707,7 @@ class Info_Card extends Widget_Base
 			<?php // Description 
 			?>
 			<?php if (! empty($settings['description'])) : ?>
-				<p class="carvia-info-card__description">
+				<p class="info-card__description">
 					<?php echo wp_kses_post($settings['description']); ?>
 				</p>
 			<?php endif; ?>
@@ -737,10 +737,10 @@ class Info_Card extends Widget_Base
 			var iconHTML=elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden' : true }, 'i' , 'object' );
 			var titleTag=settings.title_tag || 'h3' ;
 			#>
-			<div class="carvia-info-card">
+			<div class="info-card">
 
-				<div class="carvia-info-card__icon-wrapper">
-					<div class="carvia-info-card__icon">
+				<div class="info-card__icon-wrapper">
+					<div class="info-card__icon">
 						<# if ( 'library'===settings.icon_type && iconHTML.rendered ) { #>
 							{{{ iconHTML.value }}}
 							<# } else if ( 'custom'===settings.icon_type && settings.custom_icon.url ) { #>
@@ -750,15 +750,15 @@ class Info_Card extends Widget_Base
 				</div>
 
 				<# if ( settings.title ) { #>
-					<{{{ titleTag }}} class="carvia-info-card__title">{{{ settings.title }}}</{{{ titleTag }}}>
+					<{{{ titleTag }}} class="info-card__title">{{{ settings.title }}}</{{{ titleTag }}}>
 					<# } #>
 
 						<# if ( settings.description ) { #>
-							<p class="carvia-info-card__description">{{{ settings.description }}}</p>
+							<p class="info-card__description">{{{ settings.description }}}</p>
 							<# } #>
 
 								<# if ( settings.button_text ) { #>
-									<a class="carvia-info-card__button" href="{{ settings.button_link.url }}">{{{ settings.button_text }}}</a>
+									<a class="info-card__button" href="{{ settings.button_link.url }}">{{{ settings.button_text }}}</a>
 									<# } #>
 
 			</div>

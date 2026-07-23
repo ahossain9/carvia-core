@@ -104,7 +104,7 @@ class Button extends Widget_Base
                 ],
                 'default'   => 'flex-start',
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-button-wrapper' => 'display: flex; justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .button-wrapper' => 'display: flex; justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -481,7 +481,7 @@ class Button extends Widget_Base
             $icon_inner = ob_get_clean();
         }
 ?>
-        <div class="carvia-button-wrapper">
+        <div class="button-wrapper">
             <a <?php echo $this->get_render_attribute_string('button'); ?>>
 
                 <?php if ($button_text) : ?>
@@ -512,7 +512,7 @@ class Button extends Widget_Base
             var showIconBox=hasIcon && settings.show_icon_box==='yes' ;
             var iconClass=hasIcon ? settings.selected_icon.value : '' ;
             #>
-            <div class="carvia-button-wrapper">
+            <div class="button-wrapper">
                 <a class="btn-fill" role="button">
 
                     <# if ( settings.button_text ) { #>

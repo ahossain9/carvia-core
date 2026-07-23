@@ -2,15 +2,15 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.carvia-info-card {
+.info-card {
     border-radius: 30px;
-    .carvia-info-card__icon-wrapper {
+    .info-card__icon-wrapper {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
 
-        .carvia-info-card__icon {
+        .info-card__icon {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -24,7 +24,7 @@
         }
     }
 
-    .carvia-info-card__button {
+    .info-card__button {
         display: inline-block;
         transition: 0.4s;
     }

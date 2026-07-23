@@ -176,7 +176,7 @@ class Team_Member extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'image_border',
-				'selector' => '{{WRAPPER}} .carvia-team-image img',
+				'selector' => '{{WRAPPER}} .team-image img',
 			]
 		);
 
@@ -187,8 +187,8 @@ class Team_Member extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-team-image'     => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-team-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-image'     => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -209,7 +209,7 @@ class Team_Member extends Widget_Base
 			[
 				'name'      => 'overlay_bg',
 				'types'     => ['gradient'],
-				'selector'  => '{{WRAPPER}} .carvia-team-overlay',
+				'selector'  => '{{WRAPPER}} .team-overlay',
 				'condition' => ['overlay_enabled' => 'yes'],
 				'fields_options' => [
 					'background'       => ['default' => 'gradient'],
@@ -238,7 +238,7 @@ class Team_Member extends Widget_Base
 				'label'     => esc_html__('Box Background', 'carvia'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .carvia-team-info' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .team-info' => 'background: {{VALUE}};',
 				],
 			]
 		);
@@ -250,7 +250,7 @@ class Team_Member extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-team-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -261,7 +261,7 @@ class Team_Member extends Widget_Base
 				'label'     => esc_html__('Position from Bottom', 'carvia'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => ['px' => ['min' => 0, 'max' => 200]],
-				'selectors' => ['{{WRAPPER}} .carvia-team-info' => 'bottom: {{SIZE}}{{UNIT}};'],
+				'selectors' => ['{{WRAPPER}} .team-info' => 'bottom: {{SIZE}}{{UNIT}};'],
 			]
 		);
 
@@ -316,7 +316,7 @@ class Team_Member extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'designation_typography',
-				'selector' => '{{WRAPPER}} .carvia-team-designation',
+				'selector' => '{{WRAPPER}} .team-designation',
 			]
 		);
 
@@ -325,7 +325,7 @@ class Team_Member extends Widget_Base
 			[
 				'label'     => esc_html__('Color', 'carvia'),
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => ['{{WRAPPER}} .carvia-team-designation' => 'color: {{VALUE}};'],
+				'selectors' => ['{{WRAPPER}} .team-designation' => 'color: {{VALUE}};'],
 			]
 		);
 
@@ -348,8 +348,8 @@ class Team_Member extends Widget_Base
 				'default'   => ['size' => 14, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 8, 'max' => 40]],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-team-social-link i'   => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-team-social-link svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .team-social-link i'   => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .team-social-link svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -361,7 +361,7 @@ class Team_Member extends Widget_Base
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 36, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 20, 'max' => 80]],
-				'selectors' => ['{{WRAPPER}} .carvia-team-social-link' => 'width: {{SIZE}}{{UNIT}};'],
+				'selectors' => ['{{WRAPPER}} .team-social-link' => 'width: {{SIZE}}{{UNIT}};'],
 			]
 		);
 
@@ -372,7 +372,7 @@ class Team_Member extends Widget_Base
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 36, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 20, 'max' => 80]],
-				'selectors' => ['{{WRAPPER}} .carvia-team-social-link' => 'height: {{SIZE}}{{UNIT}};'],
+				'selectors' => ['{{WRAPPER}} .team-social-link' => 'height: {{SIZE}}{{UNIT}};'],
 			]
 		);
 
@@ -383,8 +383,8 @@ class Team_Member extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-team-social-link'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-team-social-link svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .team-social-link'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .team-social-link svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -395,7 +395,7 @@ class Team_Member extends Widget_Base
 				'label'     => esc_html__('Background Color', 'carvia'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(255,255,255,0.18)',
-				'selectors' => ['{{WRAPPER}} .carvia-team-social-link' => 'background-color: {{VALUE}};'],
+				'selectors' => ['{{WRAPPER}} .team-social-link' => 'background-color: {{VALUE}};'],
 			]
 		);
 
@@ -405,7 +405,7 @@ class Team_Member extends Widget_Base
 				'label'     => esc_html__('Hover Background', 'carvia'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#7DC242',
-				'selectors' => ['{{WRAPPER}} .carvia-team-social-link:hover' => 'background-color: {{VALUE}};'],
+				'selectors' => ['{{WRAPPER}} .team-social-link:hover' => 'background-color: {{VALUE}};'],
 			]
 		);
 
@@ -416,8 +416,8 @@ class Team_Member extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-team-social-link:hover'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-team-social-link:hover svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .team-social-link:hover'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .team-social-link:hover svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -429,7 +429,7 @@ class Team_Member extends Widget_Base
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 8, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 0, 'max' => 30]],
-				'selectors' => ['{{WRAPPER}} .carvia-team-social' => 'gap: {{SIZE}}{{UNIT}};'],
+				'selectors' => ['{{WRAPPER}} .team-social' => 'gap: {{SIZE}}{{UNIT}};'],
 			]
 		);
 
@@ -440,7 +440,7 @@ class Team_Member extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-team-social-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .team-social-link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -453,10 +453,10 @@ class Team_Member extends Widget_Base
 		$settings = $this->get_settings_for_display();
 		$name_tag = ! empty($settings['name_tag']) ? $settings['name_tag'] : 'h3';
 
-		echo '<div class="carvia-team-card">';
+		echo '<div class="team-card">';
 
 		/* ── Image wrapper ── */
-		echo '<div class="carvia-team-image">';
+		echo '<div class="team-image">';
 
 		// Image
 		if (! empty($settings['image']['url'])) {
@@ -467,17 +467,17 @@ class Team_Member extends Widget_Base
 
 		// Overlay
 		if ('yes' === $settings['overlay_enabled']) {
-			echo '<div class="carvia-team-overlay"></div>';
+			echo '<div class="team-overlay"></div>';
 		}
 
 		/* ── Social – left side, vertical slide on hover ── */
 		if (! empty($settings['social_icons'])) {
-			echo '<div class="carvia-team-social" role="list">';
+			echo '<div class="team-social" role="list">';
 			foreach ($settings['social_icons'] as $item) {
 				$url    = ! empty($item['social_url']['url']) ? $item['social_url']['url'] : '#';
 				$target = ! empty($item['social_url']['is_external']) ? ' target="_blank"' : '';
 				$norel  = ! empty($item['social_url']['nofollow'])    ? ' rel="nofollow"'  : '';
-				echo '<a href="' . esc_url($url) . '" class="carvia-team-social-link elementor-repeater-item-' . esc_attr($item['_id']) . '" role="listitem"' . $target . $norel . ' aria-label="social link">';
+				echo '<a href="' . esc_url($url) . '" class="team-social-link elementor-repeater-item-' . esc_attr($item['_id']) . '" role="listitem"' . $target . $norel . ' aria-label="social link">';
 				Icons_Manager::render_icon($item['social_icon'], ['aria-hidden' => 'true']);
 				echo '</a>';
 			}
@@ -485,41 +485,41 @@ class Team_Member extends Widget_Base
 		}
 
 		/* ── Info box – 50% over image from bottom ── */
-		echo '<div class="carvia-team-info">';
+		echo '<div class="team-info">';
 		echo '<' . esc_attr($name_tag) . ' class="carvia-team-name">' . esc_html($settings['name']) . '</' . esc_attr($name_tag) . '>';
 		if (! empty($settings['designation'])) {
-			echo '<p class="carvia-team-designation">' . esc_html($settings['designation']) . '</p>';
+			echo '<p class="team-designation">' . esc_html($settings['designation']) . '</p>';
 		}
-		echo '</div>'; // .carvia-team-info
+		echo '</div>'; // .team-info
 
-		echo '</div>'; // .carvia-team-image
-		echo '</div>'; // .carvia-team-card
+		echo '</div>'; // .team-image
+		echo '</div>'; // .team-card
 	}
 
 	protected function content_template()
 	{
 ?>
-		<div class="carvia-team-card">
-			<div class="carvia-team-image">
+		<div class="team-card">
+			<div class="team-image">
 				<# if ( settings.image.url ) { #>
 					<img src="{{ settings.image.url }}" alt="{{ settings.name }}" loading="lazy">
 					<# } #>
 						<# if ( settings.overlay_enabled==='yes' ) { #>
-							<div class="carvia-team-overlay"></div>
+							<div class="team-overlay"></div>
 							<# } #>
 								<# if ( settings.social_icons.length ) { #>
-									<div class="carvia-team-social">
+									<div class="team-social">
 										<# _.each( settings.social_icons, function( item ) { #>
-											<a href="{{ item.social_url.url }}" class="carvia-team-social-link elementor-repeater-item-{{ item._id }}" aria-label="social link">
+											<a href="{{ item.social_url.url }}" class="team-social-link elementor-repeater-item-{{ item._id }}" aria-label="social link">
 												<i class="{{ item.social_icon.value }}" aria-hidden="true"></i>
 											</a>
 											<# }); #>
 									</div>
 									<# } #>
-										<div class="carvia-team-info">
+										<div class="team-info">
 											<{{{ settings.name_tag }}} class="carvia-team-name">{{{ settings.name }}}</{{{ settings.name_tag }}}>
 											<# if ( settings.designation ) { #>
-												<span class="carvia-team-designation">{{{ settings.designation }}}</span>
+												<span class="team-designation">{{{ settings.designation }}}</span>
 												<# } #>
 										</div>
 			</div>

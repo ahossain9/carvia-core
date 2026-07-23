@@ -28,7 +28,7 @@ class Timeline extends Widget_Base {
 	 * Widget name.
 	 */
 	public function get_name() {
-		return 'carvia-timeline';
+		return 'timeline';
 	}
 
 	/**
@@ -126,7 +126,7 @@ class Timeline extends Widget_Base {
 					'layout' => 'horizontal',
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline--horizontal' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
+					'{{WRAPPER}} .timeline--horizontal' => 'grid-template-columns: repeat({{VALUE}}, 1fr);',
 				),
 			)
 		);
@@ -167,7 +167,7 @@ class Timeline extends Widget_Base {
 					'dotted' => esc_html__( 'Dotted', 'carvia-core' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-connector-style: {{VALUE}};',
+					'{{WRAPPER}} .timeline' => '--carvia-connector-style: {{VALUE}};',
 				),
 				'condition' => array(
 					'connector_type!' => 'arrow',
@@ -324,8 +324,8 @@ class Timeline extends Widget_Base {
 					'size' => 50,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline--vertical'   => 'gap: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-timeline--horizontal' => 'row-gap: {{SIZE}}{{UNIT}}; column-gap: 0;',
+					'{{WRAPPER}} .timeline--vertical'   => 'gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline--horizontal' => 'row-gap: {{SIZE}}{{UNIT}}; column-gap: 0;',
 				),
 			)
 		);
@@ -351,7 +351,7 @@ class Timeline extends Widget_Base {
 					'layout' => 'horizontal',
 				),
 				'selectors'   => array(
-					'{{WRAPPER}} .carvia-timeline--horizontal .carvia-timeline__box' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline--horizontal .timeline__box' => 'margin-left: {{SIZE}}{{UNIT}}; margin-right: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -361,7 +361,7 @@ class Timeline extends Widget_Base {
 			array(
 				'name'     => 'box_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .carvia-timeline__box',
+				'selector' => '{{WRAPPER}} .timeline__box',
 			)
 		);
 
@@ -369,7 +369,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'box_border',
-				'selector' => '{{WRAPPER}} .carvia-timeline__box',
+				'selector' => '{{WRAPPER}} .timeline__box',
 			)
 		);
 
@@ -380,7 +380,7 @@ class Timeline extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline__box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -400,7 +400,7 @@ class Timeline extends Widget_Base {
 					'isLinked' => true,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline__box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -409,7 +409,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'box_shadow',
-				'selector' => '{{WRAPPER}} .carvia-timeline__box',
+				'selector' => '{{WRAPPER}} .timeline__box',
 			)
 		);
 
@@ -443,8 +443,8 @@ class Timeline extends Widget_Base {
 					'size' => 26,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline__icon-box i'   => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-timeline__icon-box svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__icon-box i'   => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__icon-box svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -466,7 +466,7 @@ class Timeline extends Widget_Base {
 					'size' => 64,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline__icon-box' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__icon-box' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -487,8 +487,8 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__icon-box i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-timeline__icon-box svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .timeline__icon-box i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .timeline__icon-box svg' => 'fill: {{VALUE}};',
 				),
 			)
 		);
@@ -498,7 +498,7 @@ class Timeline extends Widget_Base {
 			array(
 				'name'     => 'icon_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .carvia-timeline__icon-box',
+				'selector' => '{{WRAPPER}} .timeline__icon-box',
 			)
 		);
 
@@ -517,8 +517,8 @@ class Timeline extends Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'carvia-core' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__item:hover .carvia-timeline__icon-box i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-timeline__item:hover .carvia-timeline__icon-box svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .timeline__item:hover .timeline__icon-box i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .timeline__item:hover .timeline__icon-box svg' => 'fill: {{VALUE}};',
 				),
 			)
 		);
@@ -528,7 +528,7 @@ class Timeline extends Widget_Base {
 			array(
 				'name'     => 'icon_background_hover',
 				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .carvia-timeline__item:hover .carvia-timeline__icon-box',
+				'selector' => '{{WRAPPER}} .timeline__item:hover .timeline__icon-box',
 			)
 		);
 
@@ -540,7 +540,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'icon_border',
-				'selector' => '{{WRAPPER}} .carvia-timeline__icon-box',
+				'selector' => '{{WRAPPER}} .timeline__icon-box',
 			)
 		);
 
@@ -559,7 +559,7 @@ class Timeline extends Widget_Base {
 					'isLinked' => true,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline__icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -584,7 +584,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#dcdfe6',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-connector-color: {{VALUE}};',
+					'{{WRAPPER}} .timeline' => '--carvia-connector-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'connector_type!' => 'arrow',
@@ -609,7 +609,7 @@ class Timeline extends Widget_Base {
 					'size' => 2,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-connector-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline' => '--carvia-connector-width: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'connector_type!' => 'arrow',
@@ -646,7 +646,7 @@ class Timeline extends Widget_Base {
 					'size' => 16,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-node-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline' => '--carvia-node-size: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'connector_type!' => 'arrow',
@@ -661,7 +661,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-node-color: {{VALUE}};',
+					'{{WRAPPER}} .timeline' => '--carvia-node-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'connector_type!' => 'arrow',
@@ -676,7 +676,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-node-border-color: {{VALUE}};',
+					'{{WRAPPER}} .timeline' => '--carvia-node-border-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'connector_type!' => 'arrow',
@@ -703,7 +703,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-arrow-color: {{VALUE}};',
+					'{{WRAPPER}} .timeline' => '--carvia-arrow-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'connector_type' => 'arrow',
@@ -728,7 +728,7 @@ class Timeline extends Widget_Base {
 					'size' => 24,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .carvia-timeline' => '--carvia-arrow-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline' => '--carvia-arrow-size: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'connector_type' => 'arrow',
@@ -756,7 +756,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1a1a1a',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .timeline__title' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -765,7 +765,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'title_typography',
-				'selector' => '{{WRAPPER}} .carvia-timeline__title',
+				'selector' => '{{WRAPPER}} .timeline__title',
 			)
 		);
 
@@ -785,7 +785,7 @@ class Timeline extends Widget_Base {
 					'size' => 10,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .timeline__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -810,7 +810,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__date' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .timeline__date' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -819,7 +819,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'date_typography',
-				'selector' => '{{WRAPPER}} .carvia-timeline__date',
+				'selector' => '{{WRAPPER}} .timeline__date',
 			)
 		);
 
@@ -843,7 +843,7 @@ class Timeline extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#666666',
 				'selectors' => array(
-					'{{WRAPPER}} .carvia-timeline__description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .timeline__description' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -852,7 +852,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typography',
-				'selector' => '{{WRAPPER}} .carvia-timeline__description',
+				'selector' => '{{WRAPPER}} .timeline__description',
 			)
 		);
 
@@ -870,10 +870,10 @@ class Timeline extends Widget_Base {
 	protected function render_item( $item, $index, $layout, $connector_type ) {
 		$has_link   = ! empty( $item['link']['url'] );
 		$tag        = $has_link ? 'a' : 'div';
-		$item_class = array( 'carvia-timeline__item' );
+		$item_class = array( 'timeline__item' );
 
 		if ( 'vertical' === $layout ) {
-			$item_class[] = ( 0 === $index % 2 ) ? 'carvia-timeline__item--left' : 'carvia-timeline__item--right';
+			$item_class[] = ( 0 === $index % 2 ) ? 'timeline__item--left' : 'timeline__item--right';
 		}
 
 		if ( $has_link ) {
@@ -882,21 +882,21 @@ class Timeline extends Widget_Base {
 		?>
 		<div class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>">
 			<?php if ( 'circle' === $connector_type ) : ?>
-				<span class="carvia-timeline__node" aria-hidden="true"></span>
+				<span class="timeline__node" aria-hidden="true"></span>
 			<?php endif; ?>
-			<<?php echo esc_attr( $tag ); ?> class="carvia-timeline__box" <?php echo $has_link ? $this->get_render_attribute_string( 'item_link_' . $index ) : ''; ?>>
-				<div class="carvia-timeline__icon-box">
+			<<?php echo esc_attr( $tag ); ?> class="timeline__box" <?php echo $has_link ? $this->get_render_attribute_string( 'item_link_' . $index ) : ''; ?>>
+				<div class="timeline__icon-box">
 					<?php \Elementor\Icons_Manager::render_icon( $item['icon'], array( 'aria-hidden' => 'true' ) ); ?>
 				</div>
-				<div class="carvia-timeline__content">
+				<div class="timeline__content">
 					<?php if ( ! empty( $item['date'] ) ) : ?>
-						<div class="carvia-timeline__date"><?php echo esc_html( $item['date'] ); ?></div>
+						<div class="timeline__date"><?php echo esc_html( $item['date'] ); ?></div>
 					<?php endif; ?>
 					<?php if ( ! empty( $item['title'] ) ) : ?>
-						<h3 class="carvia-timeline__title"><?php echo esc_html( $item['title'] ); ?></h3>
+						<h3 class="timeline__title"><?php echo esc_html( $item['title'] ); ?></h3>
 					<?php endif; ?>
 					<?php if ( ! empty( $item['description'] ) ) : ?>
-						<div class="carvia-timeline__description"><?php echo wp_kses_post( $item['description'] ); ?></div>
+						<div class="timeline__description"><?php echo wp_kses_post( $item['description'] ); ?></div>
 					<?php endif; ?>
 				</div>
 			</<?php echo esc_attr( $tag ); ?>>
@@ -920,9 +920,9 @@ class Timeline extends Widget_Base {
 		$connector_type = 'vertical' === $layout ? 'circle' : ( ! empty( $settings['connector_type'] ) ? $settings['connector_type'] : 'circle' );
 
 		$wrapper_class = array(
-			'carvia-timeline',
-			'carvia-timeline--' . $layout,
-			'carvia-timeline--connector-' . $connector_type,
+			'timeline',
+			'timeline--' . $layout,
+			'timeline--connector-' . $connector_type,
 		);
 
 		$this->add_render_attribute( 'wrapper', 'class', $wrapper_class );

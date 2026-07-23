@@ -1,5 +1,5 @@
 
-.carvia-timeline {
+.timeline {
 	--carvia-connector-color: #dcdfe6;
 	--carvia-connector-width: 2px;
 	--carvia-connector-style: solid;
@@ -18,7 +18,7 @@
 	// VERTICAL LAYOUT — center border, circle node, alternating sides
 	// (item 1 left, item 2 right, item 3 left, item 4 right ...)
 	// ----------------------------------------------------------------
-	&.carvia-timeline--vertical {
+	&.timeline--vertical {
 		position: relative;
  
 		// Center vertical border line running through all items.
@@ -35,17 +35,17 @@
 			transform: translateX(-50%);
 		}
  
-		.carvia-timeline__item {
+		.timeline__item {
 			position: relative;
 			display: flex;
 			width: 100%;
 			min-height: var(--carvia-node-size);
 		}
  
-		.carvia-timeline__item--left {
+		.timeline__item--left {
 			justify-content: flex-start;
  
-			.carvia-timeline__box {
+			.timeline__box {
 				width: calc(50% - 40px);
 				margin-right: auto;
 				text-align: right;
@@ -53,10 +53,10 @@
 			}
 		}
  
-		.carvia-timeline__item--right {
+		.timeline__item--right {
 			justify-content: flex-end;
  
-			.carvia-timeline__box {
+			.timeline__box {
 				width: calc(50% - 40px);
 				margin-left: auto;
 				text-align: left;
@@ -64,7 +64,7 @@
 		}
  
 		// Circle node sitting on top of the center border line.
-		.carvia-timeline__node {
+		.timeline__node {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -82,7 +82,7 @@
 	// ----------------------------------------------------------------
 	// HORIZONTAL LAYOUT
 	// ----------------------------------------------------------------
-	&.carvia-timeline--horizontal {
+	&.timeline--horizontal {
 		position: relative;
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -90,7 +90,7 @@
 		row-gap: 30px;
 		column-gap: 0;
  
-		.carvia-timeline__item {
+		.timeline__item {
 			position: relative;
 			display: flex;
 			flex-direction: column;
@@ -102,8 +102,8 @@
 		// (outside/behind every item, not per-item), with a circle sitting
 		// on top of it above every item — mirrors how the vertical layout
 		// uses a single full-length center line.
-		&.carvia-timeline--connector-circle {
-			.carvia-timeline__item {
+		&.timeline--connector-circle {
+			.timeline__item {
 				padding-top: calc(var(--carvia-node-size) + 20px);
 			}
  
@@ -120,7 +120,7 @@
 				z-index: 0;
 			}
  
-			.carvia-timeline__node {
+			.timeline__node {
 				position: absolute;
 				top: 0;
 				left: 50%;
@@ -136,8 +136,8 @@
 		}
  
 		// --- Connector: arrow in the middle of every item ---
-		&.carvia-timeline--connector-arrow {
-			.carvia-timeline__item {
+		&.timeline--connector-arrow {
+			.timeline__item {
 				&::after {
 					content: '\2192'; // right arrow
 					position: absolute;
@@ -156,7 +156,7 @@
 			}
 		}
  
-		.carvia-timeline__box {
+		.timeline__box {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -167,15 +167,15 @@
 			margin-right: 15px;
 		}
  
-		.carvia-timeline__item:first-child .carvia-timeline__box {
+		.timeline__item:first-child .timeline__box {
 			margin-left: 0;
 		}
  
-		.carvia-timeline__item:last-child .carvia-timeline__box {
+		.timeline__item:last-child .timeline__box {
 			margin-right: 0;
 		}
  
-		.carvia-timeline__content {
+		.timeline__content {
 			margin-top: 16px;
 		}
 	}
@@ -183,7 +183,7 @@
 	// ----------------------------------------------------------------
 	// SHARED ELEMENTS
 	// ----------------------------------------------------------------
-	.carvia-timeline__box {
+	.timeline__box {
 		display: flex;
 		align-items: flex-start;
 		gap: 20px;
@@ -195,7 +195,7 @@
 		transition: transform 0.25s ease, box-shadow 0.25s ease;
 	}
  
-	.carvia-timeline__icon-box {
+	.timeline__icon-box {
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
@@ -213,11 +213,11 @@
 		}
 	}
  
-	.carvia-timeline__content {
+	.timeline__content {
 		min-width: 0;
 	}
  
-	.carvia-timeline__date {
+	.timeline__date {
 		display: block;
 		font-size: 13px;
 		font-weight: 600;
@@ -227,14 +227,14 @@
 		margin-bottom: 6px;
 	}
  
-	.carvia-timeline__title {
+	.timeline__title {
 		font-size: 20px;
 		font-weight: 600;
 		margin: 0 0 10px;
 		color: #1a1a1a;
 	}
  
-	.carvia-timeline__description {
+	.timeline__description {
 		font-size: 15px;
 		line-height: 1.6;
 		color: #666666;
@@ -245,10 +245,10 @@
 	// RESPONSIVE — collapse horizontal grid to a single column on mobile
 	// ----------------------------------------------------------------
 	@media (max-width: 767px) {
-		&.carvia-timeline--horizontal {
+		&.timeline--horizontal {
 			grid-template-columns: 1fr !important;
  
-			&.carvia-timeline--connector-circle {
+			&.timeline--connector-circle {
 				// Single full-height bar drawn once on the wrapper (down the
 				// left side), instead of per-item segments.
 				&::before {
@@ -262,26 +262,26 @@
 					border-left: var(--carvia-connector-width) var(--carvia-connector-style) var(--carvia-connector-color);
 				}
  
-				.carvia-timeline__item {
+				.timeline__item {
 					padding-top: 0;
 					padding-left: calc(var(--carvia-node-size) + 20px);
 					align-items: flex-start;
 					text-align: left;
 				}
  
-				.carvia-timeline__node {
+				.timeline__node {
 					top: 0;
 					left: 0;
 					transform: translateX(0);
 				}
  
-				.carvia-timeline__box {
+				.timeline__box {
 					margin-left: 0;
 					margin-right: 0;
 				}
 			}
  
-			&.carvia-timeline--connector-arrow .carvia-timeline__item {
+			&.timeline--connector-arrow .timeline__item {
 				align-items: flex-start;
 				text-align: left;
  
@@ -296,17 +296,17 @@
 			}
 		}
  
-		&.carvia-timeline--vertical {
+		&.timeline--vertical {
 			&::before {
 				left: calc(var(--carvia-node-size) / 2);
 			}
  
-			.carvia-timeline__item,
-			.carvia-timeline__item--left,
-			.carvia-timeline__item--right {
+			.timeline__item,
+			.timeline__item--left,
+			.timeline__item--right {
 				justify-content: flex-start;
  
-				.carvia-timeline__box {
+				.timeline__box {
 					width: calc(100% - #{'var(--carvia-node-size)'} - 30px);
 					margin-left: 40px;
 					margin-right: 0;
@@ -315,7 +315,7 @@
 				}
 			}
  
-			.carvia-timeline__node {
+			.timeline__node {
 				left: calc(var(--carvia-node-size) / 2);
 			}
 		}

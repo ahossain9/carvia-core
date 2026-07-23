@@ -2,7 +2,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.carvia-testimonial-carousel-wrapper {
+.testimonial-carousel-wrapper {
     position: relative;
     width: 100%;
     padding-bottom: 50px;
@@ -21,7 +21,7 @@
     }
 }
 
-.carvia-testimonial-card {
+.testimonial-card {
     background-color: $color-white;
     border-radius: 16px;
     padding: 32px;
@@ -32,13 +32,13 @@
     transition: $transition;
 }
 
-.carvia-star-rating {
+.testimonial-star-rating {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 16px;
 
-    .carvia-star-icon {
+    .testimonial-star-icon {
         color: #ffb800;
         font-size: 18px;
         margin-right: 3px;
@@ -58,13 +58,13 @@
         }
     }
 }
-.carvia-star-icon svg {
+.testimonial-star-icon svg {
     width: 1em;
     height: 1em;
     fill: currentColor;
 }
 
-.carvia-testimonial-title {
+.testimonial-title {
     color: $color-heading;
     margin-top: 0;
     margin-bottom: 12px;
@@ -73,7 +73,7 @@
     line-height: 1.4;
 }
 
-.carvia-testimonial-content {
+.testimonial-content {
     color: $color-body;
     margin-top: 0;
     margin-bottom: 24px;
@@ -81,13 +81,13 @@
     flex-grow: 1;
 }
 
-.carvia-client-info {
+.testimonial-client-info {
     display: flex;
     align-items: center;
     margin-top: auto;
 }
 
-.carvia-client-image {
+.testimonial-client-image {
     flex-shrink: 0;
     margin-right: 14px;
 
@@ -100,13 +100,13 @@
     }
 }
 
-.carvia-client-details {
+.testimonial-client-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.carvia-client-name {
+.testimonial-client-name {
     color: $color-heading;
     font-weight: 700;
     font-size: 0.95em;
@@ -114,14 +114,14 @@
     line-height: 1.3;
 }
 
-.carvia-client-designation {
+.testimonial-client-designation {
     color: #888899;
     font-size: 0.85em;
     line-height: 1.3;
     margin-bottom: 0;
 }
 
-.carvia-swiper-btn {
+.testimonial-swiper-btn {
     position: absolute;
     top: 50%;
     transform: translateY(calc(-50% - 25px));
@@ -158,7 +158,7 @@
         }
     }
 
-    &.carvia-swiper-next {
+    &.testimonial-swiper-next {
         right: -22px;
         svg {
             height: 14px;
@@ -171,7 +171,7 @@
     }
 }
 
-.carvia-testimonial-pagination {
+.testimonial-pagination {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -195,12 +195,12 @@
 }
 
 @media (max-width: 768px) {
-    .carvia-swiper-btn {
+    .testimonial-swiper-btn {
         &.carvia-swiper-prev {
             left: 0;
         }
 
-        &.carvia-swiper-next {
+        &.testimonial-swiper-next {
             right: 0;
         }
     }

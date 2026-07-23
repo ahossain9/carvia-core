@@ -86,7 +86,7 @@ class Spinning_Badge extends Widget_Base
 					'size' => 8,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__image' => 'animation-duration: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__image' => 'animation-duration: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -102,7 +102,7 @@ class Spinning_Badge extends Widget_Base
 					'reverse' => esc_html__('Counter Clockwise', 'carvia-core'),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__image' => 'animation-direction: {{VALUE}};',
+					'{{WRAPPER}} .spinning-badge__image' => 'animation-direction: {{VALUE}};',
 				],
 			]
 		);
@@ -202,7 +202,7 @@ class Spinning_Badge extends Widget_Base
 					'unit'   => 'px',
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-spinning-badge__image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -228,7 +228,7 @@ class Spinning_Badge extends Widget_Base
 					'size' => 220,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -240,7 +240,7 @@ class Spinning_Badge extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FF4400',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge'   => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .spinning-badge'   => 'background-color: {{VALUE}};',
 				]
 			]
 		);
@@ -250,7 +250,7 @@ class Spinning_Badge extends Widget_Base
 			[
 				'name'     => 'wrapper_border',
 				'label'    => esc_html__('Border', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-spinning-badge',
+				'selector' => '{{WRAPPER}} .spinning-badge',
 			]
 		);
 
@@ -269,7 +269,7 @@ class Spinning_Badge extends Widget_Base
 					'isLinked' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -279,7 +279,7 @@ class Spinning_Badge extends Widget_Base
 			[
 				'name'     => 'wrapper_box_shadow',
 				'label'    => esc_html__('Box Shadow', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-spinning-badge',
+				'selector' => '{{WRAPPER}} .spinning-badge',
 			]
 		);
 
@@ -317,7 +317,7 @@ class Spinning_Badge extends Widget_Base
 					'size' => 90,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -329,7 +329,7 @@ class Spinning_Badge extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#052B13',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center'   => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .spinning-badge__center'   => 'background-color: {{VALUE}};',
 				]
 			]
 		);
@@ -339,7 +339,7 @@ class Spinning_Badge extends Widget_Base
 			[
 				'name'     => 'center_border',
 				'label'    => esc_html__('Border', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-spinning-badge__center',
+				'selector' => '{{WRAPPER}} .spinning-badge__center',
 			]
 		);
 
@@ -358,7 +358,7 @@ class Spinning_Badge extends Widget_Base
 					'isLinked' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -368,7 +368,7 @@ class Spinning_Badge extends Widget_Base
 			[
 				'name'     => 'center_box_shadow',
 				'label'    => esc_html__('Box Shadow', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-spinning-badge__center',
+				'selector' => '{{WRAPPER}} .spinning-badge__center',
 			]
 		);
 
@@ -402,8 +402,8 @@ class Spinning_Badge extends Widget_Base
 					'size' => 32,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center i'   => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .carvia-spinning-badge__center svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center i'   => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'icon_type' => 'icon',
@@ -418,8 +418,8 @@ class Spinning_Badge extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-spinning-badge__center svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .spinning-badge__center i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .spinning-badge__center svg' => 'fill: {{VALUE}};',
 				],
 				'condition' => [
 					'icon_type' => 'icon',
@@ -448,7 +448,7 @@ class Spinning_Badge extends Widget_Base
 					'size' => 70,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .carvia-spinning-badge__center-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'icon_type' => 'image',
@@ -463,7 +463,7 @@ class Spinning_Badge extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-spinning-badge__center-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .spinning-badge__center-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'icon_type' => 'image',
@@ -485,16 +485,16 @@ class Spinning_Badge extends Widget_Base
 		$center_image = ! empty($settings['center_image']['url']) ? esc_url($settings['center_image']['url']) : '';
 		$center_alt   = ! empty($settings['center_image_alt']) ? esc_attr($settings['center_image_alt']) : '';
 ?>
-		<div class="carvia-spinning-badge">
+		<div class="spinning-badge">
 
 			<?php if ($spinning_image_url) : ?>
 				<img
-					class="carvia-spinning-badge__image"
+					class="spinning-badge__image"
 					src="<?php echo $spinning_image_url; ?>"
 					alt="<?php echo $spinning_image_alt; ?>" />
 			<?php endif; ?>
 
-			<div class="carvia-spinning-badge__center">
+			<div class="spinning-badge__center">
 				<?php if ('icon' === $icon_type) : ?>
 					<?php
 					Icons_Manager::render_icon(
@@ -504,7 +504,7 @@ class Spinning_Badge extends Widget_Base
 					?>
 				<?php elseif ('image' === $icon_type && $center_image) : ?>
 					<img
-						class="carvia-spinning-badge__center-image"
+						class="spinning-badge__center-image"
 						src="<?php echo $center_image; ?>"
 						alt="<?php echo $center_alt; ?>" />
 				<?php endif; ?>
@@ -524,21 +524,21 @@ class Spinning_Badge extends Widget_Base
 			var centerAlt=settings.center_image_alt ? settings.center_image_alt : '' ;
 			var iconHTML=elementor.helpers.renderIcon( view, settings.center_icon, { 'aria-hidden' : 'true' }, 'i' , 'object' );
 			#>
-			<div class="carvia-spinning-badge">
+			<div class="spinning-badge">
 
 				<# if ( spinningImageUrl ) { #>
 					<img
-						class="carvia-spinning-badge__image"
+						class="spinning-badge__image"
 						src="{{ spinningImageUrl }}"
 						alt="" />
 					<# } #>
 
-						<div class="carvia-spinning-badge__center">
+						<div class="spinning-badge__center">
 							<# if ( 'icon'===iconType ) { #>
 								{{{ iconHTML.value }}}
 								<# } else if ( 'image'===iconType && centerImageUrl ) { #>
 									<img
-										class="carvia-spinning-badge__center-image"
+										class="spinning-badge__center-image"
 										src="{{ centerImageUrl }}"
 										alt="{{ centerAlt }}" />
 									<# } #>

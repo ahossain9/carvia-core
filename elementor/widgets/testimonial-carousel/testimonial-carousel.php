@@ -277,7 +277,7 @@ class Testimonial_Carousel extends Widget_Base
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFFFFF',
-				'selector' => '{{WRAPPER}} .carvia-testimonial-card',
+				'selector' => '{{WRAPPER}} .testimonial-card',
 			]
 		);
 
@@ -286,7 +286,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'card_border',
 				'label'    => esc_html__('Border', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-testimonial-card',
+				'selector' => '{{WRAPPER}} .testimonial-card',
 			]
 		);
 
@@ -297,7 +297,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-testimonial-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'      => '30',
@@ -315,7 +315,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'card_box_shadow',
 				'label'    => esc_html__('Box Shadow', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-testimonial-card',
+				'selector' => '{{WRAPPER}} .testimonial-card',
 			]
 		);
 
@@ -326,7 +326,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'      => '32',
@@ -359,8 +359,8 @@ class Testimonial_Carousel extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFB800',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-star-rating .carvia-star-icon'      => 'color: {{VALUE}};',
-					'{{WRAPPER}} .carvia-star-rating .carvia-star-icon.empty' => 'color: #d0d0d0;',
+					'{{WRAPPER}} .testimonial-star-rating .testimonial-star-icon'      => 'color: {{VALUE}};',
+					'{{WRAPPER}} .testimonial-star-rating .testimonial-star-icon.empty' => 'color: #d0d0d0;',
 				],
 			]
 		);
@@ -376,7 +376,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 18],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-star-rating .carvia-star-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-star-rating .testimonial-star-icon' => 'font-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -392,7 +392,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 3],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-star-rating .carvia-star-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-star-rating .testimonial-star-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -408,7 +408,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 16],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-star-rating' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-star-rating' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -433,7 +433,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1a1a2e',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-testimonial-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .testimonial-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -443,7 +443,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'title_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-testimonial-title',
+				'selector' => '{{WRAPPER}} .testimonial-title',
 			]
 		);
 
@@ -458,7 +458,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 12],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-testimonial-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -483,7 +483,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#555577',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-testimonial-content' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .testimonial-content' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -493,7 +493,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'content_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-testimonial-content',
+				'selector' => '{{WRAPPER}} .testimonial-content',
 			]
 		);
 
@@ -508,7 +508,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 24],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-testimonial-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-content' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -537,7 +537,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 56],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-client-image img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-client-image img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -549,7 +549,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-client-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-client-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'default'    => [
 					'top'      => '50',
@@ -567,7 +567,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'client_image_border',
 				'label'    => esc_html__('Border', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-client-image img',
+				'selector' => '{{WRAPPER}} .testimonial-client-image img',
 			]
 		);
 
@@ -582,7 +582,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 14],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-client-image' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-client-image' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -607,7 +607,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1a1a2e',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-client-name' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .testimonial-client-name' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -617,7 +617,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'client_name_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-client-name',
+				'selector' => '{{WRAPPER}} .testimonial-client-name',
 			]
 		);
 
@@ -632,7 +632,7 @@ class Testimonial_Carousel extends Widget_Base
 				],
 				'default'    => ['unit' => 'px', 'size' => 4],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-client-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .testimonial-client-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -657,7 +657,7 @@ class Testimonial_Carousel extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#888899',
 				'selectors' => [
-					'{{WRAPPER}} .carvia-client-designation' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .testimonial-client-designation' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -667,7 +667,7 @@ class Testimonial_Carousel extends Widget_Base
 			[
 				'name'     => 'client_designation_typography',
 				'label'    => esc_html__('Typography', 'carvia-core'),
-				'selector' => '{{WRAPPER}} .carvia-client-designation',
+				'selector' => '{{WRAPPER}} .testimonial-client-designation',
 			]
 		);
 
@@ -690,8 +690,8 @@ class Testimonial_Carousel extends Widget_Base
 			return;
 		}
 ?>
-		<div class="carvia-testimonial-carousel-wrapper">
-			<div class="swiper carvia-testimonial-swiper" id="carvia-swiper-<?php echo esc_attr($widget_id); ?>"
+		<div class="testimonial-carousel-wrapper">
+			<div class="swiper testimonial-swiper" id="carvia-swiper-<?php echo esc_attr($widget_id); ?>"
 				data-autoplay="<?php echo esc_attr($autoplay); ?>"
 				data-autoplay-speed="<?php echo esc_attr($autoplay_speed); ?>"
 				data-slides="<?php echo esc_attr($slides_to_show); ?>"
@@ -704,14 +704,14 @@ class Testimonial_Carousel extends Widget_Base
 						$empty_stars = 5 - $full_stars - ($half_star ? 1 : 0);
 					?>
 						<div class="swiper-slide">
-							<div class="carvia-testimonial-card elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>">
+							<div class="testimonial-card elementor-repeater-item-<?php echo esc_attr($item['_id']); ?>">
 
 								<!-- Star Rating -->
-								<div class="carvia-star-rating" aria-label="<?php echo esc_attr($rating); ?> out of 5 stars">
+								<div class="testimonial-star-rating" aria-label="<?php echo esc_attr($rating); ?> out of 5 stars">
 									<?php
 									// Full stars
 									for ($i = 0; $i < $full_stars; $i++) {
-										echo '<span class="carvia-star-icon">';
+										echo '<span class="testimonial-star-icon">';
 										Icons_Manager::render_icon(
 											['value' => 'fas fa-star', 'library' => 'fa-solid'],
 											['aria-hidden' => 'true']
@@ -721,7 +721,7 @@ class Testimonial_Carousel extends Widget_Base
 
 									// Half star
 									if ($half_star) {
-										echo '<span class="carvia-star-icon">';
+										echo '<span class="testimonial-star-icon">';
 										Icons_Manager::render_icon(
 											['value' => 'fas fa-star-half-alt', 'library' => 'fa-solid'],
 											['aria-hidden' => 'true']
@@ -731,7 +731,7 @@ class Testimonial_Carousel extends Widget_Base
 
 									// Empty stars
 									for ($i = 0; $i < $empty_stars; $i++) {
-										echo '<span class="carvia-star-icon empty">';
+										echo '<span class="testimonial-star-icon empty">';
 										Icons_Manager::render_icon(
 											['value' => 'far fa-star', 'library' => 'fa-regular'],
 											['aria-hidden' => 'true']
@@ -743,26 +743,26 @@ class Testimonial_Carousel extends Widget_Base
 
 								<!-- Title -->
 								<?php if (! empty($item['title'])) : ?>
-									<h4 class="carvia-testimonial-title"><?php echo esc_html($item['title']); ?></h4>
+									<h4 class="testimonial-title"><?php echo esc_html($item['title']); ?></h4>
 								<?php endif; ?>
 
 								<!-- Content -->
-								<p class="carvia-testimonial-content"><?php echo esc_html($item['content']); ?></p>
+								<p class="testimonial-content"><?php echo esc_html($item['content']); ?></p>
 
 								<!-- Client Info -->
-								<div class="carvia-client-info">
+								<div class="testimonial-client-info">
 									<?php if (! empty($item['client_image']['url'])) : ?>
-										<div class="carvia-client-image">
+										<div class="testimonial-client-image">
 											<img src="<?php echo esc_url($item['client_image']['url']); ?>"
 												alt="<?php echo esc_attr($item['client_name']); ?>">
 										</div>
 									<?php endif; ?>
-									<div class="carvia-client-details">
+									<div class="testimonial-client-details">
 										<?php if (! empty($item['client_name'])) : ?>
-											<div class="carvia-client-name"><?php echo esc_html($item['client_name']); ?></div>
+											<div class="testimonial-client-name"><?php echo esc_html($item['client_name']); ?></div>
 										<?php endif; ?>
 										<?php if (! empty($item['client_designation'])) : ?>
-											<div class="carvia-client-designation"><?php echo esc_html($item['client_designation']); ?></div>
+											<div class="testimonial-client-designation"><?php echo esc_html($item['client_designation']); ?></div>
 										<?php endif; ?>
 									</div>
 								</div>
@@ -773,12 +773,12 @@ class Testimonial_Carousel extends Widget_Base
 				</div>
 
 				<?php if ($show_pag) : ?>
-					<div class="swiper-pagination carvia-testimonial-pagination"></div>
+					<div class="swiper-pagination testimonial-pagination"></div>
 				<?php endif; ?>
 			</div>
 
 			<?php if ($show_nav) : ?>
-				<div class="carvia-swiper-btn carvia-swiper-prev" tabindex="0" role="button" aria-label="<?php esc_attr_e('Previous Slide', 'carvia-core'); ?>">
+				<div class="testimonial-swiper-btn testimonial-swiper-prev" tabindex="0" role="button" aria-label="<?php esc_attr_e('Previous Slide', 'carvia-core'); ?>">
 					<?php
 					Icons_Manager::render_icon(
 						['value' => 'fas fa-chevron-left', 'library' => 'fa-solid'],
@@ -786,7 +786,7 @@ class Testimonial_Carousel extends Widget_Base
 					);
 					?>
 				</div>
-				<div class="carvia-swiper-btn carvia-swiper-next" tabindex="0" role="button" aria-label="<?php esc_attr_e('Next Slide', 'carvia-core'); ?>">
+				<div class="testimonial-swiper-btn testimonial-swiper-next" tabindex="0" role="button" aria-label="<?php esc_attr_e('Next Slide', 'carvia-core'); ?>">
 					<?php
 					Icons_Manager::render_icon(
 						['value' => 'fas fa-chevron-right', 'library' => 'fa-solid'],

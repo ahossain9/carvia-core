@@ -2,13 +2,13 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
- .carvia-spinning-badge {
+ .spinning-badge {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    .carvia-spinning-badge__image {
+    .spinning-badge__image {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -20,7 +20,7 @@
         user-select: none;
     }
 
-    .carvia-spinning-badge__center {
+    .spinning-badge__center {
         position: relative;
         z-index: 2;
         display: inline-flex;
@@ -29,7 +29,7 @@
         flex-shrink: 0;
     }
 
-    .carvia-spinning-badge__center-image {
+    .spinning-badge__center-image {
         display: block;
         object-fit: contain;
     }

@@ -96,7 +96,7 @@ class Mini_Cart extends Widget_Base
                     ]
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-core-mini-cart' => 'text-align: {{VALUE}}!important;',
+                    '{{WRAPPER}} .mini-cart' => 'text-align: {{VALUE}}!important;',
                 ],
                 'default' => 'left',
             ]
@@ -122,7 +122,7 @@ class Mini_Cart extends Widget_Base
                     ],
                 ],
                 'selectors'      => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon i' => 'font-size: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .mini-cart .cart-icon i' => 'font-size: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -133,7 +133,7 @@ class Mini_Cart extends Widget_Base
                 'label' => __('Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mini-cart .cart-icon i' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -160,7 +160,7 @@ class Mini_Cart extends Widget_Base
                     ],
                 ],
                 'selectors'      => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon .cart-total-number' => 'font-size: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .mini-cart .cart-icon .cart-total-number' => 'font-size: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -171,7 +171,7 @@ class Mini_Cart extends Widget_Base
                 'label' => __('Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon .cart-total-number' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mini-cart .cart-icon .cart-total-number' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -182,7 +182,7 @@ class Mini_Cart extends Widget_Base
                 'label' => __('Background Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon .cart-total-number' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .mini-cart .cart-icon .cart-total-number' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -194,7 +194,7 @@ class Mini_Cart extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon .cart-total-number' => 'position: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .mini-cart .cart-icon .cart-total-number' => 'position: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -212,7 +212,7 @@ class Mini_Cart extends Widget_Base
                     ],
                 ],
                 'selectors'      => [
-                    '{{WRAPPER}} .carvia-core-mini-cart .cart-icon .cart-total-number' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};line-height: {{SIZE}}{{UNIT}};'
+                    '{{WRAPPER}} .mini-cart .cart-icon .cart-total-number' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};line-height: {{SIZE}}{{UNIT}};'
                 ]
             ]
         );
@@ -224,7 +224,7 @@ class Mini_Cart extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
 ?>
-        <div class="carvia-core-mini-cart">
+        <div class="mini-cart">
             <?php global $woocommerce;
             ?>
             <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cart-icon">

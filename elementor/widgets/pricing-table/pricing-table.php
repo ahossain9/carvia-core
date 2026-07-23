@@ -215,7 +215,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .carvia-pricing-card' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .pricing-card' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -224,7 +224,7 @@ class Pricing_Table extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name'     => 'card_border',
-				'selector' => '{{WRAPPER}} .carvia-pricing-card',
+				'selector' => '{{WRAPPER}} .pricing-card',
 			]
 		);
 
@@ -242,7 +242,7 @@ class Pricing_Table extends Widget_Base
 					'unit'   => 'px',
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-pricing-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pricing-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -251,7 +251,7 @@ class Pricing_Table extends Widget_Base
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'card_box_shadow',
-				'selector' => '{{WRAPPER}} .carvia-pricing-card',
+				'selector' => '{{WRAPPER}} .pricing-card',
 			]
 		);
 
@@ -269,7 +269,7 @@ class Pricing_Table extends Widget_Base
 					'unit'   => 'px',
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-pricing-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .pricing-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -291,7 +291,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .carvia-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .pricing-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -300,7 +300,7 @@ class Pricing_Table extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'title_typography',
-				'selector' => '{{WRAPPER}} .carvia-title',
+				'selector' => '{{WRAPPER}} .pricing-title',
 			]
 		);
 
@@ -313,7 +313,7 @@ class Pricing_Table extends Widget_Base
 				'range'      => ['px' => ['min' => 0, 'max' => 100]],
 				'default'    => ['unit' => 'px', 'size' => 12],
 				'selectors'  => [
-					'{{WRAPPER}} .carvia-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .pricing-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -767,12 +767,12 @@ class Pricing_Table extends Widget_Base
 		$button_rel    = ! empty($settings['button_link']['nofollow']) ? ' rel="nofollow"' : '';
 
 ?>
-		<div class="carvia-pricing-card">
+		<div class="pricing-card">
 			<div class="pricing-inner">
 
 				<!-- LEFT SIDE CONTENT-->
 				<div class="pricing-left-content">
-					<h4 class="carvia-title"><?php echo esc_html($settings['title']); ?></h4>
+					<h4 class="pricing-title"><?php echo esc_html($settings['title']); ?></h4>
 
 					<div class="price-wrap">
 						<h2 class="price-content"><?php echo esc_html($settings['price']); ?></h2>
@@ -821,11 +821,11 @@ class Pricing_Table extends Widget_Base
 	protected function content_template()
 	{
 	?>
-		<div class="carvia-pricing-card">
+		<div class="pricing-card">
 			<div class="pricing-inner">
 
 				<div class="pricing-left-content">
-					<h3 class="carvia-title">{{{ settings.title }}}</h3>
+					<h3 class="pricing-title">{{{ settings.title }}}</h3>
 
 					<div class="price-wrap">
 						<span class="price-content">{{{ settings.price }}}</span>

@@ -6,9 +6,9 @@
 	'use strict';
 
 	function initCarviaTestimonialCarousel() {
-		$( '.carvia-testimonial-swiper' ).each( function () {
+		$( '.testimonial-swiper' ).each( function () {
 			var $wrapper    = $( this );
-			var $outerWrap  = $wrapper.closest( '.carvia-testimonial-carousel-wrapper' );
+			var $outerWrap  = $wrapper.closest( '.testimonial-carousel-wrapper' );
 			var autoplay    = $wrapper.data( 'autoplay' ) === 'true' || $wrapper.data( 'autoplay' ) === true;
 			var autoplaySpeed = parseInt( $wrapper.data( 'autoplay-speed' ), 10 ) || 3000;
 			var slidesNum   = parseInt( $wrapper.data( 'slides' ), 10 ) || 2;
