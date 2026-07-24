@@ -163,39 +163,11 @@ class Service_Card extends Widget_Base
                 'default' => '4',
             ]
         );
-        // Icon
-        $this->add_control(
-            'icon_type',
-            [
-                'label'   => esc_html__('Feature Lst Icon Type', 'carvia-core'),
-                'type'    => Controls_Manager::SELECT,
-                'default' => 'library',
-                'options' => [
-                    'library' => esc_html__('Icon Library', 'carvia-core'),
-                    'custom'  => esc_html__('Custom Image/SVG', 'carvia-core'),
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'selected_icon',
-            [
-                'label'     => esc_html__('Icon', 'carvia-core'),
-                'type'      => Controls_Manager::ICONS,
-                'default'   => [
-                    'value'   => 'fas fa-star',
-                    'library' => 'fa-solid',
-                ],
-                'condition' => [
-                    'icon_type' => 'library',
-                ],
-            ]
-        );
 
         $this->add_control(
             'show_thumbnail',
             [
-                'label'        => esc_html__('Show Thumbnail', 'carvia-core'),
+                'label'        => esc_html__('Show Image', 'carvia-core'),
                 'type'         => Controls_Manager::SWITCHER,
                 'label_on'     => esc_html__('Yes', 'carvia-core'),
                 'label_off'    => esc_html__('No', 'carvia-core'),

@@ -15,5 +15,4 @@ require CARVIA_CORE_DIR . '/inc/helper-functions.php';
 require CARVIA_CORE_DIR . '/inc/assets-manager.php';
 require CARVIA_CORE_DIR . '/inc/floating-effects.php';
 require CARVIA_CORE_DIR . '/inc/icons-manager.php';
-require CARVIA_CORE_DIR . '/inc/custom-post-types.php';
 require CARVIA_CORE_DIR . '/wp-widgets/recent-post.php';

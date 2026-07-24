@@ -27,6 +27,13 @@ define('CARVIA_CORE_URI',     plugin_dir_url(CARVIA_CORE_FILE));
 define('CARVIA_CORE_INC',     CARVIA_CORE_DIR . 'includes/');
 define('CARVIA_CORE_ASSETS',  CARVIA_CORE_URI . 'assets/');
 
+//Include the custom post types file
+require_once CARVIA_CORE_DIR . '/inc/custom-post-types.php';
+// Activation hook
+register_activation_hook(
+    __FILE__,
+    array('Carvia_Core_Post_Types', 'activate')
+);
 /**
  * Main Elementor Carvia_Core Class
  *
@@ -71,7 +78,6 @@ final class Carvia_Core
      */
     public function __construct()
     {
-
         // Load translation
         add_action('init', array($this, 'i18n'));
 
@@ -90,7 +96,11 @@ final class Carvia_Core
      */
     public function i18n()
     {
-        load_plugin_textdomain('carvia-core-core');
+        load_plugin_textdomain(
+            'carvia-core',
+            false,
+            dirname(plugin_basename(__FILE__)) . '/languages'
+        );
     }
 
     /**
@@ -127,8 +137,8 @@ final class Carvia_Core
         }
 
         // Once we get here, We have passed all validation checks so we can safely include our plugin
-        require CARVIA_CORE_DIR . 'base.php';
-        require CARVIA_CORE_DIR . '/inc/functions.php';
+        require_once CARVIA_CORE_DIR . 'base.php';
+        require_once CARVIA_CORE_DIR . '/inc/functions.php';
     }
 
     /**
@@ -147,9 +157,9 @@ final class Carvia_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor */
-            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'carvia-core-core'),
-            '<strong>' . esc_html__('Carvia Core', 'carvia-core-core') . '</strong>',
-            '<strong>' . esc_html__('Elementor Page Builder', 'carvia-core-core') . '</strong>'
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'carvia-core'),
+            '<strong>' . esc_html__('Carvia Core', 'carvia-core') . '</strong>',
+            '<strong>' . esc_html__('Elementor Page Builder', 'carvia-core') . '</strong>'
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -171,9 +181,9 @@ final class Carvia_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'carvia-core-core'),
-            '<strong>' . esc_html__('Carvia_Core Core', 'carvia-core-core') . '</strong>',
-            '<strong>' . esc_html__('Elementor Page Builder', 'carvia-core-core') . '</strong>',
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'carvia-core'),
+            '<strong>' . esc_html__('Carvia_Core Core', 'carvia-core') . '</strong>',
+            '<strong>' . esc_html__('Elementor Page Builder', 'carvia-core') . '</strong>',
             self::MINIMUM_ELEMENTOR_VERSION
         );
 
@@ -196,9 +206,9 @@ final class Carvia_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'carvia-core-core'),
-            '<strong>' . esc_html__('Carvia_Core Core', 'carvia-core-core') . '</strong>',
-            '<strong>' . esc_html__('PHP', 'carvia-core-core') . '</strong>',
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'carvia-core'),
+            '<strong>' . esc_html__('Carvia_Core Core', 'carvia-core') . '</strong>',
+            '<strong>' . esc_html__('PHP', 'carvia-core') . '</strong>',
             self::MINIMUM_PHP_VERSION
         );
 

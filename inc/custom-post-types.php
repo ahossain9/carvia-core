@@ -16,7 +16,6 @@ class Carvia_Core_Post_Types
         // Register types and tax
         add_action('init', array($this, 'register_post_types'));
         add_action('init', array($this, 'register_taxonomies'));
-        add_action('init', array($this, 'carvia_flush_rewrite_rules'), 999);
 
         // Essential Elementor Support
         add_action('elementor/init', array($this, 'add_elementor_support'));
@@ -50,7 +49,7 @@ class Carvia_Core_Post_Types
             'has_archive'        => false,
             'menu_position'      => 5,
             'menu_icon'          => 'dashicons-welcome-widgets-menus',
-            'supports'           => array('title', 'editor', 'elementor'),
+            'supports'           => array('title', 'editor'),
             'show_in_rest'       => true, // Essential for modern builders
         );
         register_post_type('header', $header_args);
@@ -62,7 +61,7 @@ class Carvia_Core_Post_Types
             'name'               => __('Footers', 'carvia-core'),
             'singular_name'      => __('Footer', 'carvia-core'),
             'add_new'            => __('Add New', 'carvia-core'),
-            'add_new_item'       => __('Add New Header', 'carvia-core'),
+            'add_new_item'       => __('Add New Footer', 'carvia-core'),
         );
 
         $footer_args = array(
@@ -76,7 +75,7 @@ class Carvia_Core_Post_Types
             'has_archive'        => false,
             'menu_position'      => 6,
             'menu_icon'          => 'dashicons-editor-kitchensink',
-            'supports'           => array('title', 'editor', 'elementor'),
+            'supports'           => array('title', 'editor'),
             'show_in_rest'       => true,
         );
 
@@ -86,10 +85,10 @@ class Carvia_Core_Post_Types
         // Service Custom Post Type
         // ---------------------------------------------
         $service_labels = array(
-            'name'                  => __('Services', 'Post type general name', 'carvia-core'),
-            'singular_name'         => __('Service', 'Post type singular name', 'carvia-core'),
-            'menu_name'             => __('Services', 'Admin Menu text', 'carvia-core'),
-            'name_admin_bar'        => __('Service', 'Add New on Toolbar', 'carvia-core'),
+            'name'                  => __('Services', 'carvia-core'),
+            'singular_name'         => __('Service', 'carvia-core'),
+            'menu_name'             => __('Services', 'carvia-core'),
+            'name_admin_bar'        => __('Service', 'carvia-core'),
             'add_new'               => __('Add New', 'carvia-core'),
             'add_new_item'          => __('Add New Service', 'carvia-core'),
             'new_item'              => __('New Service', 'carvia-core'),
@@ -126,7 +125,7 @@ class Carvia_Core_Post_Types
             'menu_position'      => 7,
             'menu_icon'          => 'dashicons-admin-page',
             'show_in_rest'       => true,
-            'supports'           => array('title', 'editor', 'thumbnail', 'elementor'),
+            'supports'           => array('title', 'editor'),
             'taxonomies'         => array('service_category'),
         );
 
@@ -136,10 +135,10 @@ class Carvia_Core_Post_Types
         // Cars Custom Post Type
         // ---------------------------------------------
         $cars_labels = array(
-            'name'                  => __('Cars', 'Post type general name', 'carvia-core'),
-            'singular_name'         => __('Car', 'Post type singular name', 'carvia-core'),
-            'menu_name'             => __('Cars', 'Admin Menu text', 'carvia-core'),
-            'name_admin_bar'        => __('Cars', 'Add New on Toolbar', 'carvia-core'),
+            'name'                  => __('Cars', 'carvia-core'),
+            'singular_name'         => __('Car', 'carvia-core'),
+            'menu_name'             => __('Cars', 'carvia-core'),
+            'name_admin_bar'        => __('Cars', 'carvia-core'),
             'add_new'               => __('Add New', 'carvia-core'),
             'add_new_item'          => __('Add New Cars', 'carvia-core'),
             'new_item'              => __('New Cars', 'carvia-core'),
@@ -176,7 +175,7 @@ class Carvia_Core_Post_Types
             'menu_position'      => 8,
             'menu_icon'          => 'dashicons-portfolio',
             'show_in_rest'       => true,
-            'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'),
+            'supports'           => array('title', 'editor'),
             'taxonomies'         => array('cars_category'),
         );
 
@@ -284,23 +283,13 @@ class Carvia_Core_Post_Types
 
     public static function activate()
     {
-        self::register_post_types();
-        self::register_taxonomies();
-        flush_rewrite_rules();
-    }
-    public function carvia_flush_rewrite_rules()
-    {
-        $rewrite_version = '1.0.0';
+        $instance = new self();
+        $instance->register_post_types();
+        $instance->register_taxonomies();
 
-        if (get_option('carvia_rewrite_version') !== $rewrite_version) {
-            flush_rewrite_rules(false);
-            update_option('carvia_rewrite_version', $rewrite_version);
-        }
+        flush_rewrite_rules();
     }
 }
 
 // Initialize the class
 new Carvia_Core_Post_Types();
-
-// Activation hook
-register_activation_hook(CARVIA_CORE_FILE, array('Carvia_Core_Post_Types', 'activate'));
