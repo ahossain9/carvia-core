@@ -469,42 +469,6 @@ class Services extends Widget_Base
         $this->end_controls_section();
     }
 
-    /**
-     * Helper: get an image URL from a Meta Box single_image field.
-     *
-     * @param mixed $field Raw field value from rwmb_meta().
-     * @return string
-     */
-    private function get_image_url($field)
-    {
-        if (empty($field)) {
-            return '';
-        }
-
-        // Meta Box single_image (with 'field_type' => 'image_advanced'/'single_image')
-        // typically returns an associative array with a 'url' key,
-        // or a plain attachment ID depending on configuration.
-        if (is_array($field)) {
-            if (isset($field['url'])) {
-                return $field['url'];
-            }
-            if (isset($field['ID'])) {
-                return wp_get_attachment_image_url($field['ID'], 'full');
-            }
-            $field = reset($field);
-        }
-
-        if (is_numeric($field)) {
-            return wp_get_attachment_image_url((int) $field, 'full');
-        }
-
-        if (is_string($field)) {
-            return $field;
-        }
-
-        return '';
-    }
-
     protected function render()
     {
         $settings = $this->get_settings_for_display();

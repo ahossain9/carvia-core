@@ -22,11 +22,6 @@ use Elementor\Core\Schemes\Typography;
 
 class Service_Card extends Widget_Base
 {
-
-    /* ------------------------------------------------------------------ */
-    /*  Identity                                                            */
-    /* ------------------------------------------------------------------ */
-
     public function get_name()
     {
         return 'carvia_service_card';
@@ -52,10 +47,6 @@ class Service_Card extends Widget_Base
         return ['service', 'card', 'carvia', 'pest', 'portfolio'];
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Helper: get carvia_service categories                              */
-    /* ------------------------------------------------------------------ */
-
     private function get_service_categories()
     {
         $options    = ['' => esc_html__('All Categories', 'carvia-core')];
@@ -65,7 +56,6 @@ class Service_Card extends Widget_Base
             return $options;
         }
 
-        // Use the first registered taxonomy; adjust the slug if needed.
         $tax  = array_key_first($taxonomies);
         $terms = get_terms([
             'taxonomy'   => $tax,
@@ -107,7 +97,7 @@ class Service_Card extends Widget_Base
                 'min'     => 1,
                 'max'     => 50,
                 'step'    => 1,
-                'default' => 6,
+                'default' => 3,
             ]
         );
 
@@ -165,7 +155,18 @@ class Service_Card extends Widget_Base
         );
 
         $this->add_control(
-            'show_thumbnail',
+            'show_icon',
+            [
+                'label'        => esc_html__('Show Icon', 'carvia-core'),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__('Yes', 'carvia-core'),
+                'label_off'    => esc_html__('No', 'carvia-core'),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+        $this->add_control(
+            'show_image',
             [
                 'label'        => esc_html__('Show Image', 'carvia-core'),
                 'type'         => Controls_Manager::SWITCHER,
@@ -177,46 +178,9 @@ class Service_Card extends Widget_Base
         );
 
         $this->add_control(
-            'show_description',
-            [
-                'label'        => esc_html__('Show Description', 'carvia-core'),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'carvia-core'),
-                'label_off'    => esc_html__('No', 'carvia-core'),
-                'return_value' => 'yes',
-                'default'      => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'show_feature',
-            [
-                'label'        => esc_html__('Show Feature', 'carvia-core'),
-                'type'         => Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__('Yes', 'carvia-core'),
-                'label_off'    => esc_html__('No', 'carvia-core'),
-                'return_value' => 'yes',
-                'default'      => 'yes',
-            ]
-        );
-
-        $this->add_control(
-            'excerpt_length',
-            [
-                'label'     => esc_html__('Description Word Limit', 'carvia-core'),
-                'type'      => Controls_Manager::NUMBER,
-                'min'       => 5,
-                'max'       => 200,
-                'step'      => 1,
-                'default'   => 20,
-                'condition' => ['show_description' => 'yes'],
-            ]
-        );
-
-        $this->add_control(
             'show_readmore',
             [
-                'label'        => esc_html__('Show Read More Button', 'carvia-core'),
+                'label'        => esc_html__('Read More Button', 'carvia-core'),
                 'type'         => Controls_Manager::SWITCHER,
                 'label_on'     => esc_html__('Yes', 'carvia-core'),
                 'label_off'    => esc_html__('No', 'carvia-core'),
@@ -243,7 +207,7 @@ class Service_Card extends Widget_Base
         $this->start_controls_section(
             'section_card_style',
             [
-                'label' => esc_html__('Card Style', 'carvia-core'),
+                'label' => esc_html__('Card', 'carvia-core'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -254,28 +218,33 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Background Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card' => 'background-color: {{VALUE}};',
                 ],
                 'default'   => '#ffffff',
             ]
         );
 
         $this->add_responsive_control(
-            'card_padding',
+            'card_margin',
             [
-                'label'      => esc_html__('Card Padding', 'carvia-core'),
+                'label'      => esc_html__('Margin', 'carvia-core'),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'default'    => [
-                    'top'    => '30',
-                    'right'  => '25',
-                    'bottom' => '30',
-                    'left'   => '25',
-                    'unit'   => 'px',
-                ],
+                    '{{WRAPPER}} .service-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'card_padding',
+            [
+                'label'      => esc_html__('Padding', 'carvia-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .service-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
             ]
         );
 
@@ -286,15 +255,8 @@ class Service_Card extends Widget_Base
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'default'    => [
-                    'top'    => '12',
-                    'right'  => '12',
-                    'bottom' => '12',
-                    'left'   => '12',
-                    'unit'   => 'px',
-                ],
+                    '{{WRAPPER}} .service-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
             ]
         );
 
@@ -303,7 +265,7 @@ class Service_Card extends Widget_Base
             [
                 'name'     => 'card_border',
                 'label'    => esc_html__('Border', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card',
+                'selector' => '{{WRAPPER}} .service-card',
             ]
         );
 
@@ -312,66 +274,7 @@ class Service_Card extends Widget_Base
             [
                 'name'     => 'card_box_shadow',
                 'label'    => esc_html__('Box Shadow', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'card_gap',
-            [
-                'label'      => esc_html__('Gap Between Cards', 'carvia-core'),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range'      => [
-                    'px' => ['min' => 0, 'max' => 60, 'step' => 1],
-                ],
-                'default'    => ['unit' => 'px', 'size' => 24],
-                'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-cards-grid' => 'gap: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        /* ============================================================
-         *  SECTION: Thumbnail Style
-         * ============================================================ */
-        $this->start_controls_section(
-            'section_thumbnail_style',
-            [
-                'label'     => esc_html__('Thumbnail Style', 'carvia-core'),
-                'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => ['show_thumbnail' => 'yes'],
-            ]
-        );
-
-        $this->add_control(
-            'thumbnail_border_radius',
-            [
-                'label'      => esc_html__('Thumbnail Border Radius', 'carvia-core'),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__thumb'     => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .carvia-service-card__thumb img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_margin_bottom',
-            [
-                'label'      => esc_html__('Spacing Below Thumbnail', 'carvia-core'),
-                'type'       => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'range'      => [
-                    'px' => ['min' => 0, 'max' => 80, 'step' => 1],
-                ],
-                'default'    => ['unit' => 'px', 'size' => 20],
-                'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__thumb' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
+                'selector' => '{{WRAPPER}} .service-card',
             ]
         );
 
@@ -383,7 +286,7 @@ class Service_Card extends Widget_Base
         $this->start_controls_section(
             'section_title_style',
             [
-                'label' => esc_html__('Title Style', 'carvia-core'),
+                'label' => esc_html__('Title', 'carvia-core'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -391,12 +294,11 @@ class Service_Card extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     => esc_html__('Title Color', 'carvia-core'),
+                'label'     => esc_html__('Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__title' => 'color: {{VALUE}};',
-                ],
-                'default'   => '#1a1a2e',
+                    '{{WRAPPER}} .service-card-title a' => 'color: {{VALUE}};',
+                ]
             ]
         );
 
@@ -404,23 +306,22 @@ class Service_Card extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'title_typography',
-                'label'    => esc_html__('Title Typography', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card__title',
+                'label'    => esc_html__('Typography', 'carvia-core'),
+                'selector' => '{{WRAPPER}} .service-card-title',
             ]
         );
 
         $this->add_responsive_control(
             'title_margin_bottom',
             [
-                'label'      => esc_html__('Spacing Below Title', 'carvia-core'),
+                'label'      => esc_html__('Bottom Spacing', 'carvia-core'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
                     'px' => ['min' => 0, 'max' => 80, 'step' => 1],
                 ],
-                'default'    => ['unit' => 'px', 'size' => 12],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .service-card-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -433,19 +334,18 @@ class Service_Card extends Widget_Base
         $this->start_controls_section(
             'section_desc_style',
             [
-                'label'     => esc_html__('Description Style', 'carvia-core'),
+                'label'     => esc_html__('Description', 'carvia-core'),
                 'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => ['show_description' => 'yes'],
             ]
         );
 
         $this->add_control(
             'desc_color',
             [
-                'label'     => esc_html__('Description Color', 'carvia-core'),
+                'label'     => esc_html__('Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__desc' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-desc' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -454,23 +354,22 @@ class Service_Card extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'desc_typography',
-                'label'    => esc_html__('Description Typography', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card__desc',
+                'label'    => esc_html__('Typography', 'carvia-core'),
+                'selector' => '{{WRAPPER}} .service-card-desc',
             ]
         );
 
         $this->add_responsive_control(
             'desc_margin_bottom',
             [
-                'label'      => esc_html__('Spacing Below Description', 'carvia-core'),
+                'label'      => esc_html__('Bottom Spacing', 'carvia-core'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
                     'px' => ['min' => 0, 'max' => 80, 'step' => 1],
                 ],
-                'default'    => ['unit' => 'px', 'size' => 20],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .service-card-desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -478,49 +377,40 @@ class Service_Card extends Widget_Base
         $this->end_controls_section();
 
         /* ============================================================
-         *  SECTION: Feature Style
+         *  SECTION: Image Style
          * ============================================================ */
         $this->start_controls_section(
-            'section_feature_style',
+            'section_image_style',
             [
-                'label'     => esc_html__('Feature Style', 'carvia-core'),
+                'label'     => esc_html__('Image', 'carvia-core'),
                 'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => ['show_feature' => 'yes'],
+                'condition' => ['show_image' => 'yes'],
             ]
         );
 
         $this->add_control(
-            'feature_color',
+            'image_border_radius',
             [
-                'label'     => esc_html__('Color', 'carvia-core'),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card li' => 'color: {{VALUE}};',
+                'label'      => esc_html__('Border Radius', 'carvia-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .service-card-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'name'     => 'feature_typography',
-                'label'    => esc_html__('Typography', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card li',
-            ]
-        );
-
         $this->add_responsive_control(
-            'feature_margin_bottom',
+            'image_margin_bottom',
             [
-                'label'      => esc_html__('Spacing', 'carvia-core'),
+                'label'      => esc_html__('Bottom Spacing', 'carvia-core'),
                 'type'       => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range'      => [
                     'px' => ['min' => 0, 'max' => 80, 'step' => 1],
                 ],
-                'default'    => ['unit' => 'px', 'size' => 20],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card li' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .service-card-image' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -533,7 +423,7 @@ class Service_Card extends Widget_Base
         $this->start_controls_section(
             'section_btn_style',
             [
-                'label'     => esc_html__('Read More Button Style', 'carvia-core'),
+                'label'     => esc_html__('Button', 'carvia-core'),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['show_readmore' => 'yes'],
             ]
@@ -553,7 +443,7 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Text Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-btn' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -564,7 +454,7 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Background Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-btn' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -574,7 +464,7 @@ class Service_Card extends Widget_Base
             [
                 'name'     => 'btn_border',
                 'label'    => esc_html__('Border', 'carvia-core'),
-                'selector' => '{{WRAPPER}} .carvia-service-card__btn',
+                'selector' => '{{WRAPPER}} .service-card-btn',
             ]
         );
 
@@ -592,7 +482,7 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Hover Text Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-btn:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -603,7 +493,7 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Hover Background', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-btn:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -614,7 +504,7 @@ class Service_Card extends Widget_Base
                 'label'     => esc_html__('Hover Border Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .carvia-service-card__btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .service-card-btn:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -628,7 +518,7 @@ class Service_Card extends Widget_Base
             [
                 'name'      => 'btn_typography',
                 'label'     => esc_html__('Typography', 'carvia-core'),
-                'selector'  => '{{WRAPPER}} .carvia-service-card__btn',
+                'selector'  => '{{WRAPPER}} .service-card-btn',
                 'separator' => 'before',
             ]
         );
@@ -640,7 +530,7 @@ class Service_Card extends Widget_Base
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .service-card-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -652,21 +542,49 @@ class Service_Card extends Widget_Base
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .carvia-service-card__btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'default'    => [
-                    'top'    => '6',
-                    'right'  => '6',
-                    'bottom' => '6',
-                    'left'   => '6',
-                    'unit'   => 'px',
-                ],
+                    '{{WRAPPER}} .service-card-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
             ]
         );
 
         $this->end_controls_section();
     }
 
+    /**
+     * Helper: get an image URL from a Meta Box single_image field.
+     *
+     * @param mixed $field Raw field value from rwmb_meta().
+     * @return string
+     */
+    private function get_image_url($field)
+    {
+        if (empty($field)) {
+            return '';
+        }
+
+        // Meta Box single_image (with 'field_type' => 'image_advanced'/'single_image')
+        // typically returns an associative array with a 'url' key,
+        // or a plain attachment ID depending on configuration.
+        if (is_array($field)) {
+            if (isset($field['url'])) {
+                return $field['url'];
+            }
+            if (isset($field['ID'])) {
+                return wp_get_attachment_image_url($field['ID'], 'full');
+            }
+            $field = reset($field);
+        }
+
+        if (is_numeric($field)) {
+            return wp_get_attachment_image_url((int) $field, 'full');
+        }
+
+        if (is_string($field)) {
+            return $field;
+        }
+
+        return '';
+    }
     /* ------------------------------------------------------------------ */
     /*  Render                                                              */
     /* ------------------------------------------------------------------ */
@@ -706,57 +624,63 @@ class Service_Card extends Widget_Base
         <?php
         }
 
-        $columns      = absint($settings['columns']);
-        $show_thumb   = $settings['show_thumbnail']   === 'yes';
-        $show_desc    = $settings['show_description'] === 'yes';
-        $show_feature    = $settings['show_feature'] === 'yes';
+        $columns       = absint($settings['columns']);
+        $show_image    = $settings['show_image']   === 'yes';
+        $show_icon     = $settings['show_icon']    === 'yes';
         $show_readmore = $settings['show_readmore']   === 'yes';
-        $excerpt_len  = absint($settings['excerpt_length']);
-        $btn_text     = ! empty($settings['readmore_text']) ? $settings['readmore_text'] : __('Read More', 'carvia-core');
-
-
+        $btn_text      = ! empty($settings['readmore_text']) ? $settings['readmore_text'] : __('Read More', 'carvia-core');
         ?>
+        <!-- start service row -->
         <div class="row">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <?php
+                $post_id = get_the_ID();
+                $title   = get_the_title($post_id);
+                $short_description = '';
+                if (function_exists('rwmb_meta')) {
+                    $short_description = rwmb_meta('carvia_service_short_description', array(), $post_id);
+                } else {
+                    $short_description = get_post_meta($post_id, 'carvia_service_short_description', true);
+                }
+                $icon_field  = function_exists('rwmb_meta') ? rwmb_meta('carvia_service_icon', [], $post_id) : get_post_meta($post_id, 'carvia_service_icon', true);
+                $image_field = function_exists('rwmb_meta') ? rwmb_meta('carvia_service_image', ['size' => 'full'], $post_id) : get_post_meta($post_id, 'carvia_service_image', true);
+
+                $icon_url  = $this->get_image_url($icon_field);
+                $image_url = $this->get_image_url($image_field);
+                ?>
+                <!-- start service card -->
                 <div class="col-lg-<?php echo esc_attr($columns); ?>">
-                    <div class="carvia-service-card">
-                        <div class="service-icon">
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <h3 class="carvia-service-card__title">
+                    <div class="service-card">
+                        <?php if (! empty($icon_url ) && $show_icon ) : ?>
+                            <div class="service-icon">
+                                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($title); ?>" />
+                            </div>
+                        <?php endif; ?>
+
+                        <h3 class="service-card-title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         </h3>
-
-                        <?php if ($show_desc) : ?>
-                            <p class="carvia-service-card__desc">
-                                <?php
-                                if (has_excerpt()) {
-                                    echo wp_trim_words(get_the_excerpt(), $excerpt_len, '&hellip;');
-                                } else {
-                                    echo wp_trim_words(get_the_content(), $excerpt_len, '&hellip;');
-                                }
-                                ?>
+                        <?php if (! empty($short_description)) : ?>
+                            <p class="service-card-desc">
+                                <?php echo esc_html($short_description); ?>
                             </p>
                         <?php endif; ?>
-                        <?php if ($show_thumb) : ?>
-                            <div class="carvia-service-card__thumb">
-                                <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
-                                    <?php the_post_thumbnail('large', ['loading' => 'lazy', 'decoding' => 'async']); ?>
-                                </a>
+                        <?php if (! empty($image_url) && $show_image) : ?>
+                            <div class="carvia-service-image">
+                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" />
                             </div>
                         <?php endif; ?>
 
                         <?php if ($show_readmore) : ?>
-                            <a class="carvia-service-card__btn" href="<?php the_permalink(); ?>">
+                            <a class="service-card-btn" href="<?php the_permalink(); ?>">
                                 <span class="btn-text"><?php echo esc_html($btn_text); ?> </span><span class="btn-icon"><i class="hgi-stroke hgi-arrow-right-02"></i></span>
                             </a>
                         <?php endif; ?>
-
-                    </div><!-- /.carvia-service-card -->
-                </div><!-- /.carvia-service-card -->
+                    </div>
+                </div><!-- /.end service-card -->
             <?php endwhile;
             wp_reset_postdata(); ?>
-        </div><!-- /.carvia-service-cards-grid -->
+        </div><!-- /.end service row -->
 <?php
     }
 }
