@@ -39,7 +39,7 @@ class Service_Card extends Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-post-list';
+        return 'carvia-core-icon eicon-post-list';
     }
 
     public function get_categories()
@@ -705,7 +705,7 @@ class Service_Card extends Widget_Base
 
         /* --- Build WP_Query args --- */
         $args = [
-            'post_type'      => 'carvia_service',
+            'post_type'      => 'services',
             'posts_per_page' => absint($settings['posts_per_page']),
             'post_status'    => 'publish',
             'orderby'        => sanitize_key($settings['orderby']),
@@ -729,13 +729,9 @@ class Service_Card extends Widget_Base
 
         $query = new \WP_Query($args);
 
-        if (! $query->have_posts()) {
-            if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
-                echo '<p style="color:#999;text-align:center;padding:20px;">'
-                    . esc_html__('No services found. Please add posts with the "carvia_service" post type.', 'carvia-core')
-                    . '</p>';
-            }
-            return;
+        if (! $query->have_posts()) { ?>
+            <h3><?php _e('No services found', 'carvia-core'); ?></h3>
+        <?php
         }
 
         $columns      = absint($settings['columns']);
@@ -747,13 +743,30 @@ class Service_Card extends Widget_Base
         $btn_text     = ! empty($settings['readmore_text']) ? $settings['readmore_text'] : __('Read More', 'carvia-core');
 
 
-?>
+        ?>
         <div class="row">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <div class="col-lg-<?php echo esc_attr($columns); ?>">
                     <div class="carvia-service-card">
+                        <div class="service-icon">
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <h3 class="carvia-service-card__title">
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h3>
 
-                        <?php if ($show_thumb && has_post_thumbnail()) : ?>
+                        <?php if ($show_desc) : ?>
+                            <p class="carvia-service-card__desc">
+                                <?php
+                                if (has_excerpt()) {
+                                    echo wp_trim_words(get_the_excerpt(), $excerpt_len, '&hellip;');
+                                } else {
+                                    echo wp_trim_words(get_the_content(), $excerpt_len, '&hellip;');
+                                }
+                                ?>
+                            </p>
+                        <?php endif; ?>
+                        <?php if ($show_thumb) : ?>
                             <div class="carvia-service-card__thumb">
                                 <a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
                                     <?php the_post_thumbnail('large', ['loading' => 'lazy', 'decoding' => 'async']); ?>
@@ -761,65 +774,11 @@ class Service_Card extends Widget_Base
                             </div>
                         <?php endif; ?>
 
-                        <div class="carvia-service-card__body">
-
-                            <h3 class="carvia-service-card__title">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                            </h3>
-
-                            <?php if ($show_desc) : ?>
-                                <p class="carvia-service-card__desc">
-                                    <?php
-                                    if (has_excerpt()) {
-                                        echo wp_trim_words(get_the_excerpt(), $excerpt_len, '&hellip;');
-                                    } else {
-                                        echo wp_trim_words(get_the_content(), $excerpt_len, '&hellip;');
-                                    }
-                                    ?>
-                                </p>
-                            <?php endif; ?>
-                            <?php
-                            $features = rwmb_meta('_carvia_feature_list', [], get_the_ID());
-
-                            if (!is_array($features)) {
-                                $features = [];
-                            }
-                            ?>
-                            <?php if (!empty($features && $show_feature)) : ?>
-                                <ul class="carvia-service-features__list">
-                                    <?php foreach ($features as $feature) : ?>
-                                        <li class="carvia-service-features__item">
-                                            <span class="carvia-service-card__icon">
-                                                <?php if ('library' === $settings['icon_type'] && ! empty($settings['selected_icon']['value'])) : ?>
-                                                    <?php Icons_Manager::render_icon($settings['selected_icon'], ['aria-hidden' => 'true']); ?>
-                                                <?php elseif ('custom' === $settings['icon_type'] && ! empty($settings['custom_icon']['url'])) : ?>
-                                                    <?php
-                                                    $is_svg = isset($settings['custom_icon']['id']) && 'svg' === pathinfo(get_attached_file($settings['custom_icon']['id']), PATHINFO_EXTENSION);
-                                                    if ($is_svg && ! empty($settings['custom_icon']['id'])) {
-                                                        echo wp_get_attachment_image($settings['custom_icon']['id'], 'full', true);
-                                                    } else {
-                                                        echo '<img src="' . esc_url($settings['custom_icon']['url']) . '" alt="' . esc_attr($settings['title']) . '" />';
-                                                    }
-                                                    ?>
-                                                <?php endif; ?>
-                                            </span>
-                                            <?php if (!empty($feature['title'])) : ?>
-                                                <span class="feature-title">
-                                                    <?php echo esc_html($feature['title']); ?>
-                                                </span>
-                                            <?php endif; ?>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
-
-                            <?php if ($show_readmore) : ?>
-                                <a class="carvia-service-card__btn" href="<?php the_permalink(); ?>">
-                                    <span class="btn-text"><?php echo esc_html($btn_text); ?> </span><span class="btn-icon"><i class="hgi-stroke hgi-arrow-right-02"></i></span>
-                                </a>
-                            <?php endif; ?>
-
-                        </div><!-- /.carvia-service-card__body -->
+                        <?php if ($show_readmore) : ?>
+                            <a class="carvia-service-card__btn" href="<?php the_permalink(); ?>">
+                                <span class="btn-text"><?php echo esc_html($btn_text); ?> </span><span class="btn-icon"><i class="hgi-stroke hgi-arrow-right-02"></i></span>
+                            </a>
+                        <?php endif; ?>
 
                     </div><!-- /.carvia-service-card -->
                 </div><!-- /.carvia-service-card -->
