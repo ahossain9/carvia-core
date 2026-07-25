@@ -103,7 +103,6 @@ class Plugin
             'button',
             'dual-button',
             'info-card',
-            'services',
             'video-popup',
             'pricing-table',
             'news-ticker',

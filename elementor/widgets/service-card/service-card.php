@@ -185,7 +185,7 @@ class Service_Card extends Widget_Base
                 'label_on'     => esc_html__('Yes', 'carvia-core'),
                 'label_off'    => esc_html__('No', 'carvia-core'),
                 'return_value' => 'yes',
-                'default'      => 'yes',
+                'default'      => 'no',
             ]
         );
 
@@ -235,7 +235,7 @@ class Service_Card extends Widget_Base
                 ]
             ]
         );
-        
+
         $this->add_responsive_control(
             'card_padding',
             [
@@ -651,7 +651,7 @@ class Service_Card extends Widget_Base
                 <!-- start service card -->
                 <div class="col-lg-<?php echo esc_attr($columns); ?>">
                     <div class="service-card">
-                        <?php if (! empty($icon_url ) && $show_icon ) : ?>
+                        <?php if (! empty($icon_url) && $show_icon) : ?>
                             <div class="service-icon">
                                 <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($title); ?>" />
                             </div>
@@ -666,7 +666,7 @@ class Service_Card extends Widget_Base
                             </p>
                         <?php endif; ?>
                         <?php if (! empty($image_url) && $show_image) : ?>
-                            <div class="carvia-service-image">
+                            <div class="service-card-image">
                                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" />
                             </div>
                         <?php endif; ?>
