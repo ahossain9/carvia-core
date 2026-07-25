@@ -24,7 +24,7 @@ class Service_Card extends Widget_Base
 {
     public function get_name()
     {
-        return 'carvia_service_card';
+        return 'carvia-service-card';
     }
 
     public function get_title()
@@ -44,13 +44,13 @@ class Service_Card extends Widget_Base
 
     public function get_keywords()
     {
-        return ['service', 'card', 'carvia', 'pest', 'portfolio'];
+        return ['service', 'card', 'carvia'];
     }
 
     private function get_service_categories()
     {
         $options    = ['' => esc_html__('All Categories', 'carvia-core')];
-        $taxonomies = get_object_taxonomies('carvia_service', 'objects');
+        $taxonomies = get_object_taxonomies('service-category', 'objects');
 
         if (empty($taxonomies)) {
             return $options;
@@ -604,8 +604,8 @@ class Service_Card extends Widget_Base
 
         // Category filter
         if (! empty($settings['service_category'])) {
-            // Auto-detect the first registered taxonomy for carvia_service
-            $taxonomies = get_object_taxonomies('carvia_service');
+            // Auto-detect the first registered taxonomy for service-category
+            $taxonomies = get_object_taxonomies('service-category');
             if (! empty($taxonomies)) {
                 $args['tax_query'] = [
                     [

@@ -99,9 +99,10 @@ class Plugin
     public function init_widgets()
     {
         $widgets = [
-            'service-card',
             'button',
             'dual-button',
+            'service-card',
+            'car-card',
             'info-card',
             'video-popup',
             'pricing-table',

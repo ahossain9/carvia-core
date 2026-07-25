@@ -126,7 +126,7 @@ class Carvia_Core_Post_Types
             'menu_icon'          => 'dashicons-admin-page',
             'show_in_rest'       => true,
             'supports'           => array('title', 'editor'),
-            'taxonomies'         => array('service_category'),
+            'taxonomies'         => array('service-category'),
         );
 
         register_post_type('services', $service_args);
@@ -140,10 +140,10 @@ class Carvia_Core_Post_Types
             'menu_name'             => __('Cars', 'carvia-core'),
             'name_admin_bar'        => __('Cars', 'carvia-core'),
             'add_new'               => __('Add New', 'carvia-core'),
-            'add_new_item'          => __('Add New Cars', 'carvia-core'),
-            'new_item'              => __('New Cars', 'carvia-core'),
-            'edit_item'             => __('Edit Cars', 'carvia-core'),
-            'view_item'             => __('View Cars', 'carvia-core'),
+            'add_new_item'          => __('Add New Car', 'carvia-core'),
+            'new_item'              => __('New Car', 'carvia-core'),
+            'edit_item'             => __('Edit Car', 'carvia-core'),
+            'view_item'             => __('View Car', 'carvia-core'),
             'all_items'             => __('All Cars', 'carvia-core'),
             'search_items'          => __('Search Cars', 'carvia-core'),
             'parent_item_colon'     => __('Parent Cars:', 'carvia-core'),
@@ -176,7 +176,7 @@ class Carvia_Core_Post_Types
             'menu_icon'          => 'dashicons-portfolio',
             'show_in_rest'       => true,
             'supports'           => array('title', 'editor'),
-            'taxonomies'         => array('cars_category'),
+            'taxonomies'         => array('cars-category'),
         );
 
         register_post_type('cars', $cars_args);
@@ -199,7 +199,7 @@ class Carvia_Core_Post_Types
             'menu_name'         => __('Categories', 'carvia-core'),
         );
 
-        register_taxonomy('service_category', array('services'), array(
+        register_taxonomy('service-category', array('services'), array(
             'hierarchical'      => true,
             'labels'            => $service_cat_labels,
             'show_ui'           => true,
@@ -219,12 +219,12 @@ class Carvia_Core_Post_Types
             'parent_item_colon' => __('Parent Cars Category:', 'carvia-core'),
             'edit_item'         => __('Edit Cars Category', 'carvia-core'),
             'update_item'       => __('Update Cars Category', 'carvia-core'),
-            'add_new_item'      => __('Add New Cars Category', 'carvia-core'),
+            'add_new_item'      => __('Add New Car Category', 'carvia-core'),
             'new_item_name'     => __('New Cars Category Name', 'carvia-core'),
             'menu_name'         => __('Categories', 'carvia-core'),
         );
 
-        register_taxonomy('cars_category', array('cars'), array(
+        register_taxonomy('cars-category', array('cars'), array(
             'hierarchical'      => true,
             'labels'            => $cars_cat_labels,
             'show_ui'           => true,
