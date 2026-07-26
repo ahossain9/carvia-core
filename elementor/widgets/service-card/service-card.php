@@ -562,6 +562,7 @@ class Service_Card extends Widget_Base
             return '';
         }
 
+        if (is_array($field)) {
             if (isset($field['url'])) {
                 return $field['url'];
             }
