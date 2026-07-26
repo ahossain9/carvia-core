@@ -190,36 +190,12 @@ class Car_Card extends Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'card_columns_gap',
-            [
-                'label'      => esc_html__('Columns Gap', 'carvia-core'),
-                'type'       => Controls_Manager::SLIDER,
-                'range'      => ['px' => ['min' => 0, 'max' => 100]],
-                'selectors'  => [
-                    '{{WRAPPER}} .row' => 'row-gap: {{SIZE}}{{UNIT}}; --bs-gutter-x: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
         $this->add_control(
-            'image_heading',
+            'image',
             [
                 'label'     => esc_html__('Image', 'carvia-core'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'image_height',
-            [
-                'label'      => esc_html__('Height', 'carvia-core'),
-                'type'       => Controls_Manager::SLIDER,
-                'range'      => ['px' => ['min' => 100, 'max' => 600]],
-                'selectors'  => [
-                    '{{WRAPPER}} .car-card-image img' => 'height: {{SIZE}}{{UNIT}}; object-fit: cover; width: 100%;',
-                ],
             ]
         );
 
@@ -280,37 +256,12 @@ class Car_Card extends Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'body_overlap',
-            [
-                'label'       => esc_html__('Overlap with Image (Negative Margin)', 'carvia-core'),
-                'description' => esc_html__('How much the body content overlaps the image above it.', 'carvia-core'),
-                'type'        => Controls_Manager::SLIDER,
-                'range'       => ['px' => ['min' => 0, 'max' => 100]],
-                'default'     => ['size' => 20],
-                'selectors'   => [
-                    '{{WRAPPER}} .car-card-body-content' => 'margin-top: -{{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
                 'name'     => 'body_box_shadow',
+                'label'    => esc_html__('Box Shadow', 'carvia-core'),
                 'selector' => '{{WRAPPER}} .car-card-body-content',
-                'fields_options' => [
-                    'box_shadow_type' => ['default' => 'yes'],
-                    'box_shadow' => [
-                        'default' => [
-                            'horizontal' => 0,
-                            'vertical'   => 0,
-                            'blur'       => 10,
-                            'spread'     => 0,
-                            'color'      => 'rgba(0,0,0,0.1)',
-                        ],
-                    ],
-                ],
             ]
         );
 
@@ -322,7 +273,7 @@ class Car_Card extends Widget_Base
         $this->start_controls_section(
             'section_price_style',
             [
-                'label' => esc_html__('Price Badge', 'carvia-core'),
+                'label' => esc_html__('Price', 'carvia-core'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -455,7 +406,7 @@ class Car_Card extends Widget_Base
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label'     => esc_html__('Spacing Below Title', 'carvia-core'),
+                'label'     => esc_html__('Below Spacing', 'carvia-core'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 60]],
                 'selectors' => [
@@ -492,6 +443,18 @@ class Car_Card extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'model_spacing',
+            [
+                'label'     => esc_html__('Below Spacing', 'carvia-core'),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => ['px' => ['min' => 0, 'max' => 60]],
+                'selectors' => [
+                    '{{WRAPPER}} .car-model-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         /* ============================================================
@@ -523,7 +486,7 @@ class Car_Card extends Widget_Base
         $this->add_responsive_control(
             'specs_row_padding',
             [
-                'label'     => esc_html__('Row Vertical Spacing', 'carvia-core'),
+                'label'     => esc_html__('Spacing', 'carvia-core'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 40]],
                 'default'   => ['size' => 10],
@@ -536,7 +499,7 @@ class Car_Card extends Widget_Base
         $this->add_control(
             'spec_key_heading',
             [
-                'label'     => esc_html__('Key', 'carvia-core'),
+                'label'     => esc_html__('Label', 'carvia-core'),
                 'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -545,7 +508,7 @@ class Car_Card extends Widget_Base
         $this->add_control(
             'spec_key_color',
             [
-                'label'     => esc_html__('Key Color', 'carvia-core'),
+                'label'     => esc_html__('Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .spec-key' => 'color: {{VALUE}};',
@@ -573,7 +536,7 @@ class Car_Card extends Widget_Base
         $this->add_control(
             'spec_value_color',
             [
-                'label'     => esc_html__('Value Color', 'carvia-core'),
+                'label'     => esc_html__('Color', 'carvia-core'),
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '#444444',
                 'selectors' => [
@@ -604,10 +567,7 @@ class Car_Card extends Widget_Base
         if (empty($field)) {
             return '';
         }
-
-        // Meta Box single_image (with 'field_type' => 'image_advanced'/'single_image')
-        // typically returns an associative array with a 'url' key,
-        // or a plain attachment ID depending on configuration.
+        
         if (is_array($field)) {
             if (isset($field['url'])) {
                 return $field['url'];

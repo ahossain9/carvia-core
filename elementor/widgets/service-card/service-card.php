@@ -562,10 +562,6 @@ class Service_Card extends Widget_Base
             return '';
         }
 
-        // Meta Box single_image (with 'field_type' => 'image_advanced'/'single_image')
-        // typically returns an associative array with a 'url' key,
-        // or a plain attachment ID depending on configuration.
-        if (is_array($field)) {
             if (isset($field['url'])) {
                 return $field['url'];
             }
