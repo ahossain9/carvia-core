@@ -75,8 +75,8 @@ class Video_Popup extends Widget_Base
                 'label' => __('Icon', 'carvia-core'),
                 'type' => Controls_Manager::ICONS,
                 'default' => [
-                    'value' => 'hgi-stroke hgi-play-circle',
-                    'library' => 'hugeicons',
+                    'value' => 'icon icon-play-circle',
+                    'library' => 'carvia',
                 ],
             ]
         );

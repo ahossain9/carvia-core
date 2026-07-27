@@ -941,10 +941,10 @@ class Blog_Post extends Widget_Base
                             <div class="blog-post-content">
                                 <ul class="post-meta">
                                     <?php if ($settings['author_switcher'] == 'yes') : ?>
-                                        <li><a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><i class="hgi hgi-stroke hgi-rounded hgi-user"></i><?php echo esc_html(get_the_author()); ?></a></li>
+                                        <li><a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><i class="icon icon-user-circle"></i><?php echo esc_html(get_the_author()); ?></a></li>
                                     <?php endif; ?>
                                     <?php if ($settings['date_switcher'] == 'yes'): ?>
-                                        <li><a href="<?php echo esc_url(get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d'))); ?>"><i class="hgi hgi-stroke hgi-rounded hgi-calendar-02"></i><?php echo esc_html(get_the_date()); ?></a></li>
+                                        <li><a href="<?php echo esc_url(get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('d'))); ?>"><i class="icon icon-calculator-01"></i><?php echo esc_html(get_the_date()); ?></a></li>
                                     <?php endif; ?>
                                 </ul>
                                 <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -952,9 +952,9 @@ class Blog_Post extends Widget_Base
                                 <?php if ($settings['button_switcher'] == 'yes'): ?>
                                     <div class="post-read-more-btn">
                                         <?php if (!empty($settings['read_more_btn_text'])): ?>
-                                            <a href="<?php the_permalink(); ?>"><span class="read-more-text"><?php echo esc_html($settings['read_more_btn_text']) ?></span> <span class="read-more-icon"><i class="arrow-out hgi-stroke hgi-arrow-right-02"></i></span></a>
+                                            <a href="<?php the_permalink(); ?>"><span class="read-more-text"><?php echo esc_html($settings['read_more_btn_text']) ?></span> <span class="read-more-icon"><i class="icon icon-arrow-right-02"></i></span></a>
                                         <?php else: ?>
-                                            <a href="<?php the_permalink(); ?>"><span class="read-more-text"><?php echo esc_html_e('Read More', 'carvia-core') ?> </span><span class="read-more-icon"><i class="arrow-out hgi-stroke hgi-arrow-right-02"></i></span></a>
+                                            <a href="<?php the_permalink(); ?>"><span class="read-more-text"><?php echo esc_html_e('Read More', 'carvia-core') ?> </span><span class="read-more-icon"><i class="arrow-out icon icon-arrow-right-02"></i></span></a>
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>

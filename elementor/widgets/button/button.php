@@ -129,8 +129,8 @@ class Button extends Widget_Base
                 'type'             => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default'          => [
-                    'value'   => 'hgi-stroke hgi-arrow-right-02',
-                    'library' => 'solid',
+                    'value'   => 'icon icon-arrow-right-02',
+                    'library' => 'carvia-core-icons',
                 ],
             ]
         );

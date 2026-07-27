@@ -646,7 +646,7 @@ class Service_Card extends Widget_Base
                 $image_url = $this->get_image_url($image_field);
                 ?>
                 <!-- start service card -->
-                <div class="col-lg-<?php echo esc_attr($columns); ?>">
+                <div class="col-md-<?php echo esc_attr($columns); ?>">
                     <div class="service-card">
                         <?php if (! empty($icon_url) && $show_icon) : ?>
                             <div class="service-icon">
@@ -670,7 +670,7 @@ class Service_Card extends Widget_Base
 
                         <?php if ($show_readmore) : ?>
                             <a class="service-card-btn" href="<?php the_permalink(); ?>">
-                                <span class="btn-text"><?php echo esc_html($btn_text); ?> </span><span class="btn-icon"><i class="hgi-stroke hgi-arrow-right-02"></i></span>
+                                <span class="btn-text"><?php echo esc_html($btn_text); ?> </span><span class="btn-icon"><i class="icon icon-arrow-right-02"></i></span>
                             </a>
                         <?php endif; ?>
                     </div>

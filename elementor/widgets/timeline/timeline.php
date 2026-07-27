@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Carvia Core - Timeline Widget
  *
@@ -15,68 +16,77 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
 /**
  * Class Timeline
  */
-class Timeline extends Widget_Base {
+class Timeline extends Widget_Base
+{
 
 	/**
 	 * Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+	{
 		return 'timeline';
 	}
 
 	/**
 	 * Widget title.
 	 */
-	public function get_title() {
-		return esc_html__( 'Timeline', 'carvia-core' );
+	public function get_title()
+	{
+		return esc_html__('Timeline', 'carvia-core');
 	}
 
 	/**
 	 * Widget icon.
 	 */
-	public function get_icon() {
+	public function get_icon()
+	{
 		return 'carvia-core-icon eicon-time-line';
 	}
 
 	/**
 	 * Widget categories.
 	 */
-	public function get_categories() {
-		return array( 'carvia_core' );
+	public function get_categories()
+	{
+		return array('carvia_core');
 	}
 
 	/**
 	 * Widget keywords.
 	 */
-	public function get_keywords() {
-		return array( 'timeline', 'history', 'process', 'steps', 'carvia' );
+	public function get_keywords()
+	{
+		return array('timeline', 'history', 'process', 'steps', 'carvia');
 	}
 
 	/**
 	 * Script dependencies (none needed, pure CSS).
 	 */
-	public function get_script_depends() {
+	public function get_script_depends()
+	{
 		return array();
 	}
 
 	/**
 	 * Style dependencies.
 	 */
-	public function get_style_depends() {
-		return array( 'carvia-core-timeline' );
+	public function get_style_depends()
+	{
+		return array('carvia-core-timeline');
 	}
 
 	/**
 	 * Register widget controls.
 	 */
-	protected function register_controls() {
+	protected function register_controls()
+	{
 
 		/* ==========================================================
 		 * CONTENT TAB — LAYOUT
@@ -84,7 +94,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			array(
-				'label' => esc_html__( 'Layout', 'carvia-core' ),
+				'label' => esc_html__('Layout', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -92,15 +102,15 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'layout',
 			array(
-				'label'   => esc_html__( 'Layout', 'carvia-core' ),
+				'label'   => esc_html__('Layout', 'carvia-core'),
 				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
 					'vertical'   => array(
-						'title' => esc_html__( 'Vertical', 'carvia-core' ),
+						'title' => esc_html__('Vertical', 'carvia-core'),
 						'icon'  => 'eicon-navigation-vertical',
 					),
 					'horizontal' => array(
-						'title' => esc_html__( 'Horizontal', 'carvia-core' ),
+						'title' => esc_html__('Horizontal', 'carvia-core'),
 						'icon'  => 'eicon-navigation-horizontal',
 					),
 				),
@@ -112,7 +122,7 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'horizontal_columns',
 			array(
-				'label'     => esc_html__( 'Items Per Row', 'carvia-core' ),
+				'label'     => esc_html__('Items Per Row', 'carvia-core'),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => '4',
 				'options'   => array(
@@ -134,15 +144,15 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'connector_type',
 			array(
-				'label'     => esc_html__( 'Connector Type', 'carvia-core' ),
+				'label'     => esc_html__('Connector Type', 'carvia-core'),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'circle' => array(
-						'title' => esc_html__( 'Border + Circle', 'carvia-core' ),
+						'title' => esc_html__('Border + Circle', 'carvia-core'),
 						'icon'  => 'eicon-dot-circle-o',
 					),
 					'arrow'  => array(
-						'title' => esc_html__( 'Arrow', 'carvia-core' ),
+						'title' => esc_html__('Arrow', 'carvia-core'),
 						'icon'  => 'eicon-arrow-right',
 					),
 				),
@@ -151,20 +161,20 @@ class Timeline extends Widget_Base {
 				'condition' => array(
 					'layout' => 'horizontal',
 				),
-				'description' => esc_html__( 'The vertical layout always uses the border + circle connector.', 'carvia-core' ),
+				'description' => esc_html__('The vertical layout always uses the border + circle connector.', 'carvia-core'),
 			)
 		);
 
 		$this->add_control(
 			'connector_line_style',
 			array(
-				'label'     => esc_html__( 'Connector Line Style', 'carvia-core' ),
+				'label'     => esc_html__('Connector Line Style', 'carvia-core'),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'solid',
 				'options'   => array(
-					'solid'  => esc_html__( 'Solid', 'carvia-core' ),
-					'dashed' => esc_html__( 'Dashed', 'carvia-core' ),
-					'dotted' => esc_html__( 'Dotted', 'carvia-core' ),
+					'solid'  => esc_html__('Solid', 'carvia-core'),
+					'dashed' => esc_html__('Dashed', 'carvia-core'),
+					'dotted' => esc_html__('Dotted', 'carvia-core'),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .timeline' => '--carvia-connector-style: {{VALUE}};',
@@ -183,7 +193,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_items',
 			array(
-				'label' => esc_html__( 'Timeline Items', 'carvia-core' ),
+				'label' => esc_html__('Timeline Items', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -193,7 +203,7 @@ class Timeline extends Widget_Base {
 		$repeater->add_control(
 			'icon',
 			array(
-				'label'   => esc_html__( 'Icon', 'carvia-core' ),
+				'label'   => esc_html__('Icon', 'carvia-core'),
 				'type'    => Controls_Manager::ICONS,
 				'default' => array(
 					'value'   => 'fas fa-flag',
@@ -205,9 +215,9 @@ class Timeline extends Widget_Base {
 		$repeater->add_control(
 			'title',
 			array(
-				'label'       => esc_html__( 'Title', 'carvia-core' ),
+				'label'       => esc_html__('Title', 'carvia-core'),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Timeline Title', 'carvia-core' ),
+				'default'     => esc_html__('Timeline Title', 'carvia-core'),
 				'label_block' => true,
 			)
 		);
@@ -215,10 +225,10 @@ class Timeline extends Widget_Base {
 		$repeater->add_control(
 			'date',
 			array(
-				'label'       => esc_html__( 'Date / Label', 'carvia-core' ),
+				'label'       => esc_html__('Date / Label', 'carvia-core'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => '',
-				'placeholder' => esc_html__( 'e.g. 2024', 'carvia-core' ),
+				'placeholder' => esc_html__('e.g. 2024', 'carvia-core'),
 				'label_block' => true,
 			)
 		);
@@ -226,9 +236,9 @@ class Timeline extends Widget_Base {
 		$repeater->add_control(
 			'description',
 			array(
-				'label'       => esc_html__( 'Description', 'carvia-core' ),
+				'label'       => esc_html__('Description', 'carvia-core'),
 				'type'        => Controls_Manager::TEXTAREA,
-				'default'     => esc_html__( 'Write a short description of this timeline step.', 'carvia-core' ),
+				'default'     => esc_html__('Write a short description of this timeline step.', 'carvia-core'),
 				'label_block' => true,
 				'rows'        => 4,
 			)
@@ -237,9 +247,9 @@ class Timeline extends Widget_Base {
 		$repeater->add_control(
 			'link',
 			array(
-				'label'       => esc_html__( 'Link', 'carvia-core' ),
+				'label'       => esc_html__('Link', 'carvia-core'),
 				'type'        => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'carvia-core' ),
+				'placeholder' => esc_html__('https://your-link.com', 'carvia-core'),
 				'default'     => array(
 					'url' => '',
 				),
@@ -249,41 +259,41 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'items',
 			array(
-				'label'       => esc_html__( 'Items', 'carvia-core' ),
+				'label'       => esc_html__('Items', 'carvia-core'),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => array(
 					array(
-						'title'       => esc_html__( 'Research & Planning', 'carvia-core' ),
-						'date'        => esc_html__( 'Step 01', 'carvia-core' ),
-						'description' => esc_html__( 'We start by understanding your goals and researching the best approach.', 'carvia-core' ),
+						'title'       => esc_html__('Research & Planning', 'carvia-core'),
+						'date'        => esc_html__('Step 01', 'carvia-core'),
+						'description' => esc_html__('We start by understanding your goals and researching the best approach.', 'carvia-core'),
 						'icon'        => array(
 							'value'   => 'fas fa-search',
 							'library' => 'fa-solid',
 						),
 					),
 					array(
-						'title'       => esc_html__( 'Design & Prototype', 'carvia-core' ),
-						'date'        => esc_html__( 'Step 02', 'carvia-core' ),
-						'description' => esc_html__( 'We craft wireframes and prototypes to visualize the final outcome.', 'carvia-core' ),
+						'title'       => esc_html__('Design & Prototype', 'carvia-core'),
+						'date'        => esc_html__('Step 02', 'carvia-core'),
+						'description' => esc_html__('We craft wireframes and prototypes to visualize the final outcome.', 'carvia-core'),
 						'icon'        => array(
 							'value'   => 'fas fa-pencil-ruler',
 							'library' => 'fa-solid',
 						),
 					),
 					array(
-						'title'       => esc_html__( 'Development', 'carvia-core' ),
-						'date'        => esc_html__( 'Step 03', 'carvia-core' ),
-						'description' => esc_html__( 'Our team builds and tests every feature with quality in mind.', 'carvia-core' ),
+						'title'       => esc_html__('Development', 'carvia-core'),
+						'date'        => esc_html__('Step 03', 'carvia-core'),
+						'description' => esc_html__('Our team builds and tests every feature with quality in mind.', 'carvia-core'),
 						'icon'        => array(
 							'value'   => 'fas fa-code',
 							'library' => 'fa-solid',
 						),
 					),
 					array(
-						'title'       => esc_html__( 'Launch', 'carvia-core' ),
-						'date'        => esc_html__( 'Step 04', 'carvia-core' ),
-						'description' => esc_html__( 'We deploy the final product and monitor its performance closely.', 'carvia-core' ),
+						'title'       => esc_html__('Launch', 'carvia-core'),
+						'date'        => esc_html__('Step 04', 'carvia-core'),
+						'description' => esc_html__('We deploy the final product and monitor its performance closely.', 'carvia-core'),
 						'icon'        => array(
 							'value'   => 'fas fa-rocket',
 							'library' => 'fa-solid',
@@ -302,7 +312,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_box',
 			array(
-				'label' => esc_html__( 'Box', 'carvia-core' ),
+				'label' => esc_html__('Box', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -310,9 +320,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'box_gap',
 			array(
-				'label'      => esc_html__( 'Items Gap', 'carvia-core' ),
+				'label'      => esc_html__('Items Gap', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em' ),
+				'size_units' => array('px', 'em'),
 				'range'      => array(
 					'px' => array(
 						'min' => 0,
@@ -333,9 +343,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'box_spacing_horizontal',
 			array(
-				'label'       => esc_html__( 'Box Spacing (Horizontal)', 'carvia-core' ),
+				'label'       => esc_html__('Box Spacing (Horizontal)', 'carvia-core'),
 				'type'        => Controls_Manager::SLIDER,
-				'size_units'  => array( 'px', 'em' ),
+				'size_units'  => array('px', 'em'),
 				'range'       => array(
 					'px' => array(
 						'min' => 0,
@@ -346,7 +356,7 @@ class Timeline extends Widget_Base {
 					'unit' => 'px',
 					'size' => 15,
 				),
-				'description' => esc_html__( 'Space between item boxes. The connector border always runs the full width of the items, unaffected by this spacing.', 'carvia-core' ),
+				'description' => esc_html__('Space between item boxes. The connector border always runs the full width of the items, unaffected by this spacing.', 'carvia-core'),
 				'condition'   => array(
 					'layout' => 'horizontal',
 				),
@@ -360,7 +370,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'box_background',
-				'types'    => array( 'classic', 'gradient' ),
+				'types'    => array('classic', 'gradient'),
 				'selector' => '{{WRAPPER}} .timeline__box',
 			)
 		);
@@ -376,9 +386,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'box_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'carvia-core' ),
+				'label'      => esc_html__('Border Radius', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%' ),
+				'size_units' => array('px', '%'),
 				'selectors'  => array(
 					'{{WRAPPER}} .timeline__box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
@@ -388,9 +398,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'box_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'carvia-core' ),
+				'label'      => esc_html__('Padding', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', 'em', '%' ),
+				'size_units' => array('px', 'em', '%'),
 				'default'    => array(
 					'top'      => 25,
 					'right'    => 25,
@@ -421,7 +431,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_icon',
 			array(
-				'label' => esc_html__( 'Icon', 'carvia-core' ),
+				'label' => esc_html__('Icon', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -429,9 +439,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			array(
-				'label'      => esc_html__( 'Icon Size', 'carvia-core' ),
+				'label'      => esc_html__('Icon Size', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
+				'size_units' => array('px'),
 				'range'      => array(
 					'px' => array(
 						'min' => 10,
@@ -452,9 +462,9 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_box_size',
 			array(
-				'label'      => esc_html__( 'Icon Box Size', 'carvia-core' ),
+				'label'      => esc_html__('Icon Box Size', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
+				'size_units' => array('px'),
 				'range'      => array(
 					'px' => array(
 						'min' => 30,
@@ -471,19 +481,19 @@ class Timeline extends Widget_Base {
 			)
 		);
 
-		$this->start_controls_tabs( 'icon_colors_tabs' );
+		$this->start_controls_tabs('icon_colors_tabs');
 
 		$this->start_controls_tab(
 			'icon_colors_normal',
 			array(
-				'label' => esc_html__( 'Normal', 'carvia-core' ),
+				'label' => esc_html__('Normal', 'carvia-core'),
 			)
 		);
 
 		$this->add_control(
 			'icon_color',
 			array(
-				'label'     => esc_html__( 'Icon Color', 'carvia-core' ),
+				'label'     => esc_html__('Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
@@ -497,7 +507,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'icon_background',
-				'types'    => array( 'classic', 'gradient' ),
+				'types'    => array('classic', 'gradient'),
 				'selector' => '{{WRAPPER}} .timeline__icon-box',
 			)
 		);
@@ -507,14 +517,14 @@ class Timeline extends Widget_Base {
 		$this->start_controls_tab(
 			'icon_colors_hover',
 			array(
-				'label' => esc_html__( 'Hover', 'carvia-core' ),
+				'label' => esc_html__('Hover', 'carvia-core'),
 			)
 		);
 
 		$this->add_control(
 			'icon_color_hover',
 			array(
-				'label'     => esc_html__( 'Icon Color', 'carvia-core' ),
+				'label'     => esc_html__('Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .timeline__item:hover .timeline__icon-box i'   => 'color: {{VALUE}};',
@@ -527,7 +537,7 @@ class Timeline extends Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'icon_background_hover',
-				'types'    => array( 'classic', 'gradient' ),
+				'types'    => array('classic', 'gradient'),
 				'selector' => '{{WRAPPER}} .timeline__item:hover .timeline__icon-box',
 			)
 		);
@@ -547,9 +557,9 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'icon_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'carvia-core' ),
+				'label'      => esc_html__('Border Radius', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%' ),
+				'size_units' => array('px', '%'),
 				'default'    => array(
 					'top'      => 50,
 					'right'    => 50,
@@ -572,7 +582,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_connector',
 			array(
-				'label' => esc_html__( 'Connector', 'carvia-core' ),
+				'label' => esc_html__('Connector', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -580,7 +590,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'connector_color',
 			array(
-				'label'     => esc_html__( 'Border Color', 'carvia-core' ),
+				'label'     => esc_html__('Border Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#dcdfe6',
 				'selectors' => array(
@@ -595,9 +605,9 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'connector_width',
 			array(
-				'label'      => esc_html__( 'Border Thickness', 'carvia-core' ),
+				'label'      => esc_html__('Border Thickness', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
+				'size_units' => array('px'),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -620,7 +630,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'node_heading',
 			array(
-				'label'     => esc_html__( 'Circle Node', 'carvia-core' ),
+				'label'     => esc_html__('Circle Node', 'carvia-core'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -632,9 +642,9 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'node_size',
 			array(
-				'label'      => esc_html__( 'Circle Size', 'carvia-core' ),
+				'label'      => esc_html__('Circle Size', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
+				'size_units' => array('px'),
 				'range'      => array(
 					'px' => array(
 						'min' => 6,
@@ -657,7 +667,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'node_color',
 			array(
-				'label'     => esc_html__( 'Circle Color', 'carvia-core' ),
+				'label'     => esc_html__('Circle Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
@@ -672,7 +682,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'node_border_color',
 			array(
-				'label'     => esc_html__( 'Circle Ring Color', 'carvia-core' ),
+				'label'     => esc_html__('Circle Ring Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
@@ -687,7 +697,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'arrow_heading',
 			array(
-				'label'     => esc_html__( 'Arrow', 'carvia-core' ),
+				'label'     => esc_html__('Arrow', 'carvia-core'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -699,7 +709,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'arrow_color',
 			array(
-				'label'     => esc_html__( 'Arrow Color', 'carvia-core' ),
+				'label'     => esc_html__('Arrow Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
@@ -714,9 +724,9 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'arrow_size',
 			array(
-				'label'      => esc_html__( 'Arrow Size', 'carvia-core' ),
+				'label'      => esc_html__('Arrow Size', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
+				'size_units' => array('px'),
 				'range'      => array(
 					'px' => array(
 						'min' => 10,
@@ -744,7 +754,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			array(
-				'label' => esc_html__( 'Title', 'carvia-core' ),
+				'label' => esc_html__('Title', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -752,7 +762,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			array(
-				'label'     => esc_html__( 'Color', 'carvia-core' ),
+				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1a1a1a',
 				'selectors' => array(
@@ -772,7 +782,7 @@ class Timeline extends Widget_Base {
 		$this->add_responsive_control(
 			'title_spacing',
 			array(
-				'label'     => esc_html__( 'Spacing Bottom', 'carvia-core' ),
+				'label'     => esc_html__('Spacing Bottom', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -798,7 +808,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_date',
 			array(
-				'label' => esc_html__( 'Date / Label', 'carvia-core' ),
+				'label' => esc_html__('Date / Label', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -806,7 +816,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'date_color',
 			array(
-				'label'     => esc_html__( 'Color', 'carvia-core' ),
+				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#6b46f5',
 				'selectors' => array(
@@ -831,7 +841,7 @@ class Timeline extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_description',
 			array(
-				'label' => esc_html__( 'Description', 'carvia-core' ),
+				'label' => esc_html__('Description', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -839,7 +849,7 @@ class Timeline extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			array(
-				'label'     => esc_html__( 'Color', 'carvia-core' ),
+				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#666666',
 				'selectors' => array(
@@ -867,57 +877,60 @@ class Timeline extends Widget_Base {
 	 * @param string $layout         'vertical' or 'horizontal'.
 	 * @param string $connector_type 'circle' or 'arrow'.
 	 */
-	protected function render_item( $item, $index, $layout, $connector_type ) {
-		$has_link   = ! empty( $item['link']['url'] );
+	protected function render_item($item, $index, $layout, $connector_type)
+	{
+		$has_link   = ! empty($item['link']['url']);
 		$tag        = $has_link ? 'a' : 'div';
-		$item_class = array( 'timeline__item' );
+		$item_class = array('timeline__item');
 
-		if ( 'vertical' === $layout ) {
-			$item_class[] = ( 0 === $index % 2 ) ? 'timeline__item--left' : 'timeline__item--right';
+		if ('vertical' === $layout) {
+			$item_class[] = (0 === $index % 2) ? 'timeline__item--left' : 'timeline__item--right';
 		}
 
-		if ( $has_link ) {
-			$this->add_link_attributes( 'item_link_' . $index, $item['link'] );
+		if ($has_link) {
+			$this->add_link_attributes('item_link_' . $index, $item['link']);
 		}
-		?>
-		<div class="<?php echo esc_attr( implode( ' ', $item_class ) ); ?>">
-			<?php if ( 'circle' === $connector_type ) : ?>
+?>
+		<div class="<?php echo esc_attr(implode(' ', $item_class)); ?>">
+			<?php if ('circle' === $connector_type) : ?>
 				<span class="timeline__node" aria-hidden="true"></span>
 			<?php endif; ?>
-			<<?php echo esc_attr( $tag ); ?> class="timeline__box" <?php echo $has_link ? $this->get_render_attribute_string( 'item_link_' . $index ) : ''; ?>>
+			<<?php echo esc_attr($tag); ?> class="timeline__box" <?php echo $has_link ? $this->get_render_attribute_string('item_link_' . $index) : ''; ?>>
 				<div class="timeline__icon-box">
-					<?php \Elementor\Icons_Manager::render_icon( $item['icon'], array( 'aria-hidden' => 'true' ) ); ?>
+					<?php \Elementor\Icons_Manager::render_icon($item['icon'], array('aria-hidden' => 'true')); ?>
 				</div>
 				<div class="timeline__content">
-					<?php if ( ! empty( $item['date'] ) ) : ?>
-						<div class="timeline__date"><?php echo esc_html( $item['date'] ); ?></div>
+					<i class="icon-search-01"></i>
+					<?php if (! empty($item['date'])) : ?>
+						<div class="timeline__date"><?php echo esc_html($item['date']); ?></div>
 					<?php endif; ?>
-					<?php if ( ! empty( $item['title'] ) ) : ?>
-						<h3 class="timeline__title"><?php echo esc_html( $item['title'] ); ?></h3>
+					<?php if (! empty($item['title'])) : ?>
+						<h3 class="timeline__title"><?php echo esc_html($item['title']); ?></h3>
 					<?php endif; ?>
-					<?php if ( ! empty( $item['description'] ) ) : ?>
-						<div class="timeline__description"><?php echo wp_kses_post( $item['description'] ); ?></div>
+					<?php if (! empty($item['description'])) : ?>
+						<div class="timeline__description"><?php echo wp_kses_post($item['description']); ?></div>
 					<?php endif; ?>
 				</div>
-			</<?php echo esc_attr( $tag ); ?>>
+			</<?php echo esc_attr($tag); ?>>
 		</div>
-		<?php
+	<?php
 	}
 
 	/**
 	 * Render widget output on the frontend.
 	 */
-	protected function render() {
+	protected function render()
+	{
 		$settings = $this->get_settings_for_display();
 
-		if ( empty( $settings['items'] ) ) {
+		if (empty($settings['items'])) {
 			return;
 		}
 
-		$layout = ! empty( $settings['layout'] ) ? $settings['layout'] : 'vertical';
+		$layout = ! empty($settings['layout']) ? $settings['layout'] : 'vertical';
 
 		// Vertical layout always uses the border + circle connector; arrow only applies to horizontal.
-		$connector_type = 'vertical' === $layout ? 'circle' : ( ! empty( $settings['connector_type'] ) ? $settings['connector_type'] : 'circle' );
+		$connector_type = 'vertical' === $layout ? 'circle' : (! empty($settings['connector_type']) ? $settings['connector_type'] : 'circle');
 
 		$wrapper_class = array(
 			'timeline',
@@ -925,13 +938,13 @@ class Timeline extends Widget_Base {
 			'timeline--connector-' . $connector_type,
 		);
 
-		$this->add_render_attribute( 'wrapper', 'class', $wrapper_class );
-		?>
-		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-			<?php foreach ( $settings['items'] as $index => $item ) : ?>
-				<?php $this->render_item( $item, $index, $layout, $connector_type ); ?>
+		$this->add_render_attribute('wrapper', 'class', $wrapper_class);
+	?>
+		<div <?php echo $this->get_render_attribute_string('wrapper'); ?>>
+			<?php foreach ($settings['items'] as $index => $item) : ?>
+				<?php $this->render_item($item, $index, $layout, $connector_type); ?>
 			<?php endforeach; ?>
 		</div>
-		<?php
+<?php
 	}
 }

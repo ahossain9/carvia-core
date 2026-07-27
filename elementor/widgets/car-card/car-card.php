@@ -567,7 +567,7 @@ class Car_Card extends Widget_Base
         if (empty($field)) {
             return '';
         }
-        
+
         if (is_array($field)) {
             if (isset($field['url'])) {
                 return $field['url'];
@@ -650,7 +650,7 @@ class Car_Card extends Widget_Base
                 $specs = function_exists('rwmb_meta') ? rwmb_meta('carvia_car_specs', [], $post_id) : get_post_meta($post_id, 'carvia_car_specs', true);
                 ?>
                 <!-- start car card -->
-                <div class="col-lg-<?php echo esc_attr($columns); ?>">
+                <div class="col-md-<?php echo esc_attr($columns); ?>">
                     <div class="car-card">
                         <div class="car-card-top-content">
                             <!-- start image -->

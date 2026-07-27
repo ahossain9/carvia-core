@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Hugeicons Manager
+ * carvia core icon manager
  * @package Carvia_Core
  * @since 1.0.0
  */
@@ -15,21 +15,20 @@ class Icons_Manager
 
     public static function init()
     {
-        add_filter('elementor/icons_manager/additional_tabs', [__CLASS__, 'add_hugeicons_tab']);
+        add_filter('elementor/icons_manager/additional_tabs', [__CLASS__, 'add_carvia_core_icons_tab']);
     }
 
-    public static function add_hugeicons_tab($tabs)
+    public static function add_carvia_core_icons_tab($tabs)
     {
-        $tabs['hugeicons'] = [
-            'name' => 'hugeicons',
-            'label' => __('Hugeicons', 'carvia-core'),
-            'url' => CARVIA_CORE_ASSETS . 'css/hugeicons.min.css',
-            'enqueue' => [CARVIA_CORE_ASSETS . 'css/hugeicons.min.css'],
-            'prefix' => '',
-            'displayPrefix' => '',
-            'labelIcon' => 'hgi hgi-stroke hgi-home-01',
+        $tabs['carvia-core-icons'] = [
+            'name' => 'carvia-core-icons',
+            'label' => __('Carvia Icons', 'carvia-core'),
+            'url' => CARVIA_CORE_ASSETS . 'css/carvia-icons.min.css',
+            'prefix' => 'icon-',
+            'displayPrefix' => 'icon',
+            'labelIcon' => 'icon icon-dashboard-circle',
             'ver' => CARVIA_CORE_VERSION,
-            'fetchJson' => CARVIA_CORE_ASSETS . 'js/hugeicons.js',
+            'fetchJson' => CARVIA_CORE_ASSETS . 'js/carvia-icons.js',
             'native' => false,
         ];
         return $tabs;
