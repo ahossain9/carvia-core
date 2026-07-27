@@ -94,7 +94,6 @@ class Assets
         wp_register_script('gsap-splittext', CARVIA_CORE_ASSETS . 'js/SplitText.min.js', ['jquery', 'gsap'], CARVIA_CORE_VERSION, true);
         wp_register_script('gsap-animation', CARVIA_CORE_ASSETS . 'js/animation-effect.js', ['jquery', 'gsap', 'gsap-scrolltrigger', 'gsap-splittext'], CARVIA_CORE_VERSION, true);
         wp_register_script('magnific-popup', CARVIA_CORE_ASSETS . 'js/magnific-popup.min.js', ['jquery'], CARVIA_CORE_VERSION, true);
-        wp_register_script('countdown', CARVIA_CORE_ASSETS . 'js/countdown.js', ['jquery'], CARVIA_CORE_VERSION, true);
         wp_register_script('typed-js', CARVIA_CORE_ASSETS . 'js/typed.js', ['jquery'], CARVIA_CORE_VERSION, true);
         wp_register_script('carvia-main-js', CARVIA_CORE_ASSETS . 'js/main.min.js', ['jquery'], CARVIA_CORE_VERSION, true);
     }
