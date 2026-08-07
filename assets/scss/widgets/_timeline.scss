@@ -1,22 +1,16 @@
 
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .timeline {
-	--carvia-connector-color: #dcdfe6;
-	--carvia-connector-width: 2px;
-	--carvia-connector-style: solid;
-	--carvia-node-size: 16px;
-	--carvia-node-color: #6b46f5;
-	--carvia-node-border-color: #ffffff;
-	--carvia-arrow-color: #6b46f5;
-	--carvia-arrow-size: 24px;
- 
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
 	width: 100%;
  
 	// ----------------------------------------------------------------
-	// VERTICAL LAYOUT — center border, circle node, alternating sides
-	// (item 1 left, item 2 right, item 3 left, item 4 right ...)
+	// VERTICAL LAYOUT
 	// ----------------------------------------------------------------
 	&.timeline--vertical {
 		position: relative;
@@ -28,9 +22,9 @@
 			top: 0;
 			bottom: 0;
 			left: 50%;
-			width: var(--carvia-connector-width);
-			background: var(--carvia-connector-color);
-			border-left: var(--carvia-connector-width) var(--carvia-connector-style) var(--carvia-connector-color);
+			width: 2px;
+			background: #dcdfe6;
+			border-left: 2px solid #dcdfe6;
 			background: transparent;
 			transform: translateX(-50%);
 		}
@@ -39,7 +33,7 @@
 			position: relative;
 			display: flex;
 			width: 100%;
-			min-height: var(--carvia-node-size);
+			min-height: 16px;
 		}
  
 		.timeline__item--left {
@@ -69,12 +63,12 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: var(--carvia-node-size);
-			height: var(--carvia-node-size);
+			width: 16px;
+			height: 16px;
 			border-radius: 50%;
-			background: var(--carvia-node-color);
-			border: 3px solid var(--carvia-node-border-color);
-			box-shadow: 0 0 0 2px var(--carvia-connector-color);
+			background: $color-primary;
+			border: 3px solid #ffffff;
+			box-shadow: 0 0 0 2px #dcdfe6;
 			z-index: 2;
 		}
 	}
@@ -98,25 +92,19 @@
 			text-align: center;
 		}
  
-		// --- Connector: ONE continuous border spanning the full row width
-		// (outside/behind every item, not per-item), with a circle sitting
-		// on top of it above every item — mirrors how the vertical layout
-		// uses a single full-length center line.
 		&.timeline--connector-circle {
 			.timeline__item {
-				padding-top: calc(var(--carvia-node-size) + 20px);
+				padding-top: 60px;
 			}
  
-			// Single full-width bar drawn once on the wrapper, e.g. if the
-			// row of items is 1200px wide, this line is exactly 1200px.
 			&::before {
 				content: '';
 				position: absolute;
-				top: calc(var(--carvia-node-size) / 2);
+				top: calc(16px / 2);
 				left: 0;
 				right: 0;
 				height: 0;
-				border-top: var(--carvia-connector-width) var(--carvia-connector-style) var(--carvia-connector-color);
+				border-top: 2px solid #dcdfe6;
 				z-index: 0;
 			}
  
@@ -125,17 +113,16 @@
 				top: 0;
 				left: 50%;
 				transform: translateX(-50%);
-				width: var(--carvia-node-size);
-				height: var(--carvia-node-size);
+				width: 16px;
+				height: 16px;
 				border-radius: 50%;
-				background: var(--carvia-node-color);
-				border: 3px solid var(--carvia-node-border-color);
-				box-shadow: 0 0 0 2px var(--carvia-connector-color);
+				background: $color-primary;
+				border: 3px solid #ffffff;
+				box-shadow: 0 0 0 2px #dcdfe6;
 				z-index: 2;
 			}
 		}
  
-		// --- Connector: arrow in the middle of every item ---
 		&.timeline--connector-arrow {
 			.timeline__item {
 				&::after {
@@ -146,7 +133,7 @@
 					transform: translate(50%, -50%);
 					font-size: var(--carvia-arrow-size);
 					line-height: 1;
-					color: var(--carvia-arrow-color);
+					color: $color-primary;
 					z-index: 2;
 				}
  
@@ -202,8 +189,8 @@
 		justify-content: center;
 		width: 64px;
 		height: 64px;
-		border-radius: 50%;
-		background: #6b46f5;
+		border-radius: 10px;
+		background: $color-primary;
 		transition: background 0.25s ease, color 0.25s ease;
  
 		i,
@@ -217,28 +204,12 @@
 		min-width: 0;
 	}
  
-	.timeline__date {
-		display: block;
+	.timeline__label {
 		font-size: 13px;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
-		color: #6b46f5;
 		margin-bottom: 6px;
-	}
- 
-	.timeline__title {
-		font-size: 20px;
-		font-weight: 600;
-		margin: 0 0 10px;
-		color: #1a1a1a;
-	}
- 
-	.timeline__description {
-		font-size: 15px;
-		line-height: 1.6;
-		color: #666666;
-		margin: 0;
 	}
  
 	// ----------------------------------------------------------------
@@ -249,22 +220,21 @@
 			grid-template-columns: 1fr !important;
  
 			&.timeline--connector-circle {
-				// Single full-height bar drawn once on the wrapper (down the
-				// left side), instead of per-item segments.
 				&::before {
 					top: 0;
 					bottom: 0;
-					left: calc(var(--carvia-node-size) / 2);
+					left: calc(16px / 2);
 					right: auto;
 					width: 0;
 					height: auto;
 					border-top: none;
-					border-left: var(--carvia-connector-width) var(--carvia-connector-style) var(--carvia-connector-color);
+					border-left: 2px solid #dcdfe6;
+					display: none;
 				}
  
 				.timeline__item {
 					padding-top: 0;
-					padding-left: calc(var(--carvia-node-size) + 20px);
+					padding-left: 0;
 					align-items: flex-start;
 					text-align: left;
 				}
@@ -273,6 +243,7 @@
 					top: 0;
 					left: 0;
 					transform: translateX(0);
+					display: none;
 				}
  
 				.timeline__box {
@@ -298,7 +269,7 @@
  
 		&.timeline--vertical {
 			&::before {
-				left: calc(var(--carvia-node-size) / 2);
+				left: calc(16px / 2);
 			}
  
 			.timeline__item,
@@ -307,7 +278,7 @@
 				justify-content: flex-start;
  
 				.timeline__box {
-					width: calc(100% - #{'var(--carvia-node-size)'} - 30px);
+					width: calc(100% - #{'16px'} - 30px);
 					margin-left: 40px;
 					margin-right: 0;
 					text-align: left;
@@ -316,7 +287,24 @@
 			}
  
 			.timeline__node {
-				left: calc(var(--carvia-node-size) / 2);
+				left: calc(16px / 2);
+			}
+		}
+
+	}
+	@include respond-below(lg) {
+		&.timeline--horizontal {
+			&.timeline--connector-circle {
+				&::before {
+					display: none;
+				}
+
+				.timeline__item {
+					padding-top: 10px;
+				}
+				.timeline__node {
+					display: none;
+				}
 			}
 		}
 	}

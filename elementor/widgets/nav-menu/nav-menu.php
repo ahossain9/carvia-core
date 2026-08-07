@@ -150,7 +150,7 @@ class Nav_Menu extends Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .nav-menu-area' => 'text-align: {{VALUE}};',
                 ],
-                'default' => 'left',
+                'default' => 'right',
             ]
         );
         $this->add_group_control(
@@ -391,7 +391,7 @@ class Nav_Menu extends Widget_Base
                     ]
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .nav-menu-area #responsive-menu-wrap' => 'top: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .nav-menu-area .mobile-menu-wrap' => 'top: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -416,7 +416,11 @@ class Nav_Menu extends Widget_Base
             <nav id="nav-menu" class="carvia-nav-menu-wrap">
                 <?php echo trim($menu_html); ?>
             </nav>
-            <div id="responsive-menu-wrap"></div>
+            <!-- start mobile menu wrap -->
+            <div class="mobile-menu-wrap">
+                <a class="header-menu-bar"><i class="icon icon-dashboard-circle1"></i></a>
+            </div>
+            <!-- end mobile menu wrap -->
         </div>
 <?php
 
