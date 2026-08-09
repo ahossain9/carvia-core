@@ -31,7 +31,7 @@ class Pricing_Table extends Widget_Base
 
 	public function get_icon()
 	{
-		return 'eicon-price-table';
+		return 'carvia-core-icon eicon-price-table';
 	}
 
 	public function get_categories()
@@ -85,9 +85,9 @@ class Pricing_Table extends Widget_Base
 		);
 
 		$this->add_control(
-			'left_description',
+			'description',
 			[
-				'label'   => esc_html__('Info Text', 'carvia-core'),
+				'label'   => esc_html__('Description', 'carvia-core'),
 				'type'    => Controls_Manager::TEXTAREA,
 				'default' => 'Perfect for small teams and startups getting started.',
 				'rows'    => 4,
@@ -115,22 +115,12 @@ class Pricing_Table extends Widget_Base
 
 		$this->end_controls_section();
 
-		// ─── CONTENT: RIGHT SIDE ──────────────────────────────────────
+		// ─── FEATURE CONTENT ──────────────────────────────────────
 		$this->start_controls_section(
-			'section_right_content',
+			'features_content',
 			[
 				'label' => esc_html__('Features', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'right_description',
-			[
-				'label'   => esc_html__('Description', 'carvia-core'),
-				'type'    => Controls_Manager::TEXTAREA,
-				'default' => 'Everything you need to launch, grow, and scale your business.',
-				'rows'    => 4,
 			]
 		);
 
@@ -376,17 +366,17 @@ class Pricing_Table extends Widget_Base
 
 		$this->end_controls_section();
 
-		// ─── STYLE: LEFT DESCRIPTION ──────────────────────────────────
+		// ─── STYLE: DESCRIPTION ──────────────────────────────────
 		$this->start_controls_section(
-			'section_style_left_desc',
+			'section_style_description',
 			[
-				'label' => esc_html__('Information', 'carvia-core'),
+				'label' => esc_html__('Description', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'left_desc_color',
+			'desc_color',
 			[
 				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
@@ -399,13 +389,13 @@ class Pricing_Table extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'left_desc_typography',
+				'name'     => 'desc_typography',
 				'selector' => '{{WRAPPER}} .left-content-desc',
 			]
 		);
 
 		$this->add_control(
-			'left_desc_spacing',
+			'desc_spacing',
 			[
 				'label'      => esc_html__('Bottom Spacing', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
@@ -414,50 +404,6 @@ class Pricing_Table extends Widget_Base
 				'default'    => ['unit' => 'px', 'size' => 32],
 				'selectors'  => [
 					'{{WRAPPER}} .left-content-desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
-		// ─── STYLE: RIGHT DESCRIPTION ─────────────────────────────────
-		$this->start_controls_section(
-			'section_style_right_desc',
-			[
-				'label' => esc_html__('Description', 'carvia-core'),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'right_desc_color',
-			[
-				'label'     => esc_html__('Color', 'carvia-core'),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .right-content-desc' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name'     => 'right_desc_typography',
-				'selector' => '{{WRAPPER}} .right-content-desc',
-			]
-		);
-
-		$this->add_control(
-			'right_desc_spacing',
-			[
-				'label'      => esc_html__('Bottom Spacing', 'carvia-core'),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => ['px'],
-				'range'      => ['px' => ['min' => 0, 'max' => 100]],
-				'default'    => ['unit' => 'px', 'size' => 28],
-				'selectors'  => [
-					'{{WRAPPER}} .right-content-desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -769,9 +715,7 @@ class Pricing_Table extends Widget_Base
 ?>
 		<div class="pricing-card">
 			<div class="pricing-inner">
-
-				<!-- LEFT SIDE CONTENT-->
-				<div class="pricing-left-content">
+				<div class="pricing-header">
 					<h4 class="pricing-title"><?php echo esc_html($settings['title']); ?></h4>
 
 					<div class="price-wrap">
@@ -781,24 +725,23 @@ class Pricing_Table extends Widget_Base
 						<?php endif; ?>
 					</div>
 
-					<?php if (! empty($settings['left_description'])) : ?>
-						<p class="left-content-desc"><?php echo esc_html($settings['left_description']); ?></p>
+					<?php if (! empty($settings['description'])) : ?>
+						<p class="left-content-desc"><?php echo esc_html($settings['description']); ?></p>
 					<?php endif; ?>
-
-					<a href="<?php echo esc_url($button_url); ?>" <?php echo $button_target . $button_rel; ?> class="pricing-btn">
-						<span class="pricing-btn-text"><?php echo esc_html($settings['button_text']); ?></span>
-						<span class="pricing-btn-arrow" aria-hidden="true">
-							<span class="pricing-btn-arrow-inner">&#8594;</span>
-						</span>
-					</a>
+					<div class="button-wrapper">
+						<a href="<?php echo esc_url($button_url); ?>" <?php echo $button_target . $button_rel; ?> class="btn-fill pricing-btn">
+							<span class="btn-fill__text"><?php echo esc_html($settings['button_text']); ?></span>
+							<span class="rpl-btn__label">
+								<span class="btn-fill__icon">
+									<i aria-hidden="true" class="arrow-out icon icon-arrow-right-02"></i>
+									<i aria-hidden="true" class="arrow-in icon icon-arrow-right-02"></i>
+								</span>
+							</span>
+						</a>
+					</div>
 				</div>
 
-				<!-- RIGHT SIDE CONTENT -->
-				<div class="pricing-right-content">
-					<?php if (! empty($settings['right_description'])) : ?>
-						<p class="right-content-desc"><?php echo esc_html($settings['right_description']); ?></p>
-					<?php endif; ?>
-
+				<div class="pricing-features">
 					<?php if (! empty($settings['features_list'])) : ?>
 						<ul class="pricing-features-list">
 							<?php foreach ($settings['features_list'] as $index => $item) : ?>
@@ -812,64 +755,6 @@ class Pricing_Table extends Widget_Base
 						</ul>
 					<?php endif; ?>
 				</div>
-
-			</div>
-		</div>
-	<?php
-	}
-
-	protected function content_template()
-	{
-	?>
-		<div class="pricing-card">
-			<div class="pricing-inner">
-
-				<div class="pricing-left-content">
-					<h3 class="pricing-title">{{{ settings.title }}}</h3>
-
-					<div class="price-wrap">
-						<span class="price-content">{{{ settings.price }}}</span>
-						<# if ( settings.price_period ) { #>
-							<span class="price-content-period">{{{ settings.price_period }}}</span>
-							<# } #>
-					</div>
-
-					<# if ( settings.left_description ) { #>
-						<p class="left-content-desc">{{{ settings.left_description }}}</p>
-						<# } #>
-
-							<a href="#" class="pricing-btn">
-								<span class="pricing-btn-text">{{{ settings.button_text }}}</span>
-								<span class="pricing-btn-arrow" aria-hidden="true">
-									<span class="pricing-btn-arrow-inner">&#8594;</span>
-								</span>
-							</a>
-				</div>
-
-				<div class="pricing-right-content">
-					<# if ( settings.right_description ) { #>
-						<p class="right-content-desc">{{{ settings.right_description }}}</p>
-						<# } #>
-
-							<# if ( settings.features_list ) { #>
-								<ul class="pricing-features-list">
-									<# _.each( settings.features_list, function( item ) { #>
-										<li class="pricing-feature-item elementor-repeater-item-{{{ item._id }}}">
-											<span class="pricing-feature-icon">
-												<# var iconHTML=elementor.helpers.renderIcon( view, item.feature_icon, { 'aria-hidden' : 'true' }, 'i' , 'object' ); #>
-													<# if ( iconHTML && iconHTML.rendered ) { #>
-														{{{ iconHTML.value }}}
-														<# } else { #>
-															<i class="{{ item.feature_icon.value }}"></i>
-															<# } #>
-											</span>
-											<span class="pricing-feature-text">{{{ item.feature_text }}}</span>
-										</li>
-										<# }); #>
-								</ul>
-								<# } #>
-				</div>
-
 			</div>
 		</div>
 <?php

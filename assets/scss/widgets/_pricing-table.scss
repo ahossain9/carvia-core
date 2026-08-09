@@ -13,24 +13,7 @@
         padding: 30px 25px;
     }
     .pricing-inner {
-        display: flex;
-        gap: 40px;
-        align-items: stretch;
-        @media (max-width: 768px) {
-            flex-direction: column;
-            gap: 24px;
-        }
-        .pricing-left-content {
-            flex: 0 0 auto;
-            width: 42%;
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            border-right: 1px solid #DFDFDF;
-            @media (max-width: 768px) {
-                width: 100%;
-                border: 0;
-            }
+        .pricing-header {
             .pricing-title {
                 color: $color-primary;
                 margin: 0 0 20px;
@@ -57,66 +40,9 @@
                 line-height: 1.65;
                 margin: 0 0 32px;
             }
-            .pricing-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 0;
-                padding: 8px 8px 8px 20px;
-                background-color: $color-primary;
-                color: $color-heading;
-                text-decoration: none;
-                font-size: 15px;
-                font-weight: 600;
-                border-radius: 10px;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
-                align-self: flex-start;
-                margin-top: auto;
-                white-space: nowrap;
-                line-height: 1;
-                .pricing-btn-text {
-                    flex-shrink: 0;
-                }
-                .pricing-btn-arrow {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 5px;
-                    background-color: $color-heading;
-                    margin-left: 12px;
-                    flex-shrink: 0;
-                    transition: background-color 0.3s ease, transform 0.3s ease;
-                }
-                .pricing-btn-arrow-inner {
-                    color: $color-primary;
-                    font-size: 16px;
-                    line-height: 1;
-                    display: block;
-                    transition: color 0.3s ease, transform 0.3s ease;
-                }
-                &:hover{
-                    background-color: #b8e855;
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 24px rgba(209, 255, 109, 0.25);
-                    .pricing-btn-arrow {
-                        transform: rotate(0deg);
-                    }
-                    .pricing-btn-arrow-inner {
-                        transform: translateX(3px);
-                    }
-                }
-            }
         }
-        .pricing-right-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .pricing-features {
             padding: 12px 0;
-            box-sizing: border-box;
             .right-content-desc {
                 font-size: 15px;
                 line-height: 1.7;

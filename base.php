@@ -61,21 +61,33 @@ class Plugin
     }
 
     /**
-     * Add custom category.
+     * Add custom categories
      *
      * @param $elements_manager
      */
     public function add_category($elements_manager)
     {
-        $elements_manager->add_category(
-            'carvia_core',
-            [
+        $new_categories = [
+            'carvia_core' => [
                 'title' => __('Carvia', 'carvia_core-core'),
-                'icon' => 'fa fa-smile-o',
-            ]
-        );
-    }
+                'icon'  => 'fa fa-smile-o',
+            ],
+            'carvia_core_cat_two' => [
+                'title' => __('Carvia Header & Footer', 'carvia_core-core'),
+                'icon'  => 'fa fa-smile-o',
+            ],
+        ];
 
+        $old_categories = $elements_manager->get_categories();
+
+        $categories = array_merge($new_categories, $old_categories);
+
+        $set_categories = function ($categories) {
+            $this->categories = $categories;
+        };
+
+        $set_categories->call($elements_manager, $categories);
+    }
     public function add_category_two($elements_manager)
     {
         $elements_manager->add_category(
