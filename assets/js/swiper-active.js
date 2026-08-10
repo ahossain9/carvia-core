@@ -14,9 +14,9 @@
 			var slidesNum   = parseInt( $wrapper.data( 'slides' ), 10 ) || 2;
 			var space       = parseInt( $wrapper.data( 'space' ), 10 ) || 30;
 
-			var $prevBtn = $outerWrap.find( '.carvia-swiper-prev' );
-			var $nextBtn = $outerWrap.find( '.carvia-swiper-next' );
-			var $pag     = $wrapper.find( '.carvia-pagination' );
+			var $prevBtn = $outerWrap.find( '.testimonial-swiper-prev' );
+			var $nextBtn = $outerWrap.find( '.testimonial-swiper-next' );
+			var $pag     = $wrapper.find( '.testimonial-pagination' );
 
 			var swiperOptions = {
 				spaceBetween: space,
@@ -27,7 +27,7 @@
 						slidesPerView: 1,
 					},
 					768: {
-						slidesPerView: 2,
+						slidesPerView: 1,
 					},
 					991: {
                         slidesPerView: 2,

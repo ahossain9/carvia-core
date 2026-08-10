@@ -230,7 +230,7 @@ class Testimonial_Carousel extends Widget_Base
 				'label_on'     => esc_html__('Yes', 'carvia-core'),
 				'label_off'    => esc_html__('No', 'carvia-core'),
 				'return_value' => 'yes',
-				'default'      => 'yes',
+				'default'      => 'no',
 			]
 		);
 
@@ -242,7 +242,7 @@ class Testimonial_Carousel extends Widget_Base
 				'label_on'     => esc_html__('Yes', 'carvia-core'),
 				'label_off'    => esc_html__('No', 'carvia-core'),
 				'return_value' => 'yes',
-				'default'      => 'yes',
+				'default'      => 'no',
 			]
 		);
 

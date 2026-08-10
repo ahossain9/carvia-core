@@ -47,9 +47,9 @@ class Pricing_Table extends Widget_Base
 	protected function register_controls()
 	{
 
-		// ─── CONTENT: LEFT SIDE ───────────────────────────────────────
+		// ─── CONTENT ───────────────────────────────────────
 		$this->start_controls_section(
-			'section_left_content',
+			'section_content',
 			[
 				'label' => esc_html__('Information', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
@@ -381,7 +381,7 @@ class Pricing_Table extends Widget_Base
 				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .left-content-desc' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .content-desc' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -390,7 +390,7 @@ class Pricing_Table extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'desc_typography',
-				'selector' => '{{WRAPPER}} .left-content-desc',
+				'selector' => '{{WRAPPER}} .content-desc',
 			]
 		);
 
@@ -403,7 +403,7 @@ class Pricing_Table extends Widget_Base
 				'range'      => ['px' => ['min' => 0, 'max' => 100]],
 				'default'    => ['unit' => 'px', 'size' => 32],
 				'selectors'  => [
-					'{{WRAPPER}} .left-content-desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .content-desc' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -517,7 +517,6 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Text Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#0B311E',
 				'selectors' => [
 					'{{WRAPPER}} .pricing-btn' => 'color: {{VALUE}};',
 				],
@@ -529,7 +528,6 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#FF4400',
 				'selectors' => [
 					'{{WRAPPER}} .pricing-btn' => 'background-color: {{VALUE}};',
 				],
@@ -541,11 +539,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Arrow Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#FF4400',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn-arrow i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .pricing-btn-arrow svg' => 'fill: {{VALUE}};',
-					'{{WRAPPER}} .pricing-btn-arrow-inner' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .btn-fill__icon i.arrow-out i'   => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -555,9 +550,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Arrow Icon Background', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#0B311E',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn-arrow' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .btn-fill__icon' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -584,13 +578,6 @@ class Pricing_Table extends Widget_Base
 				'label'      => esc_html__('Border Radius', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
-				'default'    => [
-					'top'    => '100',
-					'right'  => '100',
-					'bottom' => '100',
-					'left'   => '100',
-					'unit'   => 'px',
-				],
 				'selectors'  => [
 					'{{WRAPPER}} .pricing-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -611,13 +598,6 @@ class Pricing_Table extends Widget_Base
 				'label'      => esc_html__('Padding', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
-				'default'    => [
-					'top'    => '8',
-					'right'  => '8',
-					'bottom' => '8',
-					'left'   => '20',
-					'unit'   => 'px',
-				],
 				'selectors'  => [
 					'{{WRAPPER}} .pricing-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -637,9 +617,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Text Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#0B311E',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .btn-fill.pricing-btn:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -649,9 +628,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#b8e855',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .btn-fill:before' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -661,11 +639,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Arrow Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#0B311E',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn:hover .pricing-btn-arrow-inner' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .pricing-btn:hover .pricing-btn-arrow i'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .pricing-btn:hover .pricing-btn-arrow svg'   => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .btn-fill:hover .btn-fill__icon i.arrow-in' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -675,9 +650,8 @@ class Pricing_Table extends Widget_Base
 			[
 				'label'     => esc_html__('Arrow Icon Background', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#0B311E',
 				'selectors' => [
-					'{{WRAPPER}} .pricing-btn:hover .pricing-btn-arrow' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .button-wrapper.pricing .pricing-btn:hover .btn-fill__icon' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -726,9 +700,9 @@ class Pricing_Table extends Widget_Base
 					</div>
 
 					<?php if (! empty($settings['description'])) : ?>
-						<p class="left-content-desc"><?php echo esc_html($settings['description']); ?></p>
+						<p class="content-desc"><?php echo esc_html($settings['description']); ?></p>
 					<?php endif; ?>
-					<div class="button-wrapper">
+					<div class="button-wrapper pricing">
 						<a href="<?php echo esc_url($button_url); ?>" <?php echo $button_target . $button_rel; ?> class="btn-fill pricing-btn">
 							<span class="btn-fill__text"><?php echo esc_html($settings['button_text']); ?></span>
 							<span class="rpl-btn__label">

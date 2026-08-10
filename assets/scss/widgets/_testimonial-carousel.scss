@@ -5,10 +5,10 @@
 .testimonial-carousel-wrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 50px;
 
     .swiper {
         overflow: hidden;
+        padding-bottom: 50px;
     }
 
     .swiper-wrapper {
@@ -146,7 +146,7 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
-    &.carvia-swiper-prev {
+    &.testimonial-swiper-prev {
         left: -22px;
         svg {
             height: 14px;
@@ -177,6 +177,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    margin: 0 auto;
 
     .swiper-pagination-bullet {
         background: #ccccdd;
@@ -188,7 +189,7 @@
 
         &.swiper-pagination-bullet-active {
             background: $color-heading;
-            width: 24px;
+            // width: 24px;
             border-radius: 4px;
         }
     }
@@ -196,7 +197,7 @@
 
 @media (max-width: 768px) {
     .testimonial-swiper-btn {
-        &.carvia-swiper-prev {
+        &.testimonial-swiper-prev {
             left: 0;
         }
 
