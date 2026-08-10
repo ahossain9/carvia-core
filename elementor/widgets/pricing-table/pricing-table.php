@@ -420,6 +420,18 @@ class Pricing_Table extends Widget_Base
 		);
 
 		$this->add_control(
+			'features_margin',
+			[
+				'label'      => esc_html__('Margin', 'carvia-core'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .pricing-features' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'feature_icon_size',
 			[
 				'label'      => esc_html__('Icon Size', 'carvia-core'),

@@ -271,14 +271,13 @@ class Testimonial_Carousel extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'card_background',
-			[
-				'label'     => esc_html__('Background Color', 'carvia-core'),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#FFFFFF',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			array(
+				'name'     => 'card_background',
+				'types'    => array('classic', 'gradient'),
 				'selector' => '{{WRAPPER}} .testimonial-card',
-			]
+			)
 		);
 
 		$this->add_group_control(
