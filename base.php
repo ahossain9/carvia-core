@@ -69,11 +69,11 @@ class Plugin
     {
         $new_categories = [
             'carvia_core' => [
-                'title' => __('Carvia', 'carvia_core-core'),
+                'title' => __('Carvia', 'carvia-core'),
                 'icon'  => 'fa fa-smile-o',
             ],
             'carvia_core_cat_two' => [
-                'title' => __('Carvia Header & Footer', 'carvia_core-core'),
+                'title' => __('Carvia Header & Footer', 'carvia-core'),
                 'icon'  => 'fa fa-smile-o',
             ],
         ];
@@ -93,7 +93,7 @@ class Plugin
         $elements_manager->add_category(
             'carvia_core_cat_two',
             [
-                'title' => __('Carvia Header & Footer', 'carvia_core-core'),
+                'title' => __('Carvia Header & Footer', 'carvia-core'),
                 'icon' => 'fa fa-smile-o',
             ]
         );

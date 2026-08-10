@@ -24,7 +24,7 @@ class Team_Member extends Widget_Base
 
 	public function get_title()
 	{
-		return esc_html__('Team Member', 'carvia');
+		return esc_html__('Team Member', 'carvia-core');
 	}
 
 	public function get_icon()
@@ -49,7 +49,7 @@ class Team_Member extends Widget_Base
 		$this->start_controls_section(
 			'section_member',
 			[
-				'label' => esc_html__('Team Member', 'carvia'),
+				'label' => esc_html__('Team Member', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -57,7 +57,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'image',
 			[
-				'label'   => esc_html__('Photo', 'carvia'),
+				'label'   => esc_html__('Photo', 'carvia-core'),
 				'type'    => Controls_Manager::MEDIA,
 				'default' => ['url' => Utils::get_placeholder_image_src()],
 				'dynamic' => ['active' => true],
@@ -75,7 +75,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'name',
 			[
-				'label'       => esc_html__('Name', 'carvia'),
+				'label'       => esc_html__('Name', 'carvia-core'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => 'John Smith',
 				'label_block' => true,
@@ -86,7 +86,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'designation',
 			[
-				'label'       => esc_html__('Designation', 'carvia'),
+				'label'       => esc_html__('Designation', 'carvia-core'),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => 'Pest Control Specialist',
 				'label_block' => true,
@@ -97,7 +97,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'name_tag',
 			[
-				'label'   => esc_html__('Name HTML Tag', 'carvia'),
+				'label'   => esc_html__('Name HTML Tag', 'carvia-core'),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'h4',
 				'options' => [
@@ -117,7 +117,7 @@ class Team_Member extends Widget_Base
 		$this->start_controls_section(
 			'section_social',
 			[
-				'label' => esc_html__('Social Icons', 'carvia'),
+				'label' => esc_html__('Social Icons', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -127,7 +127,7 @@ class Team_Member extends Widget_Base
 		$repeater->add_control(
 			'social_icon',
 			[
-				'label'   => esc_html__('Icon', 'carvia'),
+				'label'   => esc_html__('Icon', 'carvia-core'),
 				'type'    => Controls_Manager::ICONS,
 				'default' => ['value' => 'fab fa-facebook-f', 'library' => 'fa-brands'],
 			]
@@ -136,7 +136,7 @@ class Team_Member extends Widget_Base
 		$repeater->add_control(
 			'social_url',
 			[
-				'label'         => esc_html__('URL', 'carvia'),
+				'label'         => esc_html__('URL', 'carvia-core'),
 				'type'          => Controls_Manager::URL,
 				'placeholder'   => 'https://',
 				'default'       => ['url' => '#'],
@@ -148,7 +148,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_icons',
 			[
-				'label'       => esc_html__('Icons', 'carvia'),
+				'label'       => esc_html__('Icons', 'carvia-core'),
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => [
@@ -167,7 +167,7 @@ class Team_Member extends Widget_Base
 		$this->start_controls_section(
 			'section_image_style',
 			[
-				'label' => esc_html__('Image', 'carvia'),
+				'label' => esc_html__('Image', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -183,7 +183,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'image_border_radius',
 			[
-				'label'      => esc_html__('Border Radius', 'carvia'),
+				'label'      => esc_html__('Border Radius', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
@@ -196,7 +196,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'overlay_enabled',
 			[
-				'label'        => esc_html__('Gradient Overlay', 'carvia'),
+				'label'        => esc_html__('Gradient Overlay', 'carvia-core'),
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => 'yes',
@@ -227,7 +227,7 @@ class Team_Member extends Widget_Base
 		$this->start_controls_section(
 			'section_info_box_style',
 			[
-				'label' => esc_html__('Member Info', 'carvia'),
+				'label' => esc_html__('Member Info', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -235,7 +235,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'info_box_bg',
 			[
-				'label'     => esc_html__('Box Background', 'carvia'),
+				'label'     => esc_html__('Box Background', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .team-info' => 'background: {{VALUE}};',
@@ -246,7 +246,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'info_box_padding',
 			[
-				'label'      => esc_html__('Box Padding', 'carvia'),
+				'label'      => esc_html__('Box Padding', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors'  => [
@@ -258,7 +258,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'info_box_position',
 			[
-				'label'     => esc_html__('Position from Bottom', 'carvia'),
+				'label'     => esc_html__('Position from Bottom', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => ['px' => ['min' => 0, 'max' => 200]],
 				'selectors' => ['{{WRAPPER}} .team-info' => 'bottom: {{SIZE}}{{UNIT}};'],
@@ -269,7 +269,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'heading_name',
 			[
-				'label'     => esc_html__('Name', 'carvia'),
+				'label'     => esc_html__('Name', 'carvia-core'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -286,7 +286,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'name_color',
 			[
-				'label'     => esc_html__('Color', 'carvia'),
+				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => ['{{WRAPPER}} .carvia-team-name' => 'color: {{VALUE}};'],
 			]
@@ -295,7 +295,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'name_spacing',
 			[
-				'label'     => esc_html__('Spacing Between', 'carvia'),
+				'label'     => esc_html__('Spacing Between', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => ['px' => ['min' => 0, 'max' => 40]],
 				'selectors' => ['{{WRAPPER}} .carvia-team-name' => 'margin-bottom: {{SIZE}}{{UNIT}};'],
@@ -306,7 +306,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'heading_designation',
 			[
-				'label'     => esc_html__('Designation', 'carvia'),
+				'label'     => esc_html__('Designation', 'carvia-core'),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -323,7 +323,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'designation_color',
 			[
-				'label'     => esc_html__('Color', 'carvia'),
+				'label'     => esc_html__('Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => ['{{WRAPPER}} .team-designation' => 'color: {{VALUE}};'],
 			]
@@ -335,7 +335,7 @@ class Team_Member extends Widget_Base
 		$this->start_controls_section(
 			'section_social_style',
 			[
-				'label' => esc_html__('Social Icons', 'carvia'),
+				'label' => esc_html__('Social Icons', 'carvia-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -343,7 +343,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_icon_size',
 			[
-				'label'     => esc_html__('Icon Size', 'carvia'),
+				'label'     => esc_html__('Icon Size', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 14, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 8, 'max' => 40]],
@@ -357,7 +357,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_btn_width',
 			[
-				'label'     => esc_html__('Button Width', 'carvia'),
+				'label'     => esc_html__('Button Width', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 36, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 20, 'max' => 80]],
@@ -368,7 +368,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_btn_height',
 			[
-				'label'     => esc_html__('Button Height', 'carvia'),
+				'label'     => esc_html__('Button Height', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 36, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 20, 'max' => 80]],
@@ -379,7 +379,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_icon_color',
 			[
-				'label'     => esc_html__('Icon Color', 'carvia'),
+				'label'     => esc_html__('Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
@@ -392,7 +392,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_bg_color',
 			[
-				'label'     => esc_html__('Background Color', 'carvia'),
+				'label'     => esc_html__('Background Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(255,255,255,0.18)',
 				'selectors' => ['{{WRAPPER}} .team-social-link' => 'background-color: {{VALUE}};'],
@@ -402,7 +402,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_hover_color',
 			[
-				'label'     => esc_html__('Hover Background', 'carvia'),
+				'label'     => esc_html__('Hover Background', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#7DC242',
 				'selectors' => ['{{WRAPPER}} .team-social-link:hover' => 'background-color: {{VALUE}};'],
@@ -412,7 +412,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_icon_hover_color',
 			[
-				'label'     => esc_html__('Hover Icon Color', 'carvia'),
+				'label'     => esc_html__('Hover Icon Color', 'carvia-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => [
@@ -425,7 +425,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_gap',
 			[
-				'label'     => esc_html__('Gap Between Icons', 'carvia'),
+				'label'     => esc_html__('Gap Between Icons', 'carvia-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'default'   => ['size' => 8, 'unit' => 'px'],
 				'range'     => ['px' => ['min' => 0, 'max' => 30]],
@@ -436,7 +436,7 @@ class Team_Member extends Widget_Base
 		$this->add_control(
 			'social_border_radius',
 			[
-				'label'      => esc_html__('Button Radius', 'carvia'),
+				'label'      => esc_html__('Button Radius', 'carvia-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors'  => [
