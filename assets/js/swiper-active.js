@@ -23,11 +23,11 @@
 				grabCursor: true,
 				speed: 600,
 				breakpoints: {
-					0: {
+					576: {
 						slidesPerView: 1,
 					},
 					768: {
-						slidesPerView: 1,
+						slidesPerView: 2,
 					},
 					991: {
                         slidesPerView: 2,

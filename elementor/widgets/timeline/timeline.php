@@ -453,6 +453,24 @@ class Timeline extends Widget_Base
 			)
 		);
 
+		$this->add_responsive_control(
+			'icon_box_spacing',
+			array(
+				'label'      => esc_html__('Spacing', 'carvia-core'),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array('px'),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 160,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .timeline__box' => 'gap: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
 		$this->start_controls_tabs('icon_colors_tabs');
 
 		$this->start_controls_tab(

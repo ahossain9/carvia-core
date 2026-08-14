@@ -190,6 +190,18 @@ class Car_Card extends Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'card_margin',
+            [
+                'label'      => esc_html__('Margin', 'carvia-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .car-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'image',
             [
@@ -315,7 +327,7 @@ class Car_Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'price_position_top',
             [
                 'label'     => esc_html__('Position from Top', 'carvia-core'),
@@ -328,7 +340,7 @@ class Car_Card extends Widget_Base
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'price_position_left',
             [
                 'label'     => esc_html__('Position from Left', 'carvia-core'),
@@ -337,6 +349,18 @@ class Car_Card extends Widget_Base
                 'default'   => ['size' => 20],
                 'selectors' => [
                     '{{WRAPPER}} .car-card-price' => 'left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'price_spacing',
+            [
+                'label'     => esc_html__('Price Bottom Spacing', 'carvia-core'),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => ['px' => ['min' => 0, 'max' => 60]],
+                'selectors' => [
+                    '{{WRAPPER}} .car-card-price .car-rental-price' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -406,7 +430,7 @@ class Car_Card extends Widget_Base
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label'     => esc_html__('Below Spacing', 'carvia-core'),
+                'label'     => esc_html__('Bottom Spacing', 'carvia-core'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 60]],
                 'selectors' => [
@@ -446,7 +470,7 @@ class Car_Card extends Widget_Base
         $this->add_responsive_control(
             'model_spacing',
             [
-                'label'     => esc_html__('Below Spacing', 'carvia-core'),
+                'label'     => esc_html__('Bottom Spacing', 'carvia-core'),
                 'type'      => Controls_Manager::SLIDER,
                 'range'     => ['px' => ['min' => 0, 'max' => 60]],
                 'selectors' => [
