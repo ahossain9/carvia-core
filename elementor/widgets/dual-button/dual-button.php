@@ -14,6 +14,7 @@ use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Background;
 use Elementor\Core\Schemes\Typography;
 
 defined('ABSPATH') || die();
@@ -96,12 +97,13 @@ class Dual_Button extends Widget_Base
             [
                 'label' => __('Icon', 'carvia-core'),
                 'type' => Controls_Manager::ICONS,
-                'default' => [
-                    'value' => 'fas fa-angle-right',
-                    'library' => 'solid',
-                ]
+                'default'          => [
+                    'value'   => 'icon icon-arrow-right-02',
+                    'library' => 'carvia-core-icons',
+                ],
             ]
         );
+
         $condition = ['left_button_selected_icon[value]!' => ''];
 
         $this->add_control(
@@ -163,8 +165,8 @@ class Dual_Button extends Widget_Base
                 'label' => __('Icon', 'carvia-core'),
                 'type' => Controls_Manager::ICONS,
                 'default' => [
-                    'value' => 'fas fa-angle-right',
-                    'library' => 'solid',
+                    'value'   => 'icon icon-arrow-right-02',
+                    'library' => 'carvia-core-icons',
                 ]
             ]
         );
@@ -244,51 +246,43 @@ class Dual_Button extends Widget_Base
         );
 
         $this->add_responsive_control(
-            'button_align_x',
+            'button_align',
             [
-                'label' => __('Alignment', 'carvia-core'),
-                'type' => Controls_Manager::CHOOSE,
-                'label_block' => false,
+                'label'   => esc_html__('Alignment', 'carvia-core'),
+                'type'    => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left' => [
-                        'title' => __('Left', 'carvia-core'),
-                        'icon' => 'eicon-h-align-left',
+                    'flex-start' => [
+                        'title' => esc_html__('Left', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => __('Center', 'carvia-core'),
-                        'icon' => 'eicon-h-align-center',
+                        'title' => esc_html__('Center', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-center',
                     ],
-                    'right' => [
-                        'title' => __('Right', 'carvia-core'),
-                        'icon' => 'eicon-h-align-right',
-                    ]
+                    'flex-end' => [
+                        'title' => esc_html__('Right', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
                 ],
-                'toggle' => true,
-                'prefix_class' => 'dual-button-%s-align-'
+                'default'   => 'flex-start',
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper' => 'display: flex; justify-content: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper' => 'display: flex; align-items: {{VALUE}};',
+                ],
             ]
         );
 
         $this->add_responsive_control(
             'button_gap',
             [
-                'label' => __('Space Between Buttons', 'carvia-core'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => ['px'],
-                'selectors' => [
-                    '(desktop+){{WRAPPER}}.dual-button--layout-horizontal .dual-btn-left' => 'margin-right: calc({{button_gap.SIZE}}{{UNIT}}/2);',
-                    '(desktop+){{WRAPPER}}.dual-button--layout-vertical .dual-btn-left' => 'margin-bottom: calc({{button_gap.SIZE}}{{UNIT}}/2);',
-                    '(desktop+){{WRAPPER}}.dual-button--layout-horizontal .dual-btn-right' => 'margin-left: calc({{button_gap.SIZE}}{{UNIT}}/2);',
-                    '(desktop+){{WRAPPER}}.dual-button--layout-vertical .dual-btn-right' => 'margin-top: calc({{button_gap.SIZE}}{{UNIT}}/2);',
-
-                    '(tablet){{WRAPPER}}.dual-button--tablet-layout-horizontal .dual-btn-left' => 'margin-right: calc({{button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-bottom: 0;',
-                    '(tablet){{WRAPPER}}.dual-button--tablet-layout-vertical .dual-btn-left' => 'margin-bottom: calc({{button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-right: 0;',
-                    '(tablet){{WRAPPER}}.dual-button--tablet-layout-horizontal .dual-btn-right' => 'margin-left: calc({{button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-top: 0;',
-                    '(tablet){{WRAPPER}}.dual-button--tablet-layout-vertical .dual-btn-right' => 'margin-top: calc({{button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-left: 0;',
-
-                    '(mobile){{WRAPPER}}.dual-button--mobile-layout-horizontal .dual-btn-left' => 'margin-right: calc({{button_gap_mobile.SIZE || button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-bottom: 0;',
-                    '(mobile){{WRAPPER}}.dual-button--mobile-layout-vertical .dual-btn-left' => 'margin-bottom: calc({{button_gap_mobile.SIZE || button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-right: 0;',
-                    '(mobile){{WRAPPER}}.dual-button--mobile-layout-horizontal .dual-btn-right' => 'margin-left: calc({{button_gap_mobile.SIZE || button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-top: 0;',
-                    '(mobile){{WRAPPER}}.dual-button--mobile-layout-vertical .dual-btn-right' => 'margin-top: calc({{button_gap_mobile.SIZE || button_gap_tablet.SIZE || button_gap.SIZE}}{{UNIT}}/2); margin-left: 0;',
+                'label'      => esc_html__('Space Between Buttons', 'carvia-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => [
+                    'px' => ['min' => 0, 'max' => 100],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper.horizontal' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -379,28 +373,7 @@ class Dual_Button extends Widget_Base
                 'type' => Controls_Manager::SLIDER,
                 'condition' => $condition,
                 'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-before' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-after' => 'margin-left: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'left_button_icon_size',
-            [
-                'label' => __('Icon Size', 'carvia-core'),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 6,
-                        'max' => 300,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-before i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-after i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-before svg' => 'width: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .left-btn-icon-after svg' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill' => 'gap: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -479,7 +452,7 @@ class Dual_Button extends Widget_Base
                 'label' => __('Background Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left a:hover' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .dual-btn-wrapper .btn-fill:before' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -501,6 +474,140 @@ class Dual_Button extends Widget_Base
         $this->end_controls_tab();
         $this->end_controls_tabs();
 
+        $this->end_controls_section();
+
+        /* =============================================
+         * SECTION: Primary Button Icon Style
+         * ============================================= */
+        $this->start_controls_section(
+            'section_primary_button_icon_style',
+            [
+                'label'     => esc_html__('Secondary Button Icon Style', 'carvia-core'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'selected_icon[value]!' => '',
+                    'show_icon_box'         => 'yes',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('left_icon_style_tabs');
+
+        // --- Normal ---
+        $this->start_controls_tab(
+            'left_icon_style_normal',
+            ['label' => esc_html__('Normal', 'carvia-core')]
+        );
+
+        $this->add_control(
+            'left_icon_color',
+            [
+                'label'     => esc_html__('Icon Color (arrow-out)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon i.arrow-out'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon i.arrow-out svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'left_icon_color_in',
+            [
+                'label'     => esc_html__('Icon Color (arrow-in)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon i.arrow-in'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon i.arrow-in svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'     => 'left_icon_background',
+                'label'    => esc_html__('Icon Box Background', 'carvia-core'),
+                'types'    => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'left_icon_size',
+            [
+                'label'      => esc_html__('Icon Size', 'carvia-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'range'      => [
+                    'px' => ['min' => 6, 'max' => 100],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'left_icon_box_size',
+            [
+                'label'      => esc_html__('Icon Box Size', 'carvia-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => [
+                    'px' => ['min' => 20, 'max' => 120],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'left_icon_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'carvia-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // --- Hover ---
+        $this->start_controls_tab(
+            'left_icon_style_hover',
+            ['label' => esc_html__('Hover', 'carvia-core')]
+        );
+
+        $this->add_control(
+            'left_icon_color_hover',
+            [
+                'label'     => esc_html__('Icon Color (arrow-in on hover)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill:hover .btn-fill__icon i.arrow-in'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill:hover .btn-fill__icon i.arrow-in svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'     => 'left_icon_background_hover',
+                'label'    => esc_html__('Icon Box Background', 'carvia-core'),
+                'types'    => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-left .btn-fill:hover .btn-fill__icon',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -550,28 +657,7 @@ class Dual_Button extends Widget_Base
                 'type' => Controls_Manager::SLIDER,
                 'condition' => $condition,
                 'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-before' => 'margin-right: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-after' => 'margin-left: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'right_button_icon_size',
-            [
-                'label' => __('Icon Size', 'carvia-core'),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 6,
-                        'max' => 300,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-before i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-after i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-before svg' => 'width: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .right-btn-icon-after svg' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -650,7 +736,7 @@ class Dual_Button extends Widget_Base
                 'label' => __('Background Color', 'carvia-core'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right a:hover' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill:before' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -673,27 +759,173 @@ class Dual_Button extends Widget_Base
         $this->end_controls_tabs();
 
         $this->end_controls_section();
+
+        /* =============================================
+         * SECTION: Secondary Button Icon Style
+         * ============================================= */
+        $this->start_controls_section(
+            'section_secondary_icon_style',
+            [
+                'label'     => esc_html__('Icon Style', 'carvia-core'),
+                'tab'       => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'selected_icon[value]!' => '',
+                    'show_icon_box'         => 'yes',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('right_icon_style_tabs');
+
+        // --- Normal ---
+        $this->start_controls_tab(
+            'right_icon_style_normal',
+            ['label' => esc_html__('Normal', 'carvia-core')]
+        );
+
+        $this->add_control(
+            'right_icon_color',
+            [
+                'label'     => esc_html__('Icon Color (arrow-out)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon i.arrow-out'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon i.arrow-out svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'right_icon_color_in',
+            [
+                'label'     => esc_html__('Icon Color (arrow-in)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon i.arrow-in'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon i.arrow-in svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'     => 'right_icon_background',
+                'label'    => esc_html__('Icon Box Background', 'carvia-core'),
+                'types'    => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'right_icon_size',
+            [
+                'label'      => esc_html__('Icon Size', 'carvia-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'range'      => [
+                    'px' => ['min' => 6, 'max' => 100],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon i'   => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'right_icon_box_size',
+            [
+                'label'      => esc_html__('Icon Box Size', 'carvia-core'),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range'      => [
+                    'px' => ['min' => 20, 'max' => 120],
+                ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'right_icon_border_radius',
+            [
+                'label'      => esc_html__('Border Radius', 'carvia-core'),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // --- Hover ---
+        $this->start_controls_tab(
+            'right_icon_style_hover',
+            ['label' => esc_html__('Hover', 'carvia-core')]
+        );
+
+        $this->add_control(
+            'right_icon_color_hover',
+            [
+                'label'     => esc_html__('Icon Color (arrow-in on hover)', 'carvia-core'),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill:hover .btn-fill__icon i.arrow-in'     => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill:hover .btn-fill__icon i.arrow-in svg' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name'     => 'right_icon_background_hover',
+                'label'    => esc_html__('Icon Box Background', 'carvia-core'),
+                'types'    => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .dual-btn-wrapper .dual-btn.dual-btn-right .btn-fill:hover .btn-fill__icon',
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+        $this->end_controls_section();
     }
 
     protected function render()
     {
         $settings = $this->get_settings_for_display();
 ?>
-        <div class="dual-btn-wrapper">
+        <div class="dual-btn-wrapper <?php echo esc_attr($settings['buttons_layout']); ?>">
             <div class="dual-btn dual-btn-left">
                 <?php
                 $target = $settings['left_button_link']['is_external'] ? ' target=_blank' : '';
                 $nofollow = $settings['left_button_link']['nofollow'] ? ' rel=nofollow' : '';
                 ?>
-                <a href="<?php echo esc_url($settings['left_button_link']['url']); ?>" <?php echo esc_attr($target . $nofollow); ?>>
+                <a class="btn-fill" href="<?php echo esc_url($settings['left_button_link']['url']); ?>" <?php echo esc_attr($target . $nofollow); ?>>
                     <?php if ($settings['left_button_icon_position'] === 'before' && (! empty($settings['left_button_selected_icon']))) : ?>
-                        <span class="left-btn-icon-before"><?php Icons_Manager::render_icon($settings['left_button_selected_icon'], ['aria-hidden' => 'true']); ?> </span>
+                        <span class="rpl-btn__label">
+                            <span class="btn-fill__icon">
+                                <i aria-hidden="true" class="arrow-out <?php echo esc_attr($settings['left_button_selected_icon']['value']); ?>"></i>
+                                <i aria-hidden="true" class="arrow-in <?php echo esc_attr($settings['left_button_selected_icon']['value']); ?>"></i>
+                            </span>
+                        </span>
                     <?php endif; ?>
+
                     <?php if (!empty($settings['left_button_text'])) : ?>
-                        <?php echo esc_html($settings['left_button_text']); ?>
+                        <span class="btn-fill__text"><?php echo esc_html($settings['left_button_text']); ?></span>
                     <?php endif; ?>
+
                     <?php if ($settings['left_button_icon_position'] === 'after' && (! empty($settings['left_button_selected_icon']))) : ?>
-                        <span class="left-btn-icon-after"><?php Icons_Manager::render_icon($settings['left_button_selected_icon'], ['aria-hidden' => 'true']); ?></span>
+                        <span class="rpl-btn__label">
+                            <span class="btn-fill__icon">
+                                <i aria-hidden="true" class="arrow-out <?php echo esc_attr($settings['left_button_selected_icon']['value']); ?>"></i>
+                                <i aria-hidden="true" class="arrow-in <?php echo esc_attr($settings['left_button_selected_icon']['value']); ?>"></i>
+                            </span>
+                        </span>
                     <?php endif; ?>
                 </a>
             </div>
@@ -702,15 +934,26 @@ class Dual_Button extends Widget_Base
                 $target = $settings['right_button_link']['is_external'] ? ' target=_blank' : '';
                 $nofollow = $settings['right_button_link']['nofollow'] ? ' rel=nofollow' : '';
                 ?>
-                <a href="<?php echo esc_url($settings['right_button_link']['url']); ?>" <?php echo esc_attr($target . $nofollow) ?>>
+                <a class="btn-fill" href="<?php echo esc_url($settings['right_button_link']['url']); ?>" <?php echo esc_attr($target . $nofollow) ?>>
                     <?php if ($settings['right_button_icon_position'] === 'before' && (! empty($settings['right_button_selected_icon']))) : ?>
+                        <span class="rpl-btn__label">
+                            <span class="btn-fill__icon">
+                                <i aria-hidden="true" class="arrow-out <?php echo esc_attr($settings['right_button_selected_icon']['value']); ?>"></i>
+                                <i aria-hidden="true" class="arrow-in <?php echo esc_attr($settings['right_button_selected_icon']['value']); ?>"></i>
+                            </span>
+                        </span>
                         <span class="right-btn-icon-before"><?php Icons_Manager::render_icon($settings['right_button_selected_icon'], ['aria-hidden' => 'true']); ?></span>
                     <?php endif; ?>
                     <?php if (!empty($settings['right_button_text'])) : ?>
-                        <?php echo esc_html($settings['right_button_text']); ?>
+                        <span class="btn-fill__text"><?php echo esc_html($settings['right_button_text']); ?></span>
                     <?php endif; ?>
                     <?php if ($settings['right_button_icon_position'] === 'after' && (! empty($settings['right_button_selected_icon']))) : ?>
-                        <span class="right-btn-icon-after"><?php Icons_Manager::render_icon($settings['right_button_selected_icon'], ['aria-hidden' => 'true']); ?></span>
+                        <span class="rpl-btn__label">
+                            <span class="btn-fill__icon">
+                                <i aria-hidden="true" class="arrow-out <?php echo esc_attr($settings['right_button_selected_icon']['value']); ?>"></i>
+                                <i aria-hidden="true" class="arrow-in <?php echo esc_attr($settings['right_button_selected_icon']['value']); ?>"></i>
+                            </span>
+                        </span>
                     <?php endif; ?>
                 </a>
             </div>

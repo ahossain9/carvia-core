@@ -2,133 +2,117 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.dual-button {
-    &--layout-vertical .dual-btn-wrapper {
-        display: inline-block;
+.dual-btn-wrapper{
+    display: flex;
+    gap: 20px;
+    &.vertical {
+        flex-direction: column;
     }
+    .btn-fill {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 8px 8px 20px;
+        font-weight: 500;
+        background: $color-primary;
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: 0;
+        transition: color 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        line-height: 1;
 
-    &--layout-horizontal .dual-btn-wrapper {
-        display: flex;
-    }
-
-    &--align-left.dual-button--layout-horizontal .dual-btn-wrapper {
-        justify-content: flex-start;
-    }
-
-    &--align-center.dual-button--layout-horizontal .dual-btn-wrapper {
-        justify-content: center;
-    }
-
-    &--align-right.dual-button--layout-horizontal .dual-btn-wrapper {
-        justify-content: flex-end;
-    }
-
-    &--align-left.dual-button--layout-vertical {
-        text-align: left;
-    }
-
-    &--align-center.dual-button--layout-vertical {
-        text-align: center;
-    }
-
-    &--align-right.dual-button--layout-vertical {
-        text-align: right;
-    }
-
-    @media (max-width: 1024px) {
-        &--tablet-layout-vertical .dual-btn-wrapper {
-            display: inline-block;
+        @include respond-below(lg) {
+            font-size: 15px;
+            padding: 6px 6px 4px 18px;
         }
 
-        &--tablet-layout-horizontal .dual-btn-wrapper {
-            display: flex;
+        &:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: $color-heading;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+            z-index: -1;
         }
 
-        &--tablet-align-left.dual-button--tablet-layout-horizontal .dual-btn-wrapper {
-            justify-content: flex-start;
+        &:hover {
+            color: #fff;
+
+            &:before {
+                transform: scaleX(1);
+            }
+
+            .btn-fill__icon {
+                background: $color-white;
+                color: $color-heading;
+
+                i.arrow-out {
+                    transform: translate(130%, -130%);
+                    opacity: 0;
+                    transform: rotate(-40deg);
+                }
+
+                i.arrow-in {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                    transform: rotate(-40deg);
+                    color: $color-heading;
+                }
+            }
         }
 
-        &--tablet-align-center.dual-button--tablet-layout-horizontal .dual-btn-wrapper {
+        &__text {
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        &__icon {
+            position: relative;
+            z-index: 1;
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            background: $color-heading;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-        }
+            overflow: hidden;
+            pointer-events: none;
+            transition:
+                background 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 
-        &--tablet-align-right.dual-button--tablet-layout-horizontal .dual-btn-wrapper {
-            justify-content: flex-end;
-        }
+            @include respond-below(lg) {
+                width: 32px;
+                height: 32px;
+            }
 
-        &--tablet-align-left.dual-button--tablet-layout-vertical {
-            text-align: left;
-        }
+            i {
+                position: absolute;
+                transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                    opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1);
 
-        &--tablet-align-center.dual-button--tablet-layout-vertical {
-            text-align: center;
-        }
 
-        &--tablet-align-right.dual-button--tablet-layout-vertical {
-            text-align: right;
-        }
+                &.arrow-out {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                    color: $color-white;
+                    transition:
+                        transform 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+                        opacity 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+                        stroke 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+                }
 
-        &--layout-horizontal.dual-button--tablet-layout-vertical .dual-btn-wrapper .dual-btn-left {
-            margin-right: 0;
-        }
-    }
-
-    @media (max-width: 767px) {
-        &--mobile-layout-vertical .dual-btn-wrapper {
-            display: inline-block;
-        }
-
-        &--mobile-layout-horizontal .dual-btn-wrapper {
-            display: flex;
-        }
-
-        &--mobile-align-left.dual-button--mobile-layout-horizontal .dual-btn-wrapper {
-            justify-content: flex-start;
-        }
-
-        &--mobile-align-center.dual-button--mobile-layout-horizontal .dual-btn-wrapper {
-            justify-content: center;
-        }
-
-        &--mobile-align-right.dual-button--mobile-layout-horizontal .dual-btn-wrapper {
-            justify-content: flex-end;
-        }
-
-        &--mobile-align-left.dual-button--mobile-layout-vertical {
-            text-align: left;
-        }
-
-        &--mobile-align-center.dual-button--mobile-layout-vertical {
-            text-align: center;
-        }
-
-        &--mobile-align-right.dual-button--mobile-layout-vertical {
-            text-align: right;
-        }
-
-        &--layout-horizontal.dual-button--mobile-layout-vertical .dual-btn-wrapper .dual-btn-left {
-            margin-right: 0;
+                &.arrow-in {
+                    transform: translate(-130%, 130%);
+                    opacity: 0;
+                    color: $color-heading;
+                }
+            }
         }
     }
-}
-
-.dual-btn-wrapper {
-    .dual-btn-left {
-        margin-right: 10px;
-    }
-
-    .dual-btn a {
-        padding: 10px 20px;
-        border-radius: 10px;
-        color: #fff;
-        display: inline-block;
-    }
-}
-
-.left-btn-icon-before svg,
-.right-btn-icon-before svg,
-.left-btn-icon-after svg,
-.right-btn-icon-after svg {
-    width: 40px;
-    height: auto;
 }
