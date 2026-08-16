@@ -15,6 +15,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Text_Stroke;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 /**
@@ -129,10 +130,10 @@ class News_Ticker extends Widget_Base
 				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'default'     => [
-					['item_text' => esc_html__('🚨 Breaking: Pest control experts reveal top 5 prevention tips for this season.', 'carvia-core')],
-					['item_text' => esc_html__('📢 New eco-friendly solutions now available — safe for kids and pets!', 'carvia-core')],
-					['item_text' => esc_html__('✅ 24/7 emergency pest control services now in your area. Call us today!', 'carvia-core')],
-					['item_text' => esc_html__('🏆 Rated #1 Pest Control Company for the 3rd year in a row.', 'carvia-core')],
+					['item_text' => esc_html__('New Luxury Cars Just Arrived', 'carvia-core')],
+					['item_text' => esc_html__('Exclusive Rental Offers', 'carvia-core')],
+					['item_text' => esc_html__('Premium Fleet, Exceptional Journeys', 'carvia-core')],
+					['item_text' => esc_html__('Special Weekend Rental Deals', 'carvia-core')],
 				],
 				'title_field' => '{{{ item_text }}}',
 			]
@@ -177,7 +178,7 @@ class News_Ticker extends Widget_Base
 				'range'   => [
 					'px' => [
 						'min'  => 5,
-						'max'  => 120,
+						'max'  => 300,
 						'step' => 1,
 					],
 				],
@@ -398,6 +399,14 @@ class News_Ticker extends Widget_Base
 				'global'   => [
 					'default' => Global_Typography::TYPOGRAPHY_TEXT,
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'item_stroke',
+				'selector' => '{{WRAPPER}} .carvia-marquee-item-text',
 			]
 		);
 

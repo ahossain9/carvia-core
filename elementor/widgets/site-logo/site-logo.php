@@ -215,7 +215,7 @@ class Site_Logo extends Widget_Base
                 ?>
                     <a href="<?php echo esc_url(home_url('/')) ?>">
                         <img src="<?php echo esc_url($settings['custom_logo_image']['url']); ?>" alt="<?php echo esc_attr__('logo', 'carvia-core'); ?>">
-                    </a>;
+                    </a>
                 <?php endif; ?>
                 <?php if ($settings['custom_logo_link'] == 'custom'): ?>
                     <a href="<?php echo esc_url($settings['custom_logo_link_url']['url']); ?>">
