@@ -241,7 +241,7 @@ class Service_List extends Widget_Base
                 ]
             ]
         );
-        
+
         $this->add_responsive_control(
             'title_margin',
             [
@@ -468,8 +468,8 @@ class Service_List extends Widget_Base
                 }
                 ?>
                 <!-- start service card -->
-                <div class="service-list <?php echo esc_attr($active_class); ?>">
-                    <h5 class="service-list-title">
+                <div class="service-list">
+                    <h5 class="service-list-title <?php echo esc_attr($active_class); ?>">
                         <a href="<?php the_permalink(); ?>"><span class="service-list-icon"><?php the_title(); ?></span><span class="service-list-icon"><i class="icon-arrow-right-02"></i></span></a>
                     </h5>
                 </div>
