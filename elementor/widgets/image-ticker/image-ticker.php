@@ -467,8 +467,8 @@ class News_Ticker extends Widget_Base
 				'label'      => esc_html__('Size', 'carvia-core'),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => ['px', 'em'],
-				'range'      => ['px' => ['min' => 8, 'max' => 200]],
-				'default'    => ['size' => 30, 'unit' => 'px'],
+				'range'      => ['px' => ['min' => 8, 'max' => 60]],
+				'default'    => ['size' => 14, 'unit' => 'px'],
 				'selectors'  => [
 					'{{WRAPPER}} .carvia-marquee-separator'     => 'font-size: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .carvia-marquee-separator i'   => 'font-size: {{SIZE}}{{UNIT}};',

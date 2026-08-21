@@ -131,6 +131,7 @@ class Plugin
             'site-logo',
             'mini-cart',
             'nav-category',
+            'service-list',
         ];
 
 

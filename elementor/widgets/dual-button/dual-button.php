@@ -200,26 +200,23 @@ class Dual_Button extends Widget_Base
         $this->add_responsive_control(
             'buttons_layout',
             [
-                'label' => __('Layout', 'carvia-core'),
+                'label' => esc_html__('Layout', 'carvia-core'),
                 'type' => Controls_Manager::CHOOSE,
-                'label_block' => false,
                 'options' => [
-                    'horizontal' => [
-                        'title' => __('Horizontal', 'carvia-core'),
+                    'row' => [
+                        'title' => esc_html__('Horizontal', 'carvia-core'),
                         'icon' => 'eicon-navigation-horizontal',
                     ],
-                    'vertical' => [
-                        'title' => __('Vertical', 'carvia-core'),
+                    'column' => [
+                        'title' => esc_html__('Vertical', 'carvia-core'),
                         'icon' => 'eicon-navigation-vertical',
-                    ]
+                    ],
                 ],
-                'toggle' => false,
-                'desktop_default' => 'horizontal',
-                'tablet_default' => 'horizontal',
-                'mobile_default' => 'horizontal',
-                'separator' => 'before',
-                'prefix_class' => 'dual-button-%s-layout-',
-                'style_transfer' => true,
+                'default' => 'row',
+                'toggle' => true,
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper' => 'flex-direction: {{VALUE}};',
+                ],
             ]
         );
 
@@ -251,6 +248,35 @@ class Dual_Button extends Widget_Base
                 'label'   => esc_html__('Alignment', 'carvia-core'),
                 'type'    => Controls_Manager::CHOOSE,
                 'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'carvia-core'),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                ],
+                'default'   => 'center',
+                'condition' => [
+                    'buttons_layout' => 'row',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dual-btn-wrapper' => 'display: flex; justify-content: {{VALUE}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
+            'button_align_vertical',
+            [
+                'label'   => esc_html__('Alignment', 'carvia-core'),
+                'type'    => Controls_Manager::CHOOSE,
+                'options' => [
                     'flex-start' => [
                         'title' => esc_html__('Left', 'carvia-core'),
                         'icon'  => 'eicon-text-align-left',
@@ -264,9 +290,11 @@ class Dual_Button extends Widget_Base
                         'icon'  => 'eicon-text-align-right',
                     ],
                 ],
-                'default'   => 'flex-start',
+                'default'   => 'center',
+                'condition' => [
+                    'buttons_layout' => 'column',
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .dual-btn-wrapper' => 'display: flex; justify-content: {{VALUE}};',
                     '{{WRAPPER}} .dual-btn-wrapper' => 'display: flex; align-items: {{VALUE}};',
                 ],
             ]
@@ -898,8 +926,9 @@ class Dual_Button extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        
 ?>
-        <div class="dual-btn-wrapper <?php echo esc_attr($settings['buttons_layout']); ?>">
+        <div class="dual-btn-wrapper">
             <div class="dual-btn dual-btn-left">
                 <?php
                 $target = $settings['left_button_link']['is_external'] ? ' target=_blank' : '';
